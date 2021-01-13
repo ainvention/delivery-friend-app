@@ -23,7 +23,7 @@
 
 ![step1](./ForReadme/step1.png)
 ![step2](./ForReadme/step2.png)
-![step3](./ForReadme/step3.png)
+![step3](./ForReadme/step3-1.png)
 
 #### 2. Search registred tasks from DB
  - Sort by location and order type
