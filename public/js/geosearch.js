@@ -1,4 +1,3 @@
-
 function success(position) {
     const latitude  = position.coords.latitude;
     const longitude = position.coords.longitude;
@@ -30,7 +29,6 @@ function success(position) {
      function injectValue(latlng) {
          var element = document.getElementById('fromAddress');
              element.dispatchEvent(new Event('input'));
-             map.setView(latlng ,15)
      };
 
      searchControl.on('results', function (data) {
@@ -73,6 +71,3 @@ function success(position) {
     document.getElementById('status').textContent = 'Locating…';
     navigator.geolocation.getCurrentPosition(success, error);
     }
-    //  window.addEventListener('contentChanged', event => {
-    //     success();
-    // });

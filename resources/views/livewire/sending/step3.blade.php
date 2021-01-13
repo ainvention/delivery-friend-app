@@ -13,10 +13,13 @@
             <div class="flex flex-wrap mx-3 mb-6">
                 <div class="flex flex-col w-full px-3 mb-6">
                     <p id="status" class=""></p>
+
                     @error('step3')
                     @include('livewire.custom-components.error-messages.required')
                     @enderror
+
                     @include('livewire.leaflet-map')
+
                     <div id="searchInput" class="mb-2">
                         <input wire:model="step3" id="fromAddress"
                             class="appearance-none block w-full bg-gray-100 text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
