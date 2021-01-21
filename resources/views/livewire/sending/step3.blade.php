@@ -3,7 +3,7 @@
     <div class="text-center mt-24">
         <div class="flex items-center justify-center">
             <h2 class="text-4xl tracking-tight">
-                Where should it be picked up from?
+                Sender location & comment.
             </h2>
         </div>
     </div>
@@ -14,23 +14,33 @@
                 <div class="flex flex-col w-full px-3 mb-6">
                     <p id="status" class=""></p>
 
-                    @error('step3')
+                    @error($options['fromAddress'])
                     @include('livewire.custom-components.error-messages.required')
                     @enderror
 
                     @include('livewire.leaflet-map')
 
                     <div id="searchInput" class="mb-2">
-                        <input wire:model="step3" id="fromAddress"
-                            class="appearance-none block w-full bg-gray-100 text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                        <label for="options.fromAddress">Sender location</label>
+                        <input wire:model="options.fromAddress" name="options.fromAddress" id="address"
+                            class="appearance-none block w-full bg-gray-100 text-gray-900 font-medium border border-gray-400 rounded-lg mb-4 py-3 px-3 leading-tight focus:outline-none"
                             type='text' disabled>
+                        <label for="options.fromNotes">Comment for helper.</label>
+                        <input wire:model.lazy="options.fromNotes"
+                            class="appearance-none block w-full text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                            type='text' placeholder="Type some comment for helper :)">
+                        <input wire:model="options.fromLat" id="lat"
+                            class="appearance-none block w-full bg-gray-100 text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                            type='hidden'>
+                        <input wire:model="options.fromLng" id="lng"
+                            class="appearance-none block w-full bg-gray-100 text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                            type='hidden'>
                     </div>
                     <div class="flex justify-between w-full md:w-full px-3 my-2">
-                        <button wire:click="$emitUp('moveBack')"
+                        <button wire:click="$emitUp('moveBack')" wire:key=step3back
                             class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">Back</button>
-                        <button wire:click="$emitUp('moveNext')"
-                            class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500{{ $step1 === null ? 'disabled:opacity-50' : '' }}"
-                            {{$step1 === null ? "disabled" : ""  }}>Next</button>
+                        <button wire:click="$emitUp('moveNext')" wire:key=step3next class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500{{ $options['fromAddress'] === null ? 'disabled:opacity-50' : '' }}
+                            {{ $options['fromAddress'] === null ? "disabled" : ""  }}">Next</button>
                     </div>
                 </div>
             </div>

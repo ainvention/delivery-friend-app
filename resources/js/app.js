@@ -2,6 +2,6 @@ require('./bootstrap');
 
 require('alpinejs');
 
-require("flatpickr");
-
 // require('leaflet-geosearch');
+
+require('leaflet-routing-machine');

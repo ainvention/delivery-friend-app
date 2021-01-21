@@ -14,7 +14,7 @@
                     <table class="table-auto">
                         <tbody>
                             <tr>
-                                <td><input wire:model="step2" name="step2" value="handCarry" type="radio"
+                                <td><input wire:model=options.size value="handCarry" type="radio"
                                         class="w-8 h-8 m-4 border-1 border-gray-400" />
                                 </td>
                                 <td class="flex flex-col"><label for="handCarry" class="text-lg tex-black">Fits in a
@@ -32,7 +32,7 @@
                                     </svg></td>
                             </tr>
                             <tr>
-                                <td><input wire:model="step2" name="step2" type="radio" value="byBag"
+                                <td><input wire:model=options.size type="radio" value="byBag"
                                         class="w-8 h-8 m-4 border-1 border-gray-400" />
                                 </td>
                                 <td class="flex flex-col"><label for="byBag" class="text-lg tex-black">Fits in a
@@ -75,7 +75,7 @@
                                     </svg></td>
                             </tr>
                             <tr>
-                                <td><input wire:model="step2" name="step2" type="radio" value="byCar"
+                                <td><input wire:model=options.size type="radio" value="byCar"
                                         class="w-8 h-8 m-4 border-1 border-gray-400" />
                                 </td>
                                 <td class="flex flex-col"><label for="byCar" class="text-lg tex-black">Fits in a
@@ -96,7 +96,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><input wire:model="step2" name="step2" type="radio" value="byBigCar"
+                                <td><input wire:model=options.size type="radio" value="byBigCar"
                                         class="w-8 h-8 m-4 border-1 border-gray-400" />
                                 </td>
                                 <td class="flex flex-col"><label for="byBigCar" class="text-lg tex-black">Fits in a
@@ -116,7 +116,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><input wire:model="step2" name="step2" type="radio" value="byVan"
+                                <td><input wire:model=options.size type="radio" value="byVan"
                                         class="w-8 h-8 m-4 border-1 border-gray-400" />
                                 </td>
                                 <td class="flex flex-col"><label for="byVan" class="text-lg tex-black">Fits in a
@@ -152,14 +152,14 @@
                 </div>
 
 
-                @error('step2') @include('livewire.custom-components.error-messages.required')
+                @error($options['size']) @include('livewire.custom-components.error-messages.required')
                 @enderror
                 <div class="flex justify-between w-full md:w-full px-3 mb-6">
                     <button wire:click="$emitUp('moveBack')"
                         class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">Back</button>
                     <button wire:click="$emitUp('moveNext')"
-                        class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500 {{ $step2 === null ? 'disabled:opacity-50' : '' }}"
-                        {{$step2 === null ? "disabled" : ""  }}>Next</button>
+                        class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500 {{ $options['size'] === null ? 'disabled:opacity-50' : '' }}"
+                        {{ $options['size'] === null ? "disabled" : ""  }}>Next</button>
                 </div>
 
             </div>

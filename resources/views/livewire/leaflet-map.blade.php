@@ -1,7 +1,7 @@
 <div class="w-full">
     {{-- used "wire:ignore" to prevent DOM refresh when input value changed --}}
-    <div wire:ignore id="leafletMap" class="flex w-full h-96 mb-10">
-    </div>
+    <div wire:ignore id="leafletMap" class="flex w-full h-96 mb-10"></div>
+
     <script>
         // Take a User's geo location.
         if(!navigator.geolocation) {
@@ -22,9 +22,13 @@
 
         // This is a function to bind with Livewire's Model when the user clicked the map and selected it.
         function injectValue(latlng) {
-            var element = document.getElementById('fromAddress');
-            //input event fire to bind with Livewire Model.
-                element.dispatchEvent(new Event('input'));
+            var element1 = document.getElementById('address');
+            var element2 = document.getElementById('lat');
+            var element3 = document.getElementById('lng');
+            // input event fire to bind with Livewire Model.
+                element1.dispatchEvent(new Event('input'));
+                element2.dispatchEvent(new Event('input'));
+                element3.dispatchEvent(new Event('input'));
         };
 
 
@@ -62,7 +66,8 @@
                 // results.clearLayers();
                 for (var i = data.results.length - 1; i >= 0; i--) {
                     var result = data.results[i];
-                    document.getElementById('fromAddress').value= result.properties.Place_addr;
+                    document.getElementById('address').value= result.properties.Place_addr;
+                    console.log(result);
                 }
             });
 
@@ -83,7 +88,9 @@
                     }
                     marker = L.marker(result.latlng, {autoPan:true}).addTo(map).bindPopup(result.address.Match_addr).openPopup();
 
-                    document.getElementById('fromAddress').value = result.address.Match_addr;
+                    document.getElementById('address').value = result.address.Match_addr;
+                    document.getElementById('lat').value = result.latlng.lat;
+                    document.getElementById('lng').value = result.latlng.lng;
 
                     //test-code
                     console.log(result.address.Match_addr);

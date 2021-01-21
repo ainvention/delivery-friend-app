@@ -17,7 +17,7 @@
         <div class="flex justify-center my-2 mx-4 md:mx-0">
             <div class="w-full max-w-xl bg-white rounded-lg shadow-md p-6">{{-- form --}}
                 <div class="flex flex-wrap -mx-3 mb-6">
-                    <div
+                    <div wire:click="modalToggle"
                         class="text-center w-full h-full py-20 md:w-full px-3 mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">
                         <svg class="block m-auto h-16" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
@@ -26,42 +26,69 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        Take Photo
+                        Upload Photo
                         <br>
                         (Optional)
+
                     </div>
+                    <img class="w-full height-full" src="{{ asset('storage/'.$options['photo'])}}" alt="">
                     <div class="w-full md:w-full px-3 mb-6">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                             for='title'>Title</label>
-                        <input wire:model="step1"
+                        <input wire:model=options.title
                             class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                             type='text' placeholder="Title(e.g. Office chair)">
-                        @error('step1') @include('livewire.custom-components.error-messages.required')
-                        @enderror
+                        <x-jet-input-error for="options.title" class="mt-2" />
                     </div>
                     <div class="w-full md:w-full px-3 mb-6">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                             for='notes'>Additional notes</label>
-                        <input
+                        <input wire:model="options.notes"
                             class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                             type='text' placeholder="Additional notes for delivery(Oprional)">
                     </div>
                     <div class="w-full md:w-full px-3 mb-6">
                         <button wire:click="$emitUp('moveNext')"
-                            class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500 {{ $step1 === null || strlen($step1) < 4 ? 'disabled:opacity-50' : '' }}"
-                            {{$step1 === null || strlen($step1) < 4 ? "disabled" : ""  }}>Next</button>
+                            class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500 {{ $options['title'] === null || strlen($options['title']) < 4 ? 'disabled:opacity-50' : '' }}"
+                            {{ $options['title'] === null || strlen($options['title']) < 4 ? "disabled" : ""  }}>Next</button>
                     </div>
                 </div>
             </div>
-        </div>{{-- form --}}
+        </div>
     </div>
+
+
+    <x-jet-dialog-modal wire:model="modalSwitch">
+        <x-slot name="title">
+            Add Photo
+        </x-slot>
+
+        <x-slot name="content">
+            <div class="col-span-6 sm:col-span-4">
+                <x-jet-label for="name" value="{{ __('Choose a your item photo') }}" />
+                <x-jet-input wire:model="options.photo" id="name" type="file" value="" class="mt-1 block w-full" />
+                <x-jet-input-error for="options.photo" class="mt-2" />
+            </div>
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="resetOption('photo')">
+                {{ __('Nevermind') }}
+            </x-jet-secondary-button>
+
+            <x-jet-danger-button class="ml-2" wire:click="imageSave" wire:loading.attr="disabled">
+                {{ __('Save') }}
+            </x-jet-danger-button>
+        </x-slot>
+    </x-jet-dialog-modal>
+
     @elseif($step === 2)
     @include('livewire.sending.step2',['step' => $step])
     @elseif($step === 3)
     @include('livewire.sending.step3',['step' => $step])
-    @elseif($step === 5)
-    @include('livewire.sending.step4',['step' => $step])
     @elseif($step === 4)
+    @include('livewire.sending.step4',['step' => $step])
+    @elseif($step === 5)
     @include('livewire.sending.step5',['step' => $step])
     @elseif($step === 6)
     @include('livewire.sending.step6',['step' => $step])

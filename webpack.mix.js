@@ -17,6 +17,7 @@ mix.js('resources/js/app.js', 'public/js')
         require('tailwindcss'),
         // require('geosearch.css'),
     ])
+    // .copy('node_modules/flatpickr/dist/flatpickr.css', 'public/css/flatpickr.css')
     .webpackConfig(require('./webpack.config'));
 
     // .version() //use this in production inviroment

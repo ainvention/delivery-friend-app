@@ -12,18 +12,23 @@
 
 
 
-### Logic sequences
+### Menu for the sender
 
-#### 1. Regist new delivery order as "Sending menu"
+#### 1. Regist new delivery order in the "Sending menu"
  - Take delivery item's picture with a title and description.
  - Item size select
- - Automatically take current user's geolocation position or get manually
- - Regist date and time
- - Destinition address select
+ - Automatically take current user's geolocation position or get manually location of sender and receiver.
+ - Regist delivery date and time
+ - Calculate delivery cost and rewards from inserted informations by distance + service charge rate. 
 
-![step1](./ForReadme/step1.png)
-![step2](./ForReadme/step2.png)
-![step3](./ForReadme/step3-1.png)
+![step1](./ForReadme/step1_sample.png)
+![step2](./ForReadme/step2_sample.png)
+![step3](./ForReadme/step3_sample.png)
+![step4](./ForReadme/step4_sample.png)
+![step5](./ForReadme/step5_sample.png)
+
+
+### Menu for the carrier (as Helper or Porter)
 
 #### 2. Search registred tasks from DB
  - Sort by location and order type
