@@ -155,8 +155,8 @@ class Step1 extends Component
      * @param  mixed $distance
      * @return void
      */
-    public function passTotalDistance($distance)
+    public function passTotalDistance($payload)
     {
-        $this->options['totalDistance'];
+        $this->options['totalDistance'] = $payload;
     }
 }

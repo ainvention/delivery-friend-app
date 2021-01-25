@@ -1,6 +1,5 @@
 <div class="w-1/2 h-auto">
     <h1 for="totalDist">Total Distance</h1>
-    <input wire:model="options.totalDistance" id="totalDist" type="text" value="" class="hidden">
     <h3>{{ $options['totalDistance'] }}km</h3>
 
     <script>
@@ -37,8 +36,9 @@
         const data = await getData();
         console.log(data);
         var dist = data.data.routes[0].distance;
-        element5.value = Math.round(Math.round(dist)/1000);
-        injectValue();
+        var distance = Math.round(Math.round(dist)/1000);
+        window.livewire.emit('passTotalDistance', distance);
+        // injectValue();
     }
 
     //main trigger
