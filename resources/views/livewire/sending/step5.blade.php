@@ -11,8 +11,8 @@
                     <table class="table-auto text-gray-400">
                         <tbody>
                             <tr class="flex flex-col m-2 border-2 border-gray-300">
-                                <td class="flex items-center"><input wire:model="step5A" value="flexible" type="radio"
-                                        class="w-8 h-8 m-4 border-2 border-gray-400" required /><span>I'm
+                                <td class="flex items-center"><input wire:model="options.toDate" value="flexible"
+                                        type="radio" class="w-8 h-8 m-4 border-2 border-gray-400" required /><span>I'm
                                         flexible</span></td>
                                 <td class="flex items-center"><input wire:model="options.toDate" value="today"
                                         type="radio" class="w-8 h-8 m-4 border-2 border-gray-400"
@@ -71,7 +71,7 @@
                 <div class="flex justify-between w-full md:w-full px-3 mb-6">
                     <button wire:click="$emitUp('moveBack')"
                         class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">Back</button>
-                    <button wire:click="calculateSending"
+                    <button wire:click="$emitUp('moveNext')"
                         class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">Next</button>
                 </div>
             </div>

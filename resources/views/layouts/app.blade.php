@@ -8,28 +8,30 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
+    {{-- Fonts --}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
+    {{-- Flatpickr --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-    <!-- Load Leaflet from CDN -->
+    {{-- Load Leaflet from CDN --}}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-    <!-- Load Esri Leaflet from CDN -->
+    {{-- Load Esri Leaflet from CDN --}}
     <script src="https://unpkg.com/esri-leaflet@2.5.3/dist/esri-leaflet.js"></script>
 
-    <!-- Load Esri Leaflet Geocoder from CDN -->
+    {{-- Load Esri Leaflet Geocoder from CDN --}}
     <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.css">
     <script src="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.js"></script>
 
     {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" /> --}}
-    <link rel="stylesheet" href="leaflet-routing-machine.css" />
 
+    {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" /> --}}
+
+    {{-- Mix Script & Style --}}
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
     <style>
         .map {
@@ -89,15 +91,6 @@
         }
     </style>
     @livewireStyles
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
-    {{-- <style>
-        #map {
-            height: 400px;
-        }
-    </style> --}}
-
-
 </head>
 
 <body class="font-sans antialiased">

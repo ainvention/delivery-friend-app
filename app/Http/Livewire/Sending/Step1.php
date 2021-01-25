@@ -31,6 +31,7 @@ class Step1 extends Component
         'toDateCustom' => '',
         'toTime' => '',
         'toTimeCustom' => '',
+        'totalDistance' => '',
         'reward' => '',
         'sendingCharge' => '',
         'isFraglile' => 'false',

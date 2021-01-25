@@ -35,7 +35,7 @@
                     <div class="w-full md:w-full px-3 mb-6">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                             for='title'>Title</label>
-                        <input wire:model=options.title
+                        <input wire:model.debounce.500ms=options.title
                             class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                             type='text' placeholder="Title(e.g. Office chair)">
                         <x-jet-input-error for="options.title" class="mt-2" />
@@ -43,7 +43,7 @@
                     <div class="w-full md:w-full px-3 mb-6">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                             for='notes'>Additional notes</label>
-                        <input wire:model="options.notes"
+                        <input wire:model.debounce.lazy="options.notes"
                             class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                             type='text' placeholder="Additional notes for delivery(Oprional)">
                     </div>
