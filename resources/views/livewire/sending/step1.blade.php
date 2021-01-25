@@ -73,7 +73,7 @@
 
         <x-slot name="footer">
             <x-jet-secondary-button wire:click="resetOption('photo')">
-                {{ __('Nevermind') }}
+                {{ __('Cancel') }}
             </x-jet-secondary-button>
 
             <x-jet-danger-button class="ml-2" wire:click="imageSave" wire:loading.attr="disabled">

@@ -42,7 +42,11 @@ class Step1 extends Component
 
     public $modalSwitch = false;
 
-    protected $listeners = ['moveBack' => 'moveBack', 'moveNext' => 'moveNext'];
+    protected $listeners = [
+        'moveBack' => 'moveBack',
+        'moveNext' => 'moveNext',
+        'passTotalDistance',
+    ];
 
     protected $rules = [
         'options.title' => 'required|min:4',
@@ -143,5 +147,16 @@ class Step1 extends Component
         $sending->options = $this->options;
         $sending->save();
         return redirect('/sending');
+    }
+
+    /**
+     * passTotalDistance
+     *
+     * @param  mixed $distance
+     * @return void
+     */
+    public function passTotalDistance($distance)
+    {
+        $this->options['totalDistance'];
     }
 }

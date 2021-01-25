@@ -64174,6 +64174,7 @@ __webpack_require__(/*! leaflet-routing-machine */ "./node_modules/leaflet-routi
 
 window.flatpickr = __webpack_require__(/*! flatpickr */ "./node_modules/flatpickr/dist/esm/index.js");
 window.Moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /***/ }),
 
