@@ -24,23 +24,21 @@
                         <label for="options.toAddress">Receiver location</label>
                         <input wire:model="options.toAddress" id="address"
                             class="appearance-none block w-full bg-gray-100 text-gray-900 font-medium border border-gray-400 rounded-lg mb-4 py-3 px-3 leading-tight focus:outline-none"
-                            type='text' disabled>
+                            type='text' placeholder="Search receiver address in the map" disabled>
                         <label for="options.toNotes">Comment for helper</label>
                         <input wire:model.lazy="options.toNotes"
                             class="appearance-none block w-full text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                             type='text' placeholder="Type some comment for helper :)">
-                        <input wire:model="options.toLat" id="lat"
-                            class="appearance-none block w-full bg-gray-100 text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                            type='hidden'>
-                        <input wire:model="options.toLng" id="lng"
-                            class="appearance-none block w-full bg-gray-100 text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                            type='hidden'>
+                        <input wire:model="options.toLat" id="lat" type='hidden'>
+                        <input wire:model="options.toLng" id="lng" type='hidden'>
                     </div>
                     <div class="flex justify-between w-full md:w-full px-3 my-2">
                         <button wire:click="$emitUp('moveBack')" wire:key=step4back
                             class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">Back</button>
-                        <button wire:click="$emitUp('moveNext')" wire:key=step4next class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500{{ $options['toAddress'] === null ? 'disabled:opacity-50' : '' }}
-                            {{$options['toAddress'] === null ? 'disabled' : ''  }}">Next</button>
+                        <button wire:click="$emitUp('moveNext')" wire:key=step4next
+                            class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500
+                            {{ $options['toAddress'] === '' || strlen($options['toAddress']) < 4 ? 'disabled:opacity-50' : '' }}"
+                            {{$options['toAddress'] === '' || strlen($options['toAddress']) < 4 ? 'disabled' : ''  }}>Next</button>
                     </div>
                 </div>
             </div>

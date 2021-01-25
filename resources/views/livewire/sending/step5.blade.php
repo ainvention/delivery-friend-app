@@ -71,8 +71,9 @@
                 <div class="flex justify-between w-full md:w-full px-3 mb-6">
                     <button wire:click="$emitUp('moveBack')"
                         class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">Back</button>
-                    <button wire:click="$emitUp('moveNext')"
-                        class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">Next</button>
+                    <button wire:click="$emitUp('moveNext')" class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500
+                        {{ $options['toDate'] === null || $options['toTime'] === null ? 'disabled:opacity-50' : '' }}"
+                        {{ $options['toDate'] === null  || $options['toTime'] === null ? "disabled" : "" }}>Next</button>
                 </div>
             </div>
         </div>

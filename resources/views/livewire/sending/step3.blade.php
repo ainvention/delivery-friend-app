@@ -24,7 +24,7 @@
                         <label for="options.fromAddress">Sender location</label>
                         <input wire:model="options.fromAddress" name="options.fromAddress" id="address"
                             class="appearance-none block w-full bg-gray-100 text-gray-900 font-medium border border-gray-400 rounded-lg mb-4 py-3 px-3 leading-tight focus:outline-none"
-                            type='text' disabled>
+                            type='text' placeholder="Search sender address in the map" disabled>
                         <label for="options.fromNotes">Comment for helper.</label>
                         <input wire:model.lazy="options.fromNotes"
                             class="appearance-none block w-full text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
@@ -39,8 +39,10 @@
                     <div class="flex justify-between w-full md:w-full px-3 my-2">
                         <button wire:click="$emitUp('moveBack')" wire:key=step3back
                             class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">Back</button>
-                        <button wire:click="$emitUp('moveNext')" wire:key=step3next class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500{{ $options['fromAddress'] === null ? 'disabled:opacity-50' : '' }}
-                            {{ $options['fromAddress'] === null ? "disabled" : ""  }}">Next</button>
+                        <button wire:click="$emitUp('moveNext')" wire:key=step3next
+                            class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500
+                            {{ $options['fromAddress'] === '' || strlen($options['fromAddress']) < 4 ? 'disabled:opacity-50' : '' }}"
+                            {{$options['fromAddress'] === '' || strlen($options['fromAddress']) < 4  ? 'disabled' : ''  }}>Next</button>
                     </div>
                 </div>
             </div>

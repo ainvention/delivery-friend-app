@@ -14,26 +14,26 @@ class Step1 extends Component
     public $step = 1;
 
     public $options = [
-        'photo' => '',
-        'title' => '',
-        'notes' => '',
-        'size' => '',
-        'size' => '',
-        'fromAddress' => '',
-        'fromNotes' => '',
-        'fromLat' => '',
-        'fromLng' => '',
-        'toAddress' => '',
-        'toNotes' => '',
-        'toLat' => '',
-        'toLng' => '',
-        'toDate' => '',
-        'toDateCustom' => '',
-        'toTime' => '',
-        'toTimeCustom' => '',
-        'totalDistance' => '',
-        'reward' => '',
-        'sendingCharge' => '',
+        'photo' => null,
+        'title' => null,
+        'notes' => null,
+        'size' => null,
+        'size' => null,
+        'fromAddress' => null,
+        'fromNotes' => null,
+        'fromLat' => null,
+        'fromLng' => null,
+        'toAddress' => null,
+        'toNotes' => null,
+        'toLat' => null,
+        'toLng' => null,
+        'toDate' => null,
+        'toDateCustom' => null,
+        'toTime' => null,
+        'toTimeCustom' => null,
+        'totalDistance' => null,
+        'reward' => null,
+        'sendingCharge' => null,
         'isFraglile' => 'false',
         'needAnimalCage' => 'false',
         'needCoolingEquipment' => 'false',
@@ -125,7 +125,7 @@ class Step1 extends Component
      */
     public function resetOption($index)
     {
-        $this->options[$index] = '';
+        $this->options[$index] = null;
         $this->modalToggle();
     }
 
@@ -150,7 +150,7 @@ class Step1 extends Component
     }
 
     /**
-     * passTotalDistance
+     * passTotalDistance by Event emit with a parameter(distance) in step6
      *
      * @param  mixed $distance
      * @return void

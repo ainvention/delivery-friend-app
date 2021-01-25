@@ -3,7 +3,7 @@
         placeholder="Click">
     <x-jet-input-error for="options.toDateCustom" class="mt-2" />
     <script>
-        flatpickr('#fickerDate', {
+        flatpickr("#fickerDate", {
         defaultDate: 'today',
         minDate: "today"
     });
