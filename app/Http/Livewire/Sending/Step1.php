@@ -32,12 +32,17 @@ class Step1 extends Component
         'toTime' => null,
         'toTimeCustom' => null,
         'totalDistance' => null,
-        'reward' => null,
-        'sendingCharge' => null,
+        'recommendedCosts' => null,
+        'isCoupon' => 'false',
+        'rewards' => null,
+        'serviceCharges' => null,
+        'insuranceCost' => 49,
+        'totalDeliveryCosts' => null,
         'isFraglile' => 'false',
         'needAnimalCage' => 'false',
         'needCoolingEquipment' => 'false',
         'needHelpWrapping' => 'false',
+
     ];
 
     public $modalSwitch = false;
@@ -46,6 +51,11 @@ class Step1 extends Component
         'moveBack' => 'moveBack',
         'moveNext' => 'moveNext',
         'passTotalDistance',
+        'calculateRecommendedCosts',
+        'calculateServiceCharges',
+        'calculateRewards',
+        'reCalcualteRecommendedCostsWithMenual',
+        'calculateTotalDeliveryCosts',
     ];
 
     protected $rules = [
@@ -92,7 +102,7 @@ class Step1 extends Component
     }
 
     /**
-     * modalToggle
+     * On/Off modalToggle
      *
      * @return void
      */
@@ -131,12 +141,12 @@ class Step1 extends Component
 
 
     /**
-     * calculateSending
+     * saveSendingRequest
      * as computed Properties
      *
      * @return void
      */
-    public function calculateSending()
+    public function saveSendingRequest()
     {
         $this->validate([
             'options.toDateCustom' => 'date',
@@ -149,6 +159,7 @@ class Step1 extends Component
         return redirect('/sending');
     }
 
+
     /**
      * passTotalDistance by Event emit with a parameter(distance) in step6
      *
@@ -158,5 +169,84 @@ class Step1 extends Component
     public function passTotalDistance($payload)
     {
         $this->options['totalDistance'] = $payload;
+    }
+
+    /**
+     * calculateRecommendedCosts
+     *
+     * @return void
+     */
+    public function calculateRecommendedCosts($totalDistance)
+    {
+        $size = $this->options['size'];
+        $insuranceCost = $this->options['insuranceCost'];
+
+        if ($size  == 'handCarry') {
+            $this->options['recommendedCosts'] = round($totalDistance * 4.2);
+        } elseif ($size == 'byBag') {
+            $this->options['recommendedCosts'] = round($totalDistance * 3.6);
+        } elseif ($size == 'byCar') {
+            $this->options['recommendedCosts'] = round($totalDistance * 5);
+        } elseif ($size == 'byBigCar') {
+            $this->options['recommendedCosts'] = round($totalDistance * 7.5);
+        } elseif ($size == 'byVan') {
+            $this->options['recommendedCosts'] = round($totalDistance * 13);
+        } else {
+            //"Couldn't calculate Recommended Costs, because no size matched!"
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        if ($this->options['recommendedCosts'] !== null) {
+            $this->reCalcualteRecommendedCostsWithMenual();
+        }
+    }
+
+    /**
+     * calculateServiceCharges
+     *
+     * @return void
+     */
+    public function calculateServiceCharges($recommendedCosts)
+    {
+        $insuranceCost = $this->options['insuranceCost'];
+        $this->options['serviceCharges'] = round($recommendedCosts * 0.2 - $insuranceCost);
+    }
+
+
+    /**
+     * calculateRewards
+     *
+     * @return void
+     */
+    public function calculateRewards($recommendedCosts)
+    {
+        $this->options['rewards'] = round($recommendedCosts * 0.8);
+    }
+
+
+    /**
+     * calculateTotalDeliveryCosts
+     *
+     * @return void
+     */
+    public function calculateTotalDeliveryCosts()
+    {
+        $this->options['calculateTotalDeliveryCosts'] = $this->options['rewards'] + $this->options['serviceCharges'];
+    }
+
+    /**
+     * calcualteRecommendedWithMenual
+     *
+     * @return void
+     */
+    public function reCalcualteRecommendedCostsWithMenual()
+    {
+        $recommendedCosts = $this->options['recommendedCosts'];
+
+        $this->validate([
+            'options.recommendedCosts' => 'required|numeric|min:100',
+        ]);
+        $this->calculateServiceCharges($recommendedCosts);
+        $this->calculateRewards($recommendedCosts);
     }
 }

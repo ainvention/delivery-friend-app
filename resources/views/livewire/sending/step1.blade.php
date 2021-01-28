@@ -91,6 +91,7 @@
     @elseif($step === 5)
     @include('livewire.sending.step5',['step' => $step])
     @elseif($step === 6)
-    @include('livewire.sending.step6',['step' => $step])
+    @include('livewire.sending.step6-recommended-price',['step' => $step])
+    @else
     @endif
 </div>
