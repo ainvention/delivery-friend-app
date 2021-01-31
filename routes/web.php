@@ -25,3 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/sending', function () {
     return view('livewire.sending.main');
 })->name('sending');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/search', function () {
+    return view('livewire.search.main');
+})->name('search');

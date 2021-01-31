@@ -147,6 +147,34 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'photo' => 'sending item photo',
+        'title' => 'title',
+        'notes' => 'notes',
+        'size' => 'size',
+        'fromAddress' => "sender's address",
+        'fromNotes' => "sender's note",
+        'fromLat' => 'Latitude',
+        'fromLng' => 'longitude',
+        'toAddress' => "reveicer's address",
+        'toNotes' => 'notes',
+        'toLat' => "destination latitude",
+        'toLng' => "destination longitude",
+        'toDate' => "delivery date",
+        'toDateCustom' => "delivery date",
+        'toTime' => 'delivery time',
+        'toTimeCustom' => "delivery time",
+        'totalDistance' => 'total distance',
+        'recommendedCosts' => 'recommended costs',
+        'isCoupon' => 'coupon',
+        'rewards' => 'reqards',
+        'serviceCharges' => "service charges",
+        'insuranceCost' => 'insurance cost',
+        'totalDeliveryCosts' => 'total delivery costs',
+        'isFraglile' => 'fraglile',
+        'needAnimalCage' => 'animal cage',
+        'needCoolingEquipment' => 'cooling equipment',
+        'needHelpWrapping' => 'help wrapping',
+    ],
 
 ];

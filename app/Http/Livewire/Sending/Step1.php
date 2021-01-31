@@ -2,52 +2,56 @@
 
 namespace App\Http\Livewire\Sending;
 
-use Livewire\Component;
-use Illuminate\Support\Facades\Validator;
-use Livewire\WithFileUploads;
 use App\Models\Sending;
+use Livewire\Component;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class Step1 extends Component
 {
+    //to use Livewire File Upload
     use WithFileUploads;
 
+    //core property for page state define
     public $step = 1;
 
-    public $options = [
-        'photo' => null,
-        'title' => null,
-        'notes' => null,
-        'size' => null,
-        'size' => null,
-        'fromAddress' => null,
-        'fromNotes' => null,
-        'fromLat' => null,
-        'fromLng' => null,
-        'toAddress' => null,
-        'toNotes' => null,
-        'toLat' => null,
-        'toLng' => null,
-        'toDate' => null,
-        'toDateCustom' => null,
-        'toTime' => null,
-        'toTimeCustom' => null,
-        'totalDistance' => null,
-        'recommendedCosts' => null,
-        'isCoupon' => 'false',
-        'rewards' => null,
-        'serviceCharges' => null,
-        'insuranceCost' => 49,
-        'totalDeliveryCosts' => null,
-        'isFraglile' => 'false',
-        'needAnimalCage' => 'false',
-        'needCoolingEquipment' => 'false',
-        'needHelpWrapping' => 'false',
-
-    ];
-
+    // for modal switching
     public $modalSwitch = false;
 
+    //when method photoSave() was runned.
+    public $isSetPhoto = false;
+
+    public $photo = null;
+    public $title = null;
+    public $notes = null;
+    public $size = null;
+    public $fromAddress = null;
+    public $fromNotes = null;
+    public $fromLat = null;
+    public $fromLng = null;
+    public $toAddress = null;
+    public $toNotes = null;
+    public $toLat = null;
+    public $toLng = null;
+    public $toDate = null;
+    public $toDateCustom = null;
+    public $toTime = null;
+    public $toTimeCustom = null;
+    public $totalDistance = null;
+    public $recommendedCosts = null;
+    public $isCoupon = false;
+    public $rewards = null;
+    public $serviceCharges = null;
+    public $insuranceCost = 49;
+    public $totalDeliveryCosts = null;
+    public $isFraglile = false;
+    public $needAnimalCage = false;
+    public $needCoolingEquipment = false;
+    public $needHelpWrapping = false;
+
     protected $listeners = [
+        'photoSave',
         'moveBack' => 'moveBack',
         'moveNext' => 'moveNext',
         'passTotalDistance',
@@ -59,12 +63,19 @@ class Step1 extends Component
     ];
 
     protected $rules = [
-        'options.title' => 'required|min:4',
+        'recommendedCosts' => 'numeric|min:200',
     ];
 
     protected $messages = [
-        'options.title.required' => 'This field is required.',
-        'options.title.min' => 'This field must be at least :min characters.',
+        // 'notes.max' => 'Please write within 80 characters.',
+        // 'title.required' => 'This field is required.',
+        // 'title.min' => 'This field must be at least :min characters.',
+        // 'recommendedCosts.numeric' => 'This field must be a number.',
+        // 'recommendedCosts.min' => 'We recommend over 200 NOK is more better to get helper.',
+        // 'recommendedCosts.max' => 'We recommend under 99999 NOK is more better to get helper.',
+        // 'required' => 'This field is required.',
+        // 'min' => 'Please write at least :min characters.',
+        // 'max' => 'Please write within :max characters.',
     ];
 
 
@@ -80,7 +91,8 @@ class Step1 extends Component
     }
 
     /**
-     * moveBack
+     * When button clicked moveBack
+     * Almost of sending pages use this for go previous page.
      *
      * @return void
      */
@@ -89,16 +101,102 @@ class Step1 extends Component
         $this->step = $this->step - 1;
     }
 
+
     /**
-     * moveNext
+     * When button clicked moveStep2
+     * from step1 to step2(size input page)
      *
      * @return void
      */
-    public function moveNext()
+    public function moveStep2()
     {
-        if ($this->validate()) {
-            $this->step = $this->step + 1;
+        $this->validate([
+            'title' => 'required|min:4|max:80',
+            'notes' => 'max:80',
+        ]);
+
+        $this->step = $this->step + 1;
+    }
+
+    /**
+     * When button clicked moveStep3
+     * from step2 to step3(sender's address input page).
+     *
+     * @return void
+     */
+    public function moveStep3()
+    {
+        $this->step = $this->step + 1;
+    }
+
+    /**
+     * when button clicked moveStep4
+     * from step3 to step4(receiver's address input page).
+     *
+     * @return void
+     */
+    public function moveStep4()
+    {
+        $this->validate([
+            'fromAddress' => 'required',
+            'fromNotes' => 'max:80',
+            'fromLat' => 'required',
+            'fromLng' => 'required',
+        ]);
+
+        $this->step = $this->step + 1;
+    }
+
+    /**
+     * When button clicked moveStep5
+     * from step4 to step5(date and time input page).
+     * @return void
+     */
+    public function moveStep5()
+    {
+        $this->validate([
+            'toAddress' => 'required',
+            'toNotes' => 'max:80',
+            'toLat' => 'required',
+            'toLng' => 'required',
+        ]);
+
+        $this->step = $this->step + 1;
+    }
+
+    public function moveStep6()
+    {
+        // when setted toDateCustom by datepicker then toDat will set null
+        if ($this->toDateCustom !== null) {
+            $this->validate([ 'toDateCustom' => 'date' ]);
+            $this->toDate = null;
+        } else {
+            $this->validate([ 'toDate' => 'string' ]);
+            $this->toDateCustom = null;
         }
+
+        // when setted toTimeCustom by datepicker then toTime will set null
+        if ($this->toTimeCustom !== null) {
+            $this->validate([ 'toTimeCustom' => 'date_format:H:i']);
+            $this->toTime = null;
+        } else {
+            $this->validate([ 'toTime' => 'string' ]);
+            $this->toTimeCustom = null;
+        }
+
+        $this->step = $this->step + 1;
+    }
+
+    /**
+     * moveStep7
+     *
+     * @return void
+     */
+    public function moveStep7()
+    {
+        $this->saveSendingRequest();
+
+        $this->step = $this->step + 1;
     }
 
     /**
@@ -106,37 +204,45 @@ class Step1 extends Component
      *
      * @return void
      */
-    public function modalToggle()
+    public function modalToggle(string $param = null)
     {
         $this->modalSwitch = !$this->modalSwitch;
+
+        if ($param === 'photo') {
+            $this->photoDelete();
+        }
     }
 
     /**
-     * imageSave
+     * prevent to save "temp image" as $this->photo
+     * when user clicked outside of modal instead of click 'Cancel' or 'Save' buttons.
      *
      * @return void
      */
-    public function imageSave()
+    public function photoSave()
     {
-        $this->validate([
-            'options.photo' => 'required|file|mimes:jpg,jpeg,bmp,png|max:10240', // 2MB Max
-        ]);
+        $this->validate(
+            [
+                'photo' => 'mimes:jpg,jpeg,bmp,png|max:2048', // 2MB Max
+            ]
+        );
 
-        $path = $this->options['photo']->store('sending-photos', 'public');
-        $this->options['photo'] = $path;
+        $path = $this->photo->store('sending-photos', 'public');
+        $this->photo = $path;
+        $this->isSetPhoto = true;
         $this->modalToggle();
     }
 
+
     /**
-     * resetOption
-     * reset $options['key'] by $index
-     * @param  mixed $index
+     * photoDelete
+     *
      * @return void
      */
-    public function resetOption($index)
+    public function photoDelete()
     {
-        $this->options[$index] = null;
-        $this->modalToggle();
+        $this->photo = null;
+        $this->isSetPhoto = false;
     }
 
 
@@ -149,14 +255,83 @@ class Step1 extends Component
     public function saveSendingRequest()
     {
         $this->validate([
-            'options.toDateCustom' => 'date',
-            'options.toTimeCustom' => 'date_format:H:i',
+        'title' => 'required|min:4',
+        'photo' => 'mimes:jpg,jpeg,bmp,png|max:2048',
+        'notes' => 'max:80',
+        'size' => 'string',
+        'fromAddress' => 'required|string',
+        'fromNotes' => 'string',
+        'fromLat' => 'required|string',
+        'fromLng' => 'required|string',
+        'toAddress' => 'required|string',
+        'toNotes' => 'string',
+        'toLat' => 'required|string',
+        'toLng' => 'required|string',
+        'toDate' => 'nullable|string',
+        'toDateCustom' => 'nullable|date',
+        'toTime' => 'nullable|string',
+        'toTimeCustom' => 'nullable|date_format:H:i',
+        'totalDistance' => 'string',
+        'recommendedCosts' => 'required|numeric|min:200|max:99999',
+        'isCoupon' => 'boolean',
+        'rewards' => 'numeric',
+        'serviceCharges' => 'numeric',
+        'insuranceCost' => 'numeric',
+        'totalDeliveryCosts' => 'numeric',
+        'isFraglile' => 'boolean',
+        'needAnimalCage' => 'boolean',
+        'needCoolingEquipment' => 'boolean',
+        'needHelpWrapping' => 'boolean',
         ]);
 
+        if ($this->toDateCustom !== null) {
+            $this->validate([
+                'toDateCustom' => 'date'
+            ]);
+
+            $this->toDate = null;
+        } elseif ($this->toTimeCustom !== null) {
+            $this->validate([
+                'toTimeCustom' => 'date_format:H:i'
+            ]);
+
+            $this->toTime = null;
+        }
+
+        $this->calculateTotalDeliveryCosts();
+
         $sending = new Sending;
-        $sending->options = $this->options;
+        $sending->user_id = Auth::id();
+        $sending->photo = $this->photo;
+        $sending->title = $this->title;
+        $sending->notes = $this->notes;
+        $sending->size = $this->size;
+        $sending->fromAddress = $this->fromAddress;
+        $sending->fromNotes = $this->fromNotes;
+        $sending->fromLat = $this->fromLat;
+        $sending->fromLng = $this->fromLng;
+        $sending->toAddress = $this->toAddress;
+        $sending->toNotes = $this->toNotes;
+        $sending->toLat = $this->toLat;
+        $sending->toLng = $this->toLng;
+        $sending->toDate = $this->toDate;
+        $sending->toDateCustom = $this->toDateCustom;
+        $sending->toTime = $this->toTime;
+        $sending->toTimeCustom = $this->toTimeCustom;
+        $sending->totalDistance = $this->totalDistance;
+        $sending->recommendedCosts = $this->recommendedCosts;
+        $sending->isCoupon = $this->isCoupon;
+        $sending->rewards = $this->rewards;
+        $sending->serviceCharges = $this->serviceCharges;
+        $sending->insuranceCost = $this->insuranceCost;
+        $sending->totalDeliveryCosts = $this->totalDeliveryCosts;
+        $sending->isFraglile = $this->isFraglile;
+        $sending->needAnimalCage = $this->needAnimalCage;
+        $sending->needCoolingEquipment = $this->needCoolingEquipment;
+        $sending->needHelpWrapping = $this->needHelpWrapping;
+
         $sending->save();
-        return redirect('/sending');
+        // return redirect('/sending');
     }
 
 
@@ -168,7 +343,7 @@ class Step1 extends Component
      */
     public function passTotalDistance($payload)
     {
-        $this->options['totalDistance'] = $payload;
+        $this->totalDistance = $payload;
     }
 
     /**
@@ -178,25 +353,25 @@ class Step1 extends Component
      */
     public function calculateRecommendedCosts($totalDistance)
     {
-        $size = $this->options['size'];
-        $insuranceCost = $this->options['insuranceCost'];
+        $size = $this->size;
+        $insuranceCost = $this->insuranceCost;
 
         if ($size  == 'handCarry') {
-            $this->options['recommendedCosts'] = round($totalDistance * 4.2);
+            $this->recommendedCosts = round($totalDistance * 4.2);
         } elseif ($size == 'byBag') {
-            $this->options['recommendedCosts'] = round($totalDistance * 3.6);
+            $this->recommendedCosts = round($totalDistance * 3.6);
         } elseif ($size == 'byCar') {
-            $this->options['recommendedCosts'] = round($totalDistance * 5);
+            $this->recommendedCosts = round($totalDistance * 5);
         } elseif ($size == 'byBigCar') {
-            $this->options['recommendedCosts'] = round($totalDistance * 7.5);
+            $this->recommendedCosts = round($totalDistance * 7.5);
         } elseif ($size == 'byVan') {
-            $this->options['recommendedCosts'] = round($totalDistance * 13);
+            $this->recommendedCosts = round($totalDistance * 13);
         } else {
             //"Couldn't calculate Recommended Costs, because no size matched!"
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if ($this->options['recommendedCosts'] !== null) {
+        if ($this->recommendedCosts !== null) {
             $this->reCalcualteRecommendedCostsWithMenual();
         }
     }
@@ -208,8 +383,8 @@ class Step1 extends Component
      */
     public function calculateServiceCharges($recommendedCosts)
     {
-        $insuranceCost = $this->options['insuranceCost'];
-        $this->options['serviceCharges'] = round($recommendedCosts * 0.2 - $insuranceCost);
+        $insuranceCost = $this->insuranceCost;
+        $this->serviceCharges = round($recommendedCosts * 0.2 - $insuranceCost);
     }
 
 
@@ -220,7 +395,7 @@ class Step1 extends Component
      */
     public function calculateRewards($recommendedCosts)
     {
-        $this->options['rewards'] = round($recommendedCosts * 0.8);
+        $this->rewards = round($recommendedCosts * 0.8);
     }
 
 
@@ -231,7 +406,8 @@ class Step1 extends Component
      */
     public function calculateTotalDeliveryCosts()
     {
-        $this->options['calculateTotalDeliveryCosts'] = $this->options['rewards'] + $this->options['serviceCharges'];
+        $this->totalDeliveryCosts =
+        $this->rewards + $this->serviceCharges + $this->insuranceCost;
     }
 
     /**
@@ -241,12 +417,19 @@ class Step1 extends Component
      */
     public function reCalcualteRecommendedCostsWithMenual()
     {
-        $recommendedCosts = $this->options['recommendedCosts'];
+        $recommendedCosts = $this->recommendedCosts;
 
-        $this->validate([
-            'options.recommendedCosts' => 'required|numeric|min:100',
-        ]);
         $this->calculateServiceCharges($recommendedCosts);
         $this->calculateRewards($recommendedCosts);
     }
+
+    // public function editPublishedTask()
+    // {
+
+    // }
+
+    // public function deletePublishedTask()
+    // {
+
+    // }
 }
