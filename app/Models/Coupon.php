@@ -5,13 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sending extends Model
+class Coupon extends Model
 {
     use HasFactory;
-
-    // protected $casts = [
-    //     'options' => 'array',
-    // ];
 
     protected $dates = [
         'created_at',

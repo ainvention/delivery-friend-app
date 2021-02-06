@@ -25,10 +25,12 @@
             var element1 = document.getElementById('address');
             var element2 = document.getElementById('lat');
             var element3 = document.getElementById('lng');
+            var element4 = document.getElementById('simpleFromAddress');
             // input event fire to bind with Livewire Model.
                 element1.dispatchEvent(new Event('input'));
                 element2.dispatchEvent(new Event('input'));
                 element3.dispatchEvent(new Event('input'));
+                element4.dispatchEvent(new Event('input'));
         };
 
 
@@ -66,8 +68,9 @@
                 // results.clearLayers();
                 for (var i = data.results.length - 1; i >= 0; i--) {
                     var result = data.results[i];
+                    // conlosle.log(result);
                     document.getElementById('address').value= result.properties.Place_addr;
-                    console.log(result);
+                    console.log('result by search: ' + result);
                 }
             });
 
@@ -91,9 +94,8 @@
                     document.getElementById('address').value = result.address.Match_addr;
                     document.getElementById('lat').value = result.latlng.lat;
                     document.getElementById('lng').value = result.latlng.lng;
-
-                    //test-code
-                    console.log(result.address.Match_addr);
+                    var simpleFromAddress = result.address.Postal + ', ' + result.address.City;
+                    document.getElementById('simpleFromAddress').value = simpleFromAddress;
 
                     // Input event fire
                     injectValue(result.latlng);

@@ -29,3 +29,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/sending', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/search', function () {
     return view('livewire.search.main');
 })->name('search');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/search/detail/{id}', function () {
+    return view('livewire.search.detail');
+})->name('search-detail');

@@ -1,4 +1,5 @@
 <div class="flex flex-col justify-center my-20 mx-4 xl:mx-40 px-2 xl:px-20   bg-white rounded-lg shadow-md pt-0 p-6">
+    @include('livewire.components.sessionMessage')
     <div
         class="text-center flex mb-5 text-4xl justify-center px-4 py-1 dark:text-white rounded-full leading-relaxed font-semibold tracking-wide text-gray-500">
         What's the size
@@ -11,13 +12,13 @@
                 <table class="table-auto">
                     <tbody>
                         <tr class="flex flex-col sm:flex-row">
-                            <td><input wire:model.ignore=size value="handCarry" type="radio"
+                            <td><input wire:model.ignore=size value='POCKET' type="radio" name="POCKET"
                                     class="w-8 h-8 m-4 border-1 border-gray-400" />
                             </td>
                             <td class="flex flex-col ml-4">
-                                <label for="handCarry" class="text-lg tex-black">Fits in
+                                <label for="walk" class="text-lg tex-black">Fits in
                                     a
-                                    pocket</label>
+                                    Pocket</label>
                                 <span>Phone, keys, glasses etc.</span>
                             </td>
                             <td class="ml-4">
@@ -35,12 +36,12 @@
                             </td>
                         </tr>
                         <tr class="flex flex-col sm:flex-row">
-                            <td><input wire:model.ignore=size type="radio" value="byBag"
+                            <td><input wire:model.ignore=size type="radio" value='BAG' name="BAG"
                                     class="w-8 h-8 m-4 border-1 border-gray-400" />
                             </td>
-                            <td class="flex flex-col ml-4"><label for="byBag" class="text-lg tex-black">Fits in
+                            <td class="flex flex-col ml-4"><label for="BAG" class="text-lg tex-black">Fits in
                                     a
-                                    bag</label><span>Laptop,
+                                    Bag</label><span>Laptop,
                                     book, clothes etc.</span></td>
                             <td class="ml-4">
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
@@ -81,12 +82,12 @@
                             </td>
                         </tr>
                         <tr class="flex flex-col sm:flex-row">
-                            <td><input wire:model.ignore=size type="radio" value="byCar"
+                            <td><input wire:model.ignore=size type="radio" value="CAR" name="CAR"
                                     class="w-8 h-8 m-4 border-1 border-gray-400" />
                             </td>
-                            <td class="flex flex-col ml-4"><label for="byCar" class="text-lg tex-black">Fits in
+                            <td class="flex flex-col ml-4"><label for="CAR" class="text-lg tex-black">Fits in
                                     a
-                                    car</label><span>Painting, guitar, pet etc.</span></td>
+                                    Car</label><span>Painting, guitar, pet etc.</span></td>
                             <td class="ml-4">
                                 <?xml version='1.0' encoding='iso-8859-1'?>
                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32px"
@@ -103,13 +104,12 @@
                             </td>
                         </tr>
                         <tr class="flex flex-col sm:flex-row">
-                            <td><input wire:model.ignore=size type="radio" value="byBigCar"
+                            <td><input wire:model.ignore=size type="radio" value='SUV' name="SUV"
                                     class="w-8 h-8 m-4 border-1 border-gray-400" />
                             </td>
-                            <td class="flex flex-col ml-4"><label for="byBigCar" class="text-lg tex-black">Fits
+                            <td class="flex flex-col ml-4"><label for="SUV" class="text-lg tex-black">Fits
                                     in a
-                                    big
-                                    car</label><span>Chari, mirror, small furniture, etc.</span></td>
+                                    SUV as big car</label><span>Chari, mirror, small furniture, etc.</span></td>
                             <td class="ml-4">
                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="40" height="40px"
                                     viewBox="0 0 305.445 305.445" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -125,12 +125,12 @@
                             </td>
                         </tr>
                         <tr class="flex flex-col sm:flex-row">
-                            <td><input wire:model.ignore=size type="radio" value="byVan"
+                            <td><input wire:model.ignore=size type="radio" value='VAN' name="VAN"
                                     class="w-8 h-8 m-4 border-1 border-gray-400" />
                             </td>
-                            <td class="flex flex-col ml-4"><label for="byVan" class="text-lg tex-black">Fits in
+                            <td class="flex flex-col ml-4"><label for="VAN" class="text-lg tex-black">Fits in
                                     a
-                                    van</label><span>Sofas,
+                                    Van</label><span>Sofas,
                                     dining table, piano, boat, etc.</span></td>
                             <td class="ml-4">
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +165,7 @@
 
             @error($size) @include('livewire.components.error-messages.required')
             @enderror
-            <div class="flex flex-col sm:flex-row sm:space-x-4 justify-around w-full md:w-full mb-6">
+            <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full my-6">
                 <button wire:click="moveBack"
                     class="appearance-none py-2 px-4  bg-red-600 hover:bg-red-800 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg mb-4 sm:mb-0">Back</button>
                 <button wire:click="moveStep3"

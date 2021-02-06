@@ -25,10 +25,12 @@
             var element1 = document.getElementById('address');
             var element2 = document.getElementById('lat');
             var element3 = document.getElementById('lng');
+            var element4 = document.getElementById('simpleToAddress');
             // input event fire to bind with Livewire Model.
                 element1.dispatchEvent(new Event('input'));
                 element2.dispatchEvent(new Event('input'));
                 element3.dispatchEvent(new Event('input'));
+                element4.dispatchEvent(new Event('input'));
         };
 
 
@@ -91,9 +93,8 @@
                     document.getElementById('address').value = result.address.Match_addr;
                     document.getElementById('lat').value = result.latlng.lat;
                     document.getElementById('lng').value = result.latlng.lng;
-
-                    //test-code
-                    console.log(result.address.Match_addr);
+                    var simpleToAddress = result.address.Postal + ', ' + result.address.City;
+                    document.getElementById('simpleToAddress').value = simpleToAddress;
 
                     // Input event fire
                     injectValue(result.latlng);

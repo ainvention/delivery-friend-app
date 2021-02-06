@@ -27,7 +27,6 @@
     {{-- Load Esri Leaflet Geocoder from CDN --}}
     <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.css">
     <script src="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.js"></script>
-
     {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" /> --}}
 
     {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" /> --}}
@@ -35,7 +34,7 @@
     {{-- Mix Script & Style --}}
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
-
+    {{-- @livewireStyles --}}
     <style>
         .map {
             position: absolute;
@@ -116,6 +115,10 @@
 
     @stack('modals')
     @livewireScripts
+
+    {{-- below two lines need to adjust SweetAlert2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <x-livewire-alert::scripts />
 </body>
 
 </html>

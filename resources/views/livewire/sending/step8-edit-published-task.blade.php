@@ -1,58 +1,56 @@
 <div>
-    <div>
-        <div class="flex flex-col sm:flex-row flex-wrap justify-between">
+    @include('livewire.components.sessionMessage')
+    <div class="flex flex-col sm:flex-row flex-wrap justify-between">
+        <div class="flex flex-col sm:flex-row">
+            <img src="" alt="" class="w-80 h-auto">
             <div class="flex flex-col sm:flex-row">
-                <img src="" alt="" class="w-80 h-auto">
-                <div class="flex flex-col sm:flex-row">
-                    <div class="flex flex-col">
-                        <span>{{ $title }}</span>
-                        <span>{{ $size }}</span>
-                        <span>Pickup from: {{ $fromAddress }}</span>
-                        <span>Deliver to: {{ $toAddress }}</span>
-                        <span>Delivery date: {{ $toDate }}</span>
-                        <span class="mt-10">Bringer's reward{{ $rewards }}</span>
-                        <span>Insurance and service fee{{ $serviceCharges }}</span>
-                        <span>Included insurance{{ $insuranceCost }}</span>
-                    </div>
-                    <div class="flex flex-col">
-                        <span>Total delivery cost:</span>
-                        <span>{{ $totalDeliveryCosts }}</span>
-                        <span>Inclusive of VAT if applicable</span>
-                        <x-jet-secondary-button wire:click='' class="mx-1">
-                            <span class="flex-auto text-gray-300 self-center">@icon('map')</span>
-                            {{ __('Expand map') }}
-                        </x-jet-secondary-button>
-
-                    </div>
+                <div class="flex flex-col">
+                    <span>{{ $title }}</span>
+                    <span>{{ $size }}</span>
+                    <span>Pickup from: {{ $fromAddress }}</span>
+                    <span>Deliver to: {{ $toAddress }}</span>
+                    <span>Delivery date: {{ $toDate }}</span>
+                    <span class="mt-10">Bringer's reward{{ $rewards }}</span>
+                    <span>Insurance and service fee{{ $serviceCharges }}</span>
+                    <span>Included insurance{{ $insuranceCost }}</span>
                 </div>
-            </div>
+                <div class="flex flex-col">
+                    <span>Total delivery cost:</span>
+                    <span>{{ $totalDeliveryCosts }}</span>
+                    <span>Inclusive of VAT if applicable</span>
+                    <x-jet-secondary-button wire:click='' class="mx-1">
+                        <span class="flex-auto text-gray-300 self-center">@icon('map')</span>
+                        {{ __('Expand map') }}
+                    </x-jet-secondary-button>
 
-        </div>
-        <div class="flex flex-col m-20 mx-72 text-center">
-            <div class="">Sit back and relax, we've notified our community of bringers about your delivery. Once we
-                find a match
-                we'll let you knoe. In the meantime, add more details below. The more information you share the easier
-                it is to get a match.
-            </div>
-            <div class="mt-10">
-                <span>The more information you have the better.</span>
-            </div>
-            <button>Add more information</button>
-            <div>
-                <div>
-                    <span>Views</span>
-                    <span class="flex-auto pl-3 text-gray-300 self-center">@icon('eye')</span>
-                </div>
-                <div><span>Bringers notified</span>
-                    <span class="flex-auto pl-3 text-gray-300 self-center">@icon('users')</span>
                 </div>
             </div>
         </div>
-        <x-jet-button wire:click="$()"
-            class="flex flex-shrink m-2 md:text-xl text-red-500 bg-opacity-25 font-extrabold justify-evenly">
-            Delete your task
-        </x-jet-button>
     </div>
+    <div class="flex flex-col m-20 mx-72 text-center">
+        <div class="">Sit back and relax, we've notified our community of bringers about your delivery. Once we
+            find a match
+            we'll let you knoe. In the meantime, add more details below. The more information you share the easier
+            it is to get a match.
+        </div>
+        <div class="mt-10">
+            <span>The more information you have the better.</span>
+        </div>
+        <button>Add more information</button>
+        <div>
+            <div>
+                <span>Views</span>
+                <span class="flex-auto pl-3 text-gray-300 self-center">@icon('eye')</span>
+            </div>
+            <div><span>Bringers notified</span>
+                <span class="flex-auto pl-3 text-gray-300 self-center">@icon('users')</span>
+            </div>
+        </div>
+    </div>
+    <x-jet-button wire:click="$()"
+        class="flex flex-shrink m-2 md:text-xl text-red-500 bg-opacity-25 font-extrabold justify-evenly">
+        Delete your task
+    </x-jet-button>
     <div class="grid grid-cols-1 divide-y divide-gray-500">
         <div class="grid grid-cols-1 divide-y divide-gray-500">
             <table>
@@ -144,7 +142,4 @@
             </table>
         </div>
     </div>
-    <x-jet-secondary-button wire:click='$refresh' class="mx-1">
-        <span class="flex-auto text-gray-300 self-center">@icon('map')</span>
-        {{ __('refresh page') }}
-    </x-jet-secondary-button>
+</div>

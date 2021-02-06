@@ -15,35 +15,41 @@ class CreateSendingsTable extends Migration
     {
         Schema::create('sendings', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id')->unique();
+            $table->mediumInteger('user_id');
+            $table->char('user_name', 40);
             $table->string('photo')->nullable();
             $table->char('title', 40);
-            $table->char('notes', 80)->nullable();
+            $table->char('note', 80)->nullable();
             $table->char('size', 10);
-            $table->char('fromAddress', 80);
-            $table->char('fromNotes', 80)->nullable();
-            $table->decimal('fromLat', 10, 2);
-            $table->decimal('fromLng', 11, 2);
-            $table->char('toAddress', 80);
-            $table->char('toNotes', 80)->nullable();
-            $table->decimal('toLat', 10, 2);
-            $table->decimal('toLng', 11, 2);
-            $table->char('toDate', 15)->nullable();
-            $table->date('toDateCustom')->nullable();
-            $table->char('toTime', 15)->nullable();
-            $table->dateTime('toTimeCustom')->nullable();
-            $table->smallInteger('totalDistance');
-            $table->smallInteger('recommendedCosts');
-            $table->boolean('isCoupon')->default(false);
-            $table->smallInteger('rewards');
-            $table->smallInteger('serviceCharges');
-            $table->tinyInteger('insuranceCost');
-            $table->smallInteger('totalDeliveryCosts');
-            $table->boolean('isFraglile')->default(false);
-            $table->boolean('needAnimalCage')->default(false);
-            $table->boolean('needCoolingEquipment')->default(false);
-            $table->boolean('needHelpWrapping')->default(false);
-            $table->softDeletesTz($column = 'deleted_at', $precision = 0);
+            $table->char('from_address', 80);
+            $table->char('simple_from_address', 30);
+            $table->char('from_note', 80)->nullable();
+            $table->decimal('from_lat', 18, 12);
+            $table->decimal('from_lng', 18, 12);
+            $table->char('to_address', 80);
+            $table->char('simple_to_address', 30);
+            $table->char('to_note', 80)->nullable();
+            $table->decimal('to_lat', 18, 12);
+            $table->decimal('to_lng', 18, 12);
+            $table->char('to_date', 15)->nullable();
+            $table->date('to_date_manually')->nullable();
+            $table->char('to_time', 15)->nullable();
+            $table->time('to_time_manually')->nullable();
+            $table->smallInteger('total_distance'); // to 65535
+            $table->float('recommended_cost', 8, 2);
+            $table->char('coupon_number', 10)->nullable();
+            $table->tinyInteger('coupon_price')->nullable();
+            $table->tinyInteger('coupon_rate')->nullable();
+            $table->float('discounted_cost', 8, 2)->nullable();
+            $table->float('reward', 8, 2);
+            $table->float('service_charge', 8, 2);
+            $table->tinyInteger('insurance_cost'); //to 255
+            $table->float('total_delivery_cost', 8, 2);
+            $table->boolean('is_fraglile')->default(false);
+            $table->boolean('need_animal_cage')->default(false);
+            $table->boolean('need_cooling_equipment')->default(false);
+            $table->boolean('need_help_wrapping')->default(false);
+            $table->softDeletesTz($column = 'deleted_at', $precision = 0); //time zone
             $table->timestamps();
         });
     }
