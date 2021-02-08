@@ -346,13 +346,6 @@ class Step1 extends Component
         ]);
     }
 
-    public function replacePhoto()
-    {
-        if ($this->isSetPhoto) {
-
-        }
-    }
-
 
 
 

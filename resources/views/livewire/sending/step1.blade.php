@@ -70,7 +70,7 @@
         </script>
         {{-- Fix an error which below modal window is executed when reading this page because the $modalSwitch variable value is not assigned. --}}
         @isset($modalSwitch)
-        <x-jet-dialog-modal wire:model="modalSwitch" id="photoModal" class="photo-modal">
+        <x-jet-dialog-modal x-cloak wire:model="modalSwitch" id="photoModal" class="photo-modal">
             <x-slot name="title">
                 @empty($isSetPhoto)
                 Add Photo

@@ -1,4 +1,4 @@
-<div>
+<div x-cloak>
     <x-jet-dialog-modal wire:model="modalSwitch" id="sizeModal">
         <x-slot name="title">
             <span class="font-semibold text-gray-400 text-2xl">Detail search</span>
