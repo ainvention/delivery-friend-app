@@ -2,7 +2,7 @@
     @include('livewire.components.sessionMessage')
     <div
         class="text-center flex mb-5 text-4xl justify-center px-4 py-1 dark:text-white rounded-full leading-relaxed font-semibold tracking-wide text-gray-500">
-        When could you get the delivery?
+        When would you get the delivery?
     </div>
     <div class="flex flex-col mx-2 px-3 my-10 mt-0 text-lg">
         <div class="flex items-center">

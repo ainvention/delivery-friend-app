@@ -68,6 +68,8 @@
             //     }
             // })
         </script>
+        {{-- Fix an error which below modal window is executed when reading this page because the $modalSwitch variable value is not assigned. --}}
+        @isset($modalSwitch)
         <x-jet-dialog-modal wire:model="modalSwitch" id="photoModal" class="photo-modal">
             <x-slot name="title">
                 @empty($isSetPhoto)
@@ -112,6 +114,7 @@
                 </div>
             </x-slot>
         </x-jet-dialog-modal>
+        @endisset
     </div>
 
     @elseif($step === 2)
@@ -133,7 +136,7 @@
     @include('livewire.sending.step7-request-published', ['step' => $step])
     @include('livewire.components.testing.refreshCurrentPage')
     @elseif($step === 8)
-    @include('livewire.sending.step8-edit-published-task', ['step' => $step])
+    @include('livewire.sending.step8-edit-task', ['step' => $step])
     @include('livewire.components.testing.refreshCurrentPage')
     @else
     @endif

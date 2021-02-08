@@ -17,14 +17,72 @@ class Step1 extends Component
     //     $this->tasks = Sending::paginate(10);
     // }
 
+        // for modal switching
+        public $modalSwitch = false;
+
+        public $often = null;
+        public $size = null;
+        public $distance = null;
+        public $task;
+
+
+
+
+
+    /**
+     * render
+     *
+     * @return void
+     */
     public function render()
     {
-        return view('livewire.search.step1', ['tasks' => Sending::paginate(10)]);
+        // pass the object to the view in the render() method,
+        // along with pagination it does not need to be a public prop
+        $tasks = Sending::orderByDesc('created_at');
+        $taskCount = $tasks->count();
+        return view('livewire.search.step1', [
+            'tasks' => $tasks->paginate(10),
+            'count' => $taskCount
+        ]);
     }
+
+
+
+
+        /**
+     * On/Off modalToggle
+     *
+     * @return void
+     */
+    public function modalToggle($param = null)
+    {
+        $this->modalSwitch = !$this->modalSwitch;
+        if ($param === 'cancel') {
+            $this->often = null;
+            $this->size = null;
+            $this->distance = null;
+        }
+    }
+
+
+
+
+
+    public function searchTask()
+    {
+        // $toDate = $this->toDate;
+        // $toTime = $this->toDate
+        // Sending::where('from_address', $this->fromAddress)
+        // ->where('to_address', $this->toAddress)
+        // ->where('to_date', [$from, $to])
+        // ->where('size', $this->size)
+        // ->where
+    }
+
 
     public function detail($id)
     {
-        $task = Sending::where('id', $id)->get();
-        return view('livewire.search.detail', ['task' => $task]);
+        $this->task = Sending::find($id);
+        $this->emit('detail', ['task' => $this->task]);
     }
 }

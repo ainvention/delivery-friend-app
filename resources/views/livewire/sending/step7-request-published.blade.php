@@ -135,30 +135,27 @@
         </div>
         @endif
 
-
-
         <div class="flex justify-end m-5 my-10">
             <button wire:click="moveStep1"
-                class="bg-green-400 text-xl text-green-50 justify-center {{ $couponAdjusted === true ? '' : 'disabled:opacity-50'}}"
+                class="w-full sm:w-1/2 appearance-none bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:border-gray-500 {{ $couponAdjusted === true ? '' : 'disabled:opacity-50'}}"
                 {{ $couponAdjusted === true ? '' : 'disabled'}}>
                 {{ __('Continue to your task  >') }}
             </button>
         </div>
-
-
-
     </div>
 
-
-    <div class="flex flex-col mx-28">
+    <div class="flex flex-col sm:mx-28">
         <h1 class="text-2xl my-10">
             How do I pay for the delivery?
         </h1>
         <h3 class="text-lg text-gray-500">
             The first time you accept an offer, you will be asked to enter your card details for payment. When ypu
-            accept an offer for a delivery request, the amount will be reserved in your account, The amount will not be
-            deducted from your account until you have confirmed that the delivery has been completed. Upon receipt of
-            your confirmation, we will charge ypur card for the agreed amount and transfer the payment to the bringer.
+            accept an offer for a delivery request, the amount will be reserved in your account, The amount will not
+            be
+            deducted from your account until you have confirmed that the delivery has been completed. Upon receipt
+            of
+            your confirmation, we will charge ypur card for the agreed amount and transfer the payment to the
+            bringer.
             If you want to save some time, you can add your card information now. We can rest assured that your card
             information is stored securely at Stripe-one of the world's leading payment provider.
         </h3>
@@ -173,17 +170,17 @@
         <h3 class="my-10 text-base text-gray-500">
             Anything you need to change about your task?
         </h3>
-        <div class="flex flex-row">
-            <x-jet-secondary-button wire:click="moveNext" class="mx-1">
+        <div class="flex flex-row text-gray-50">
+            <x-jet-secondary-button wire:click="editTask"
+                class="w-full sm:w-1/2 appearance-none justify-center hover:bg-gray-400 focus:outline-none focus:border-gray-500">
                 {{ __('Edit your task info') }}
             </x-jet-secondary-button>
             <h3 class="mx-5 text-base text-gray-500 self-center">
                 OR
             </h3>
-
-            <x-jet-secondary-button wire:click="" class="mx-1">
+            <x-jet-danger-button wire:click="deleteTask" class="w-full sm:w-1/2 appearance-none ">
                 {{ __('Delete your task') }}
-            </x-jet-secondary-button>
+            </x-jet-danger-button>
         </div>
     </div>
     <x-jet-secondary-button wire:click="$emit('moveBack')" class=" mx-1">

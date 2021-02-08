@@ -38,6 +38,10 @@ class Step1 extends Component
 
     public $couponAttemptedCount = 0;
 
+    public $marginRate = 25; //25% to system owner.
+    public $minimumMargin = 31;
+
+    public $taskId;
     public $title = null;
     public $photo = null;
     public $note = null;
@@ -76,11 +80,11 @@ class Step1 extends Component
         'moveBack' => 'moveBack',
         'moveNext' => 'moveNext',
         'passTotalDistance',
-        'calculateRecommendedCost',
-        'calculateServiceCharge',
-        'calculateReward',
-        'calcualteRecommendedCostManually',
-        'calculateTotalDeliveryCost',
+        'getRecommendedCost',
+        'getServiceCharge',
+        'getReward',
+        'getRecommendedCostManually',
+        'getTotalDeliveryCost',
     ];
 
     protected $rules = [
@@ -112,7 +116,7 @@ class Step1 extends Component
      */
     public function render()
     {
-        return view('livewire.sending.step1', ['step' => $this->step]);
+        return view('livewire.sending.step1', ['step' => $this->step, 'modalSwitch' => $this->modalSwitch]);
     }
 
 
@@ -279,6 +283,18 @@ class Step1 extends Component
     }
 
 
+
+
+
+    /**
+     * editTask
+     *
+     * @return void
+     */
+    public function editTask()
+    {
+        $this->step = $this->step + 1;
+    }
 
 
 
@@ -605,7 +621,7 @@ class Step1 extends Component
             $this->toTime = null;
         }
 
-        $this->calculateTotalDeliveryCost();
+        $this->getTotalDeliveryCost();
 
         $this->storeData();
     }
@@ -635,6 +651,7 @@ class Step1 extends Component
 
         // ]);
         $sending = new Sending;
+        $this->taskId = $sending->id;
         $sending->user_id = Auth::id();
         $sending->user_name = Auth::user()->name;
         $sending->photo = $this->photo;
@@ -695,11 +712,11 @@ class Step1 extends Component
 
 
     /**
-     * calculateRecommendedCost
+     * recommendedCost
      *
      * @return void
      */
-    public function calculateRecommendedCost($totalDistance)
+    public function getRecommendedCost($totalDistance)
     {
         $size = $this->size;
 
@@ -715,55 +732,57 @@ class Step1 extends Component
             $this->recommendedCost = round($totalDistance * 13);
         } else {
             //"Couldn't calculate Recommended Cost, because no size matched!"
-            return redirect()->back()->withErrors('Size inpu error, please select a collect one')->withInput();
+            return redirect()->back()->withErrors('Item size error, please select a collect one')->withInput();
         }
 
-        if ($this->recommendedCost !== null) {
-            $this->calcualteRecommendedCostManually();
+        $this->getRecommendedCostManually();
+    }
+
+
+
+
+
+    /**
+     * getServiceCharge
+     *
+     * @return void
+     */
+    public function getServiceCharge($recommendedCost)
+    {
+        $this->serviceCharge = round($recommendedCost * ($this->marginRate / 100) - $this->insuranceCost);
+    }
+
+
+
+
+
+    /**
+     * getReward
+     *
+     * @return void
+     */
+    public function getReward($recommendedCost)
+    {
+        $this->reward = round($recommendedCost - $this->serviceCharge - $this->insuranceCost);
+    }
+
+
+
+
+
+
+
+    /**
+     * lessThanMinimum
+     *
+     * @return void
+     */
+    public function lessThanMinimumServiceCharge()
+    {
+        if ($this->serviceCharge < $this->minimumMargin) {
+            $this->serviceCharge = $this->minimumMargin; //current 31NOK.
+            $this->reward = $this->recommendedCost - $this->serviceCharge - $this->insuranceCost;
         }
-    }
-
-
-
-
-
-    /**
-     * calculateServiceCharge
-     *
-     * @return void
-     */
-    public function calculateServiceCharge($recommendedCost)
-    {
-        $this->serviceCharge = round($recommendedCost * 0.2 - $this->insuranceCost);
-    }
-
-
-
-
-
-    /**
-     * calculateReward
-     *
-     * @return void
-     */
-    public function calculateReward($recommendedCost)
-    {
-        $this->reward = round($recommendedCost * 0.8);
-    }
-
-
-
-
-
-    /**
-     * calculateTotalDeliveryCost
-     *
-     * @return void
-     */
-    public function calculateTotalDeliveryCost()
-    {
-        $this->totalDeliveryCost =
-        $this->reward + $this->serviceCharge + $this->insuranceCost;
     }
 
 
@@ -775,22 +794,38 @@ class Step1 extends Component
      *
      * @return void
      */
-    public function calcualteRecommendedCostManually()
+    public function getRecommendedCostManually()
     {
         // $this->recommendedCosts is the value entered through wire:model="recommendedCosts in step6"
         $recommendedCost = $this->recommendedCost;
 
-        $this->calculateServiceCharge($recommendedCost);
-        $this->calculateReward($recommendedCost);
+        $this->getServiceCharge($recommendedCost);
+        $this->getReward($recommendedCost);
+
+        // check less than minimum cost.
+        $this->lessThanMinimumServiceCharge();
     }
 
-    // public function editPublishedTask()
-    // {
 
-    // }
 
-    // public function deletePublishedTask()
-    // {
 
-    // }
+
+    /**
+     * getTotalDeliveryCost
+     *
+     * @return void
+     */
+    public function getTotalDeliveryCost()
+    {
+        $this->totalDeliveryCost = $this->reward + $this->serviceCharge + $this->insuranceCost;
+    }
+
+
+
+
+
+    public function deleteTask()
+    {
+        Sending::id($this->currentTaskId)->delete();
+    }
 }

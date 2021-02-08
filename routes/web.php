@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Sending;
+use App\Http\Livewire\Search;
 use Illuminate\Support\Facades\Route;
 
 /*
