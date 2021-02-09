@@ -57,6 +57,7 @@ class Step1 extends Component
     public function modalToggle($param = null)
     {
         $this->modalSwitch = !$this->modalSwitch;
+
         if ($param === 'cancel') {
             $this->often = null;
             $this->size = null;

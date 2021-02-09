@@ -92,13 +92,6 @@
             width: 100%;
         }
     </style>
-
-    {{-- // modal pre rendering solution --}}
-    <style>
-        [x-cloak] {
-            display: none;
-        }
-    </style>
     @livewireStyles
 </head>
 
