@@ -586,7 +586,7 @@ class Step1 extends Component
         'toTime' => 'nullable|string',
         'toTimeManually' => 'nullable|date_format:H:i',
         'totalDistance' => 'numeric',
-        'recommendedCost' => 'required|numeric|min:200|max:99999',
+        'recommendedCost' => 'required|numeric|min:180|max:99999', // connected with global $this->recommendedCost
         'couponNumber' => 'nullable|string',
         'couponPrice' => 'nullable|numeric',
         'couponRate' => 'nullable|numeric',
@@ -792,6 +792,22 @@ class Step1 extends Component
         // $this->recommendedCosts is the value entered through wire:model="recommendedCosts in step6"
         $recommendedCost = $this->recommendedCost;
 
+        if ($this->recommendedCost < 180) {
+            $this->recommendedCost = 180;
+            $this->reward = 100;
+            $this->serviceCharge = $this->minimumMargin;
+
+            return $this->alert('info', 'We recommend total cost over 180 NOK is better to find helper', [
+                        'position' =>  'center',
+                        'timer' =>  5000,
+                        'toast' =>  false,
+                        'confirmButtonText' =>  '',
+                        'cancelButtonText' =>  'OK',
+                        'showCancelButton' =>  true,
+                        'showConfirmButton' =>  false,
+                    ]);
+        }
+
         $this->getServiceCharge($recommendedCost);
         $this->getReward($recommendedCost);
 
@@ -819,6 +835,7 @@ class Step1 extends Component
 
     public function deleteTask()
     {
-        Sending::id($this->currentTaskId)->delete();
+        Sending::where('id', $this->currentTaskId)->delete();
+        redirect()->to('/sending');
     }
 }

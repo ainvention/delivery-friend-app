@@ -1,7 +1,7 @@
 <div>
     @if($step === 1)
     <div
-        class="flex flex-col justify-center my-20 mx-4 xl:mx-40 px-2 xl:px-20   bg-white rounded-lg shadow-md pt-0 p-6  text-gray-500">
+        class="flex flex-col justify-center my-20 mx-4 xl:mx-40 px-2 xl:px-20   bg-white rounded-lg  pt-0 p-6  text-gray-500">
         @include('livewire.components.sessionMessage')
         <div
             class="flex flex-col text-center mb-5 text-4xl item-center justify-center px-4 py-1 dark:text-white rounded-full leading-relaxed font-semibold tracking-wide">

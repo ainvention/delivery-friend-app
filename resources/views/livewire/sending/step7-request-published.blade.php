@@ -1,4 +1,5 @@
 <div class="w-full h-auto text-left">
+    @include('livewire.sending.delete-task-confirmation')
     <div class="mt-10 text-center xl:mx-60">
         <h1 class="text-4xl font-extrabold">Your task has been posted!</h1>
         <h2 class="text-xl py-6 text-gray-400">
@@ -15,7 +16,7 @@
                     {{ $toAddress }}
                 </h3>
             </div>
-            <div class="lg:w-1/2 m-5 align-middle">
+            <div class="lg:w-1/2 p-5 align-middle">
                 @isset($photo)
                 <img src="{{ asset('storage/'.$photo)}}" alt="Your sending item photo" class="">
                 @else
@@ -104,7 +105,7 @@
                 <h3 class="">{{ $reward }} NOK</h3>
             </div>
             <div class="flex flex-row w-full justify-between">
-                <h3 class="">Service fee, (Delivery Friends, VAT inc.)</h3>
+                <h3 class="">Service fee, (to Delivery Friends)</h3>
                 <h3>{{ $serviceCharge }} NOK</h3>
             </div>
             <div class="flex flex-row w-full justify-between">
@@ -135,7 +136,7 @@
         </div>
         @endif
 
-        <div class="flex justify-end m-5 my-10">
+        <div class="flex justify-end mx-5 my-5">
             <button wire:click="moveStep1"
                 class="w-full sm:w-1/2 appearance-none bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:border-gray-500 {{ $couponAdjusted === true ? '' : 'disabled:opacity-50'}}"
                 {{ $couponAdjusted === true ? '' : 'disabled'}}>
@@ -149,7 +150,7 @@
             How do I pay for the delivery?
         </h1>
         <h3 class="text-lg text-gray-500">
-            The first time you accept an offer, you will be asked to enter your card details for payment. When ypu
+            The first time you accept an offer, you will be asked to enter your card details for payment. When you
             accept an offer for a delivery request, the amount will be reserved in your account, The amount will not
             be
             deducted from your account until you have confirmed that the delivery has been completed. Upon receipt
@@ -157,7 +158,7 @@
             your confirmation, we will charge ypur card for the agreed amount and transfer the payment to the
             bringer.
             If you want to save some time, you can add your card information now. We can rest assured that your card
-            information is stored securely at Stripe-one of the world's leading payment provider.
+            information is stored securely at Stripe which is one of the world's leading payment provider".
         </h3>
         <h1 class="text-2xl my-10">
             Is my item insured?
@@ -178,7 +179,7 @@
             <h3 class="mx-5 text-base text-gray-500 self-center">
                 OR
             </h3>
-            <x-jet-danger-button wire:click="deleteTask" class="w-full sm:w-1/2 appearance-none ">
+            <x-jet-danger-button wire:click="modalToggle" class="w-full sm:w-1/2 appearance-none ">
                 {{ __('Delete your task') }}
             </x-jet-danger-button>
         </div>

@@ -20,8 +20,8 @@ class Step1 extends Component
         // for modal switching
         public $modalSwitch = false;
 
-        public $often = null;
-        public $size = null;
+        public $often;
+        public $size;
         public $distance = null;
         public $task;
 
@@ -62,6 +62,10 @@ class Step1 extends Component
             $this->often = null;
             $this->size = null;
             $this->distance = null;
+        } elseif ($param === 'save') {
+            $this->often = $this->often;
+            $this->size = $this->size;
+            $this->distance = $this->distance;
         }
     }
 

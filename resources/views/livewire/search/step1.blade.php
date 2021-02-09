@@ -2,7 +2,9 @@
     <div
         class="flex flex-col justify-center space-y-4 my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg pt-0 p-6  text-gray-500  sm:tracking-widest">
         @include('livewire.components.sessionMessage')
+        @once
         @include('livewire.search.search-box')
+        @endonce
         <div
             class="flex flex-col text-center mb-5 text-4xl item-center justify-center px-4 py-1 dark:text-white rounded-full leading-relaxed font-semibold tracking-wide">
             Our user need your help!!

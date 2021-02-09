@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center my-20 mx-4 xl:mx-40 px-2 xl:px-20   bg-white rounded-lg shadow-md pt-0 p-6">
+<div class="flex flex-col justify-center my-20 mx-4 xl:mx-40 px-2 xl:px-20   bg-white rounded-lg  pt-0 p-6">
     <div wire:loading.delay>
         Processing calculate ...
     </div>
@@ -55,42 +55,42 @@
                 <h3 class="font-extrabold">{{ $insuranceCost }}<span class="ml-1">NOK</span></h3>
             </div>
         </div>
-        @if ($errors->any())
+        {{-- @if ($errors->any())
         <div class="text-pink-600">
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+        @endforeach
+        </ul>
+    </div>
+    @endif --}}
+    <div class="flex flex-row mt-10 text-left bg-gray-200">
+        <div class="sm:w-1/3 ml-3 my-2 self-center">
+            <a href="{{ url('https://www.tryg.no') }}" target="_blank"><img
+                    src="{{ asset('images/steps/trygg-logo.png') }}" class="p-2" alt="tryg insurance logo"></a>
         </div>
-        @endif
-        <div class="flex flex-row mt-10 text-left bg-gray-200">
-            <div class="sm:w-1/3 ml-3 my-2 self-center">
-                <a href="{{ url('https://www.tryg.no') }}" target="_blank"><img
-                        src="{{ asset('images/steps/trygg-logo.png') }}" class="p-2" alt="tryg insurance logo"></a>
-            </div>
-            <div class="sm:max-w-full mx-3 my-2 text-lg text-gray-500 self-center">
-                Your item is insured up to 10,000 NOK in Norway through Tryg Forsikring. You can rest assured that your
-                item
-                is in good hands.
-            </div>
+        <div class="sm:max-w-full mx-3 my-2 text-lg text-gray-500 self-center">
+            Your item is insured up to 10,000 NOK in Norway through Tryg Forsikring. You can rest assured that your
+            item
+            is in good hands.
         </div>
-        <div class="flex flex-col sm:flex-row justify-between sm:space-x-20 text-xl my-10">
-            <button wire:click="moveBack" class="sm:w-1/2 text-gray-400 p-4">
-                <span>@icon('chevron-left')</span>
-                Back
-            </button>
-            <button wire:click="moveStep7"
-                class="sm:w-1/2 appearance-none bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:border-gray-500">Request
-                delivery</button>
-        </div>
-        <script>
-            var element1 = @this.fromLat;
+    </div>
+    <div class="flex flex-col sm:flex-row justify-between sm:space-x-20 text-xl my-10">
+        <button wire:click="moveBack" class="sm:w-1/2 text-gray-400 p-4">
+            <span>@icon('chevron-left')</span>
+            Back
+        </button>
+        <button wire:click="moveStep7"
+            class="sm:w-1/2 appearance-none bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:border-gray-500">Request
+            delivery</button>
+    </div>
+    <script>
+        var element1 = @this.fromLat;
         var element2 = @this.fromLng;
         var element3 = @this.toLat;
         var element4 = @this.toLng;
 
-        var mapBoxApiKey= 'pk.eyJ1IjoiYWxleGludmVudGlvbiIsImEiOiJja2ttZXN0dHQzN29uMnVvY3U5am13ZGt6In0._f_4UOuTHo-35LfZOVEyxw';
+        var mapBoxApiKey= '{{ env('MAPBOX_ACCESS_TOKEN', NULL)}}';
 
         var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/';
 
@@ -119,6 +119,6 @@
 
         //main trigger
         run();
-        </script>
-    </div>
+    </script>
+</div>
 </div>

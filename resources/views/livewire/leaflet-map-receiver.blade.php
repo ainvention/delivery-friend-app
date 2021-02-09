@@ -1,7 +1,6 @@
-<div class="w-full">
+<div>
     {{-- used "wire:ignore" to prevent DOM refresh when input value changed --}}
-    <div wire:ignore id="leafletMapReceiver" class="flex w-full h-96 mb-10"></div>
-
+    <div wire:ignore id="leafletMapReceiver" class="flex w-full h-full py-72 mb-10"></div>
     <script>
         // Take a User's geo location.
         if(!navigator.geolocation) {

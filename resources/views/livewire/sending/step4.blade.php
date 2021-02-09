@@ -1,14 +1,15 @@
-<div class="flex flex-col justify-center my-20 mx-4 xl:mx-40 px-2 xl:px-20   bg-white rounded-lg shadow-md pt-0 p-6">
+<div class="flex flex-col justify-center my-20 mx-4 xl:mx-40 px-2 xl:px-20   bg-white rounded-lg  pt-0 p-6">
+
     @include('livewire.components.sessionMessage')
     <div
         class="text-center flex mb-5 text-4xl justify-center px-4 py-1 dark:text-white rounded-full leading-relaxed font-semibold tracking-wide text-gray-500">
         Receiver location & comment.
     </div>
 
-
-    <div class="mb-10 text-center text-gray-400">
+    <div class="mb-10 text-center text-gray-400 h-full">
         <p id="status" class="my-10 text-red-600"></p>
         @include('livewire.leaflet-map-receiver')
+
         "Click" to get the <span class="text-green-600 font-bold">receiver</span> location, "Scroll" to zoom in
         &
         out.
@@ -38,5 +39,4 @@
                 {{ $toAddress === null || strlen($toAddress) < 4 ? 'disabled:opacity-50' : '' }}"
             {{ $toAddress === null || strlen($toAddress) < 4 ? 'disabled' : ''  }}>Next</button>
     </div>
-</div>
 </div>
