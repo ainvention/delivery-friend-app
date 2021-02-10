@@ -1,20 +1,20 @@
-<div class="hidden md:flex items-center">
+<div class="flex items-center justify-center">
     @if (Route::has('login'))
-    <div class="hidden md:flex items-center">
+    <div class="flex items-center">
         @auth
         <a href="{{ url('/sending') }}"
-            class="text-lg uppercase mx-3 text-white cursor-pointer hover:text-gray-300">sending</a>
+            class=" text-2xl uppercase mx-3 text-white cursor-pointer hover:text-gray-600 font-bold">sending</a>
         <a href="{{ url('/search') }}"
-            class="text-lg uppercase mx-3 text-white cursor-pointer hover:text-gray-300">search</a>
+            class="text-2xl uppercase mx-3 text-white cursor-pointer hover:text-gray-600 font-bold">search</a>
         <a href="{{ url('/dashboard') }}"
-            class="text-lg uppercase mx-3 text-white cursor-pointer hover:text-gray-300">dashboard</a>
+            class="text-2xl uppercase mx-3 text-white cursor-pointer hover:text-gray-600 font-bold">dashboard</a>
         @else
         <a href="{{ route('login') }}"
-            class="text-lg uppercase mx-3 text-white cursor-pointer hover:text-gray-300">Login</a>
+            class="text-2xl uppercase mx-3 text-white cursor-pointer hover:text-gray-600 font-bold">Login</a>
 
         @if (Route::has('register'))
         <a href="{{ route('register') }}"
-            class="text-lg uppercase mx-3 text-white cursor-pointer hover:text-gray-300">Register</a>
+            class="text-2xl uppercase mx-3 text-white cursor-pointer hover:text-gray-600 font-bold">Register</a>
         @endif
         @endauth
     </div>

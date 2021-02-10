@@ -1,10 +1,10 @@
 <div>
     @if($step === 1)
     <div
-        class="flex flex-col justify-center my-20 mx-4 xl:mx-40 px-2 xl:px-20   bg-white rounded-lg  pt-0 p-6  text-gray-500">
+        class="flex flex-col justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
         @include('livewire.components.sessionMessage')
         <div
-            class="flex flex-col text-center mb-5 text-4xl item-center justify-center px-4 py-1 dark:text-white rounded-full leading-relaxed font-semibold tracking-wide">
+            class="flex flex-col text-center mb-5 text-4xl item-center justify-center dark:text-white rounded-full leading-relaxed font-semibold tracking-wide">
             What do you want to send ?
             </h2>
             <span class="text-lg">or <a href="/search" class="text-blue-500">
@@ -16,8 +16,8 @@
             <div class="w-full max-w-xl">{{-- form --}}
                 <div class="flex flex-col mx-3 space-y-6">
                     @empty($isSetPhoto)
-                    <div wire:click="modalToggle"
-                        class="text-center w-full py-20 md:w-full px-3 mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">
+                    <div wire:click="modalTogglePhoto"
+                        class="text-center w-full py-20 md:w-full px-3 mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 text-gray-800">
                         <svg class="block m-auto h-16" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -25,12 +25,12 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        <span>Chick to add a photo.</span>
+                        <span>Click to add a photo.</span>
                         <br>
                         <span>(Optional)</span>
                     </div>
                     @else
-                    <div wire:click="modalToggle" class="flex flex-col text-center">
+                    <div wire:click="modalTogglePhoto" class="flex flex-col text-center">
                         <img src="{{ asset('storage/'.$photo)}}" class="object-scale-down max-h-72 w-full sm:p-6">
                         <span class="w-full italic">Click photo to change.</span>
                     </div>
@@ -45,10 +45,18 @@
                     <div class="w-full md:w-full">
                         <label class="block uppercase tracking-wide text-xs font-bold mb-2" for='note'>Additional
                             note</label>
-                        <input wire:model.debounce.1000ms="note" name="note"
+                        <input wire:model.debounce.1000ms="note" name="note" id="note"
                             class="appearance-none block w-full bg-white font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                             type='text' placeholder="Additional notes for delivery(Oprional)">
                         <x-jet-input-error for="note" class="mt-2" />
+                    </div>
+                    <div class="w-full md:w-full">
+                        <label class="block uppercase tracking-wide text-xs font-bold mb-2" for='note'>Item
+                            weight (Kg)</label>
+                        <input wire:model.debounce.1000ms="weight" name="weight" id="weight"
+                            class="appearance-none block w-full bg-white font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                            type='text' placeholder="Item weight(Oprional)">
+                        <x-jet-input-error for="weight" class="mt-2" />
                     </div>
                     <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full">
                         <button wire:click="moveStep2"
@@ -70,50 +78,7 @@
         </script>
         {{-- Fix an error which below modal window is executed when reading this page because the $modalSwitch variable value is not assigned. --}}
         @isset($modalSwitch)
-        <x-jet-dialog-modal wire:ignore wire:model="modalSwitch" id="photoModal" class="photo-modal">
-            <x-slot name="title">
-                @empty($isSetPhoto)
-                Add Photo
-                @else
-                Change Photo
-                @endempty
-            </x-slot>
-            <x-slot name="content">
-                <div class="col-span-6 sm:col-span-4">
-                    <x-jet-label for="photo" value="{{ __('Choose a your item photo') }}" />
-                    <x-jet-input wire:model="photo" id="photo" value="" type="file" class="mt-1 block w-full" />
-                    <x-jet-input-error for="photo" class="mt-2" />
-                </div>
-            </x-slot>
-            <x-slot name="footer">
-                <x-jet-secondary-button wire:click="photoDelete">
-                    @empty($isSetPhoto)
-                    {{ __('Cancel') }}
-                    @else
-                    {{ __('Delete') }}
-                    @endempty
-                </x-jet-secondary-button>
-                <x-jet-danger-button class="ml-2" wire:click="savePhoto" wire:loading.attr="disabled">
-                    @empty($isSetPhoto)
-                    {{ __('Save') }}
-                    @else
-                    {{ __('Change') }}
-                    @endempty
-                </x-jet-danger-button>
-                <div>
-                    {{-- invalid coupon message --}}
-                    @if (session()->has('error'))
-                    <div class="text-red-500">
-                        {{ session('error') }}
-                    </div>
-                    @elseif (session()->has('message'))
-                    <div class="text-blue-500">
-                        {{ session('message') }}
-                    </div>
-                    @endif
-                </div>
-            </x-slot>
-        </x-jet-dialog-modal>
+        @include('livewire.components.photo-upload-modal')
         @endisset
     </div>
 

@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     {{-- Font --}}
-    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     {{-- Font --}}
     {{-- <link href="https://fonts.googleapis.com/css2?family=Bitter&display=swap" rel="stylesheet"> --}}
@@ -97,10 +97,35 @@
     @livewireStyles
 </head>
 
-<body class="antialiased bg-indigo-600"">
-    <div class=" relative h-screen">
-    {{-- <img src="/images/uikit/snow_background5.svg" class="absolute h-full w-full object-cover" /> --}}
+<body class="flex flex-col h-screen antialiased bg-yellow-400">
+    {{-- <img src="/images/uikit/snow_background5.svg" class="absolute h-full w-full object-cover"/> --}}
+    <div class="flex flex-col h-20 m-auto justify-center space-y-4">
+        <span class="text-gray-900 uppercase text-6xl font-bold mx-4 text-center">We are delivery friends</span>
+        <div class="m-auto">@include('livewire.components.logo')</div>
+        <div>@include('livewire.components.welcome-login-register')</div>
     </div>
+    <a href="https://jswizard.no">
+        <footer
+            class="text-center text-white font-semibold text-xl mx-auto pb-10 hover:text-red-600 hover:font-extrabold">
+            by Alex Sung</footer>
+    </a>
 </body>
 
 </html>
+{{--
+<x-app-layout>
+    <img src="/images/uikit/snow_background5.svg" class="absolute h-full w-full object-cover" />
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+</h2>
+</x-slot>
+
+<div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white shadow-xl sm:rounded-lg">
+            @include('livewire.components.welcome-login-register')
+        </div>
+    </div>
+</div>
+</x-app-layout> --}}

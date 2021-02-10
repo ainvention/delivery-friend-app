@@ -13,6 +13,8 @@ class Sending extends Model
     //     'options' => 'array',
     // ];
 
+    protected $fillable = ['id', 'user_id', 'user_name'];
+
     protected $dates = [
         'created_at',
         'updated_at',

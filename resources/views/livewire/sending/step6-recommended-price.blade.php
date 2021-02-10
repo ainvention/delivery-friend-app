@@ -1,4 +1,5 @@
-<div class="flex flex-col justify-center my-20 mx-4 xl:mx-40 px-2 xl:px-20   bg-white rounded-lg  pt-0 p-6">
+<div
+    class="flex flex-col justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
     <div wire:loading.delay>
         Processing calculate ...
     </div>

@@ -22,6 +22,8 @@ class Step1 extends Component
 
     // for modal switching
     public $modalSwitch = false;
+    public $modalSwitchPhoto = false;
+    public $modalSwitchEdit = false;
 
     public $modalSwitchCoupon = false;
 
@@ -32,8 +34,6 @@ class Step1 extends Component
     // when useCoupon() triggerd in step7, then will change to true
     public $couponAdjusted = false;
 
-    public $currentTaskId = null;
-
     public $couponAttemptableCount = 10;
 
     public $couponAttemptedCount = 0;
@@ -41,11 +41,12 @@ class Step1 extends Component
     public $marginRate = 25; //25% to system owner.
     public $minimumMargin = 31;
 
-    public $taskId;
+    public $currentTaskId = null;
     public $title = null;
     public $photo = null;
     public $note = null;
     public $size = null;
+    public $weight = null;
     public $fromAddress = null;
     public $simpleFromAddress = null;
     public $fromNote = null;
@@ -74,6 +75,8 @@ class Step1 extends Component
     public $needAnimalCage = false;
     public $needCoolingEquipment = false;
     public $needHelpWrapping = false;
+    public $helpPickUp = false;
+    public $helpDelivery = false;
 
     protected $listeners = [
         'savePhoto',
@@ -163,6 +166,7 @@ class Step1 extends Component
         $this->validate([
             'title' => 'required|min:4|max:80',
             'note' => 'max:80',
+            'weight' => 'nullable|numeric',
         ]);
 
         $this->step = $this->step + 1;
@@ -305,11 +309,28 @@ class Step1 extends Component
      *
      * @return void
      */
-    public function modalToggle()
+    public function modalToggle($param = '')
     {
         $this->modalSwitch = !$this->modalSwitch;
     }
 
+
+
+
+    public function modalTogglePhoto()
+    {
+        $this->modalSwitchPhoto = !$this->modalSwitchPhoto;
+    }
+
+    /**
+     * modalToggleEdit
+     *
+     * @return void
+     */
+    public function modalToggleEdit()
+    {
+        $this->modalSwitchEdit = !$this->modalSwitchEdit;
+    }
 
 
 
@@ -332,7 +353,7 @@ class Step1 extends Component
 
         $this->isSetPhoto = true;
 
-        $this->modalToggle();
+        $this->modalTogglePhoto();
 
         return $this->alert('success', 'Item photo saved!', [
             'position' =>  'center',
@@ -362,7 +383,7 @@ class Step1 extends Component
         $this->photo = null;
         $this->isSetPhoto = false;
 
-        $this->modalToggle();
+        $this->modalTogglePhoto();
 
         $this->alert('info', 'We recommend add a photo.', [
             'position' =>  'center',
@@ -571,6 +592,7 @@ class Step1 extends Component
         'photo' => 'nullable|string',
         'note' => 'nullable|max:80',
         'size' => 'string',
+        'weight' => 'nullable|numeric',
         'fromAddress' => 'required|string',
         'simpleFromAddress' => 'required|string',
         'fromNote' => 'nullable|string',
@@ -598,6 +620,8 @@ class Step1 extends Component
         'needAnimalCage' => 'boolean',
         'needCoolingEquipment' => 'boolean',
         'needHelpWrapping' => 'boolean',
+        'helpPickUp' => 'boolean',
+        'helpDelivery' => 'boolean',
         ]);
 
         if ($this->toDateManually !== null) {
@@ -616,7 +640,24 @@ class Step1 extends Component
 
         $this->getTotalDeliveryCost();
 
-        $this->storeData();
+        if (isset($this->currentTaskId)) {
+            // in case of edit current task
+            $this->storeData($this->currentTaskId);
+        } else {
+            // in case of make new task
+            $this->storeData();
+        }
+
+        return $this->alert('success', 'Task successfully saved.', [
+            'position' =>  'center',
+            'timer' =>  3000,
+            'toast' =>  false,
+            'text' =>  '',
+            'confirmButtonText' =>  '',
+            'cancelButtonText' =>  'OK',
+            'showCancelButton' =>  true,
+            'showConfirmButton' =>  false,
+        ]);
     }
 
 
@@ -638,19 +679,26 @@ class Step1 extends Component
      *
      * @return void
      */
-    public function storeData()
+    public function storeData($currentTaskId = null)
     {
-        // flight::firstOrcreate([
 
-        // ]);
-        $sending = new Sending;
-        $this->taskId = $sending->id;
-        $sending->user_id = Auth::id();
-        $sending->user_name = Auth::user()->name;
+        // check : make new task or edit current task
+
+        // check : make new task or edit current task
+        if ($this->currentTaskId === null) {
+            $sending = new Sending;
+            $sending->user_id = Auth::id();
+            $sending->user_name = Auth::user()->name;
+            $this->currentTaskId = $sending->id;
+        } else {
+            $sending = Sending::find($this->currentTaskId);
+        }
+
         $sending->photo = $this->photo;
         $sending->title = $this->title;
         $sending->note = $this->note;
         $sending->size = $this->size;
+        $sending->weight = $this->weight;
         $sending->from_address = $this->fromAddress;
         $sending->simple_from_address = $this->simpleFromAddress;
         $sending->from_note = $this->fromNote;
@@ -679,9 +727,12 @@ class Step1 extends Component
         $sending->need_animal_cage = $this->needAnimalCage;
         $sending->need_cooling_equipment = $this->needCoolingEquipment;
         $sending->need_help_wrapping = $this->needHelpWrapping;
+        $sending->help_pick_up = $this->helpPickUp;
+        $sending->help_delivery = $this->helpDelivery;
 
         $sending->save();
 
+        // whatever task is a new task or a edited task
         $this->currentTaskId = $sending->id;
     }
 

@@ -1,8 +1,8 @@
-<div class="w-full h-auto text-left">
+<div class="w-full h-auto my-4 text-left">
     @include('livewire.sending.delete-task-confirmation')
     <div class="mt-10 text-center xl:mx-60">
         <h1 class="text-4xl font-extrabold">Your task has been posted!</h1>
-        <h2 class="text-xl py-6 text-gray-400">
+        <h2 class="text-xl py-6 mx-4 text-gray-400">
             We have already sent your task out to relevant bringers, and those interested will get back to you with
             questions or a date they can help you out.</h2>
     </div>
@@ -145,7 +145,7 @@
         </div>
     </div>
 
-    <div class="flex flex-col sm:mx-28">
+    <div class="flex flex-col mx-10 sm:mx-30">
         <h1 class="text-2xl my-10">
             How do I pay for the delivery?
         </h1>
@@ -168,20 +168,24 @@
             bringer you agree with actually sends you an offer to help, and that it is fully accepted and delivered
             through the system.
         </h3>
-        <h3 class="my-10 text-base text-gray-500">
-            Anything you need to change about your task?
-        </h3>
-        <div class="flex flex-row text-gray-50">
-            <x-jet-secondary-button wire:click="editTask"
-                class="w-full sm:w-1/2 appearance-none justify-center hover:bg-gray-400 focus:outline-none focus:border-gray-500">
-                {{ __('Edit your task info') }}
-            </x-jet-secondary-button>
-            <h3 class="mx-5 text-base text-gray-500 self-center">
-                OR
+
+        <div class="flex flex-col md:flex-row my-10 text-gray-50">
+            <h3 class="flex w-full md:w-1/2 text-base text-gray-500">
+                Anything you need to change about your task?
             </h3>
-            <x-jet-danger-button wire:click="modalToggle" class="w-full sm:w-1/2 appearance-none ">
-                {{ __('Delete your task') }}
-            </x-jet-danger-button>
+            <div class="flex flex-col md:flex-row w-full md:w-1/2">
+                <button wire:click="editTask"
+                    class="w-full md:w-1/2 my-2 appearance-none font-bold border text-gray-600 border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-gray-400 focus:outline-none focus:border-gray-500">
+                    Edit your task info
+                </button>
+                <h3 class="md:flex md:mx-5 hidden my-2 text-base text-gray-500 self-center">
+                    OR
+                </h3>
+                <button wire:click="modalToggle"
+                    class="w-full md:w-1/2 my-2 appearance-none bg-red-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-red-200 hover:text-gray-600 focus:outline-none focus:border-gray-500">
+                    Delete your task
+                </button>
+            </div>
         </div>
     </div>
     <x-jet-secondary-button wire:click="$emit('moveBack')" class=" mx-1">
