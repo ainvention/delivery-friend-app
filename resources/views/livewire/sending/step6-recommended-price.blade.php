@@ -35,7 +35,7 @@
         </div>
         <div class="flex-1 flex-col text-gray-400 text-lg border-gray-300 border-2 mt-2">
             <div class="flex flex-1 flex-col sm:flex-row justify-between mx-6 mt-6 mb-0">
-                <h3 class="">Delivery helper's reward</h3>
+                <h3>Delivery helper's reward</h3>
                 <h3 class="flex font-extrabold">
                     {{ $reward }}
                     <span class="ml-1">NOK</span>
@@ -51,7 +51,7 @@
             <div class="flex flex-1 flex-col sm:flex-row justify-between mx-6 my-2 mb-6">
                 <h3 class="flex flex-col sm:flex-row">
                     Included insurance
-                    <span class="">@icon('question-circle')</span>
+                    <span>@icon('question-circle')</span>
                 </h3>
                 <h3 class="font-extrabold">{{ $insuranceCost }}<span class="ml-1">NOK</span></h3>
             </div>

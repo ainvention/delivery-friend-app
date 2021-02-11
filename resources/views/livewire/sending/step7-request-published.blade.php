@@ -18,7 +18,7 @@
             </div>
             <div class="lg:w-1/2 p-5 align-middle">
                 @isset($photo)
-                <img src="{{ asset('storage/'.$photo)}}" alt="Your sending item photo" class="">
+                <img src="{{ asset('storage/'.$photo)}}" alt="Your sending item photo">
                 @else
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="max-w-sm">
                     <defs>
@@ -90,7 +90,7 @@
                     {{ __('Cancel') }}
                 </x-jet-secondary-button>
 
-                <x-jet-danger-button class="ml-2" wire:click="useCoupon" wire:loading.attr="disabled">
+                <x-jet-danger-button class="ml-2" wire:click="useCoupon">
                     {{ __('Save') }}
                 </x-jet-danger-button>
             </x-slot>
@@ -102,10 +102,10 @@
         <div class="flex flex-col px-5 text-lg text-gray-400">
             <div class="flex flex-row w-full justify-between">
                 <h3 class="text-lg text-gray-400">Bringer's reward</h3>
-                <h3 class="">{{ $reward }} NOK</h3>
+                <h3>{{ $reward }} NOK</h3>
             </div>
             <div class="flex flex-row w-full justify-between">
-                <h3 class="">Service fee, (to Delivery Friends)</h3>
+                <h3>Service fee, (to Delivery Friends)</h3>
                 <h3>{{ $serviceCharge }} NOK</h3>
             </div>
             <div class="flex flex-row w-full justify-between">
@@ -175,7 +175,7 @@
             </h3>
             <div class="flex flex-col md:flex-row w-full md:w-1/2">
                 <button wire:click="editTask"
-                    class="w-full md:w-1/2 my-2 appearance-none font-bold border text-gray-600 border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-gray-400 focus:outline-none focus:border-gray-500">
+                    class="w-full md:w-1/2 my-2 appearance-none font-bold border bg-green-500 text-white border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-green-200 hover:text-gray-600 focus:outline-none focus:border-gray-500">
                     Edit your task info
                 </button>
                 <h3 class="md:flex md:mx-5 hidden my-2 text-base text-gray-500 self-center">

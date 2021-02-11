@@ -8,7 +8,7 @@
 
     <div class="mb-10 text-center text-gray-400 h-full">
         <p id="status" class="my-10 text-red-600"></p>
-        @include('livewire.leaflet-map-receiver')
+        @include('livewire.components.maps.leaflet-map-receiver')
 
         "Click" to get the <span class="text-green-600 font-bold">receiver</span> location, "Scroll" to zoom in
         &

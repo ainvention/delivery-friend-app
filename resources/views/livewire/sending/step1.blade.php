@@ -84,25 +84,18 @@
 
     @elseif($step === 2)
     @include('livewire.sending.step2',['step' => $step])
-    @include('livewire.components.testing.refreshCurrentPage')
     @elseif($step === 3)
     @include('livewire.sending.step3',['step' => $step])
-    @include('livewire.components.testing.refreshCurrentPage')
     @elseif($step === 4)
     @include('livewire.sending.step4',['step' => $step])
-    @include('livewire.components.testing.refreshCurrentPage')
     @elseif($step === 5)
     @include('livewire.sending.step5',['step' => $step])
-    @include('livewire.components.testing.refreshCurrentPage')
     @elseif($step === 6)
     @include('livewire.sending.step6-recommended-price',['step' => $step])
-    @include('livewire.components.testing.refreshCurrentPage')
     @elseif($step === 7)
     @include('livewire.sending.step7-request-published', ['step' => $step])
-    @include('livewire.components.testing.refreshCurrentPage')
     @elseif($step === 8)
     @include('livewire.sending.step8-edit-task', ['step' => $step])
-    @include('livewire.components.testing.refreshCurrentPage')
     @else
     @endif
 </div>

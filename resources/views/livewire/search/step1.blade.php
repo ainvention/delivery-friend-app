@@ -50,7 +50,7 @@
                             <span class="px-2 text-gray-500 self-center">@icon('long-arrow-alt-right
                                 ')</span>
                             {{ $task->simple_to_address }}</div>
-                        <div class="">
+                        <div>
                             {{ "Fits in a ". $task->size.', '.$task->total_distance.' km, Posted'.$task->created_at->diffForHumans() }}
                         </div>
                     </div>

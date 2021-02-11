@@ -23,10 +23,7 @@ class Step1 extends Component
     // for modal switching
     public $modalSwitch = false;
     public $modalSwitchPhoto = false;
-    public $modalSwitchEdit = false;
-
     public $modalSwitchCoupon = false;
-
 
     //when method savePhoto() was runned.
     public $isSetPhoto = false;
@@ -119,10 +116,11 @@ class Step1 extends Component
      */
     public function render()
     {
-        return view('livewire.sending.step1', ['step' => $this->step, 'modalSwitch' => $this->modalSwitch]);
+        return view('livewire.sending.step1', [
+            'step' => $this->step,
+            'modalSwitch' => $this->modalSwitch,
+            ]);
     }
-
-
 
 
 
@@ -322,15 +320,6 @@ class Step1 extends Component
         $this->modalSwitchPhoto = !$this->modalSwitchPhoto;
     }
 
-    /**
-     * modalToggleEdit
-     *
-     * @return void
-     */
-    public function modalToggleEdit()
-    {
-        $this->modalSwitchEdit = !$this->modalSwitchEdit;
-    }
 
 
 
@@ -592,7 +581,7 @@ class Step1 extends Component
         'photo' => 'nullable|string',
         'note' => 'nullable|max:80',
         'size' => 'string',
-        'weight' => 'nullable|numeric',
+        'weight' => 'nullable|numeric|max:65000',
         'fromAddress' => 'required|string',
         'simpleFromAddress' => 'required|string',
         'fromNote' => 'nullable|string',
@@ -640,13 +629,7 @@ class Step1 extends Component
 
         $this->getTotalDeliveryCost();
 
-        if (isset($this->currentTaskId)) {
-            // in case of edit current task
-            $this->storeData($this->currentTaskId);
-        } else {
-            // in case of make new task
-            $this->storeData();
-        }
+        $this->storeData();
 
         return $this->alert('success', 'Task successfully saved.', [
             'position' =>  'center',
@@ -679,7 +662,7 @@ class Step1 extends Component
      *
      * @return void
      */
-    public function storeData($currentTaskId = null)
+    public function storeData()
     {
 
         // check : make new task or edit current task
@@ -888,5 +871,59 @@ class Step1 extends Component
     {
         Sending::where('id', $this->currentTaskId)->delete();
         redirect()->to('/sending');
+    }
+
+
+
+
+
+    public function cancelEditTask()
+    {
+        $sending = Sending::find($this->currentTaskId);
+        $this->photo = $sending->photo;
+        $this->title = $sending->title;
+        $this->note = $sending->note;
+        $this->size = $sending->size;
+        $this->weight = $sending->weight;
+        $this->fromAddress = $sending->from_address;
+        $this->simpleFromAddress = $sending->simple_from_address;
+        $this->fromNote = $sending->from_note;
+        $this->fromLat = $sending->from_lat;
+        $this->fromLng = $sending->from_lng;
+        $this->toAddress = $sending->to_address;
+        $this->simpleToAddress = $sending->simple_to_address;
+        $this->toNote = $sending->to_note;
+        $this->toLat = $sending->to_lat;
+        $this->toLng = $sending->to_lng;
+        $this->toDate = $sending->to_date;
+        $this->toDateManually = $sending->to_date_manually;
+        $this->toTime = $sending->to_time;
+        $this->toTimeManually = $sending->to_time_manually;
+        $this->totalDistance = $sending->total_distance;
+        $this->recommendedCost = $sending->recommended_cost;
+        $this->couponNumber = $sending->coupon_number;
+        $this->couponPrice = $sending->coupon_price;
+        $this->couponRate = $sending->coupon_rate;
+        $this->discountedCost = $sending->discounted_cost;
+        $this->reward = $sending->reward;
+        $this->serviceCharge = $sending->service_charge;
+        $this->insuranceCost = $sending->insurance_cost;
+        $this->totalDeliveryCost = $sending->total_delivery_cost;
+        $this->isFraglile = $sending->is_fraglile;
+        $this->needAnimalCage = $sending->need_animal_cage;
+        $this->needCoolingEquipment = $sending->need_cooling_equipment;
+        $this->needHelpWrapping = $sending->need_help_wrapping;
+        $this->helpPickUp = $sending->help_pick_up;
+        $this->helpDelivery = $sending->help_delivery;
+
+        return $this->alert('info', 'Task edit canceled', [
+           'position' =>  'center',
+           'timer' =>  5000,
+           'toast' =>  false,
+           'confirmButtonText' =>  '',
+           'cancelButtonText' =>  'OK',
+           'showCancelButton' =>  true,
+           'showConfirmButton' =>  false,
+        ]);
     }
 }

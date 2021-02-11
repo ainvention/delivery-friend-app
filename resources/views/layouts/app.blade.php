@@ -31,6 +31,9 @@
 
     {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" /> --}}
 
+    {{-- AlpineJS https://laravel-livewire.com/docs/2.x/alpine-js --}}
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+
     {{-- Mix Script & Style --}}
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
@@ -90,6 +93,17 @@
             background: #263238;
             height: 198px;
             width: 100%;
+        }
+    </style>
+    <style>
+        [x-cloak] {
+            display: none;
+        }
+    </style>
+    {{-- for step8-edit-task checkbox readonly --}}
+    <style>
+        input[type="checkbox"][readonly] {
+            pointer-events: none;
         }
     </style>
     @livewireStyles

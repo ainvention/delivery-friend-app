@@ -1,4 +1,4 @@
-<x-jet-dialog-modal wire:ignore wire:model="modalSwitchEdit" id="editModal">
+<x-jet-dialog-modal wire:model="modalSwitchEdit" id="editModal">
     <x-slot name="title">
         Edit Task
     </x-slot>
@@ -20,7 +20,7 @@
                 <div class="flex w-1/3 text-gray-500 text-left">Photo</div>
                 <div class="flex flex-row w-full text-gray-500 ml-0">
                     @isset($photo)
-                    <div class="w-1/2 text-gray-400 text-left">
+                    <div class="w-1/2 text-red-600 text-left">
                         <span>Photo included</span>
                     </div>
                     <button wire:click="modalTogglePhoto" class="w-1/2 m-auto text-green-500 text-right">
@@ -62,7 +62,7 @@
                     </button>
                 </div>
                 <div class="flex flex-row w-full justify-between mb-0">
-                    <h3 class="">Delivery helper's reward</h3>
+                    <h3>Delivery helper's reward</h3>
                     <span class="ml-1 font-extrabold">{{ $reward.' NOK' }}</span>
                 </div>
                 <div class="flex flex-row w-full justify-between mb-0">
@@ -145,7 +145,7 @@
             </div>
             <div class="flex flex-col w-full text-gray-500 ml-0 justify-between">
                 <div class="flex flex-row w-full justify-between mb-0">
-                    <h3 class="">Is it fragle?</h3>
+                    <h3>Is it fragle?</h3>
                     <div class="flex flex-row justify-around">
                         <input wire:model.debounce.1000ms="isFraglile" type="radio" name="isFraglile" value="true"
                             id="isFraglileYes"
@@ -209,7 +209,7 @@
             </div>
             <div class="flex flex-col w-full text-gray-500 ml-0 justify-between">
                 <div class="flex flex-row w-full justify-between mb-0">
-                    <h3 class="">Can someone help with carrying here?</h3>
+                    <h3>Can someone help with carrying here?</h3>
                     <div class="flex flex-row justify-around">
                         <input wire:model.debounce.1000ms="helpPickUp" type="radio" name="helpPickUp" value="true"
                             class="mx-2 w-6 h-8 border-2 border-gray-400 rounded-md hover:bg-gray-400 hover:text-white">
@@ -230,7 +230,7 @@
             </div>
             <div class="flex flex-col w-full text-gray-500 ml-0 justify-between">
                 <div class="flex flex-row w-full justify-between mb-0">
-                    <h3 class="">And can someone help to carry here?</h3>
+                    <h3>And can someone help to carry here?</h3>
                     <div class="flex flex-row justify-around">
                         <input wire:model.debounce.1000ms="helpDelivery" type="radio" name="helpDelivery" value="true"
                             class="mx-2 w-6 h-8 border-2 border-gray-400 rounded-md hover:bg-gray-400 hover:text-white">
@@ -248,7 +248,7 @@
         <x-jet-secondary-button wire:click="modalToggleEdit">
             {{ __('Cancel') }}
         </x-jet-secondary-button>
-        <x-jet-danger-button wire:click="publishTask" class="ml-2" wire:loading.attr="disabled">
+        <x-jet-danger-button wire:click="publishTask" class="ml-2">
             {{ __('Save') }}
         </x-jet-danger-button>
     </x-slot>

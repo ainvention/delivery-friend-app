@@ -13,6 +13,10 @@ class Sending extends Model
     //     'options' => 'array',
     // ];
 
+    protected $casts = [
+        'to_time_manually' => 'datetime:H:i'
+    ];
+
     protected $fillable = ['id', 'user_id', 'user_name'];
 
     protected $dates = [

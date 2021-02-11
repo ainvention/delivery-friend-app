@@ -1,4 +1,4 @@
-<x-jet-dialog-modal wire:ignore wire:model="modalSwitchPhoto" id="photoModal" class="photo-modal">
+<x-jet-dialog-modal x-cloak wire:model="modalSwitchPhoto" id="photoModal" class="photo-modal">
     <x-slot name="title">
         @empty($isSetPhoto)
         Add Photo
@@ -9,7 +9,7 @@
     <x-slot name="content">
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="photo" value="{{ __('Choose a your item photo') }}" />
-            <x-jet-input wire:model="photo" id="photo" value="" type="file" class="mt-1 block w-full" />
+            <x-jet-input wire:model="photo" id="photo" type="file" class="mt-1 block w-full" />
             <x-jet-input-error for="photo" class="mt-2" />
         </div>
     </x-slot>
@@ -21,7 +21,7 @@
             {{ __('Delete') }}
             @endempty
         </x-jet-secondary-button>
-        <x-jet-danger-button class="ml-2" wire:click="savePhoto" wire:loading.attr="disabled">
+        <x-jet-danger-button class="ml-2" wire:click="savePhoto">
             @empty($isSetPhoto)
             {{ __('Save') }}
             @else
