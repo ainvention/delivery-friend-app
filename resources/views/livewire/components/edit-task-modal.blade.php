@@ -1,4 +1,4 @@
-<x-jet-dialog-modal wire:model="modalSwitchEdit" id="editModal">
+<x-jet-dialog-modal wire:model="modalSwitchEdit" id="editModal" wire:key="editTaskModalkey">
     <x-slot name="title">
         Edit Task
     </x-slot>

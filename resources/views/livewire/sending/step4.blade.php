@@ -33,10 +33,12 @@
         <input wire:model="toLng" id="lng" type='hidden'>
     </div>
     <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full my-2">
-        <button wire:click="moveBack" wire:key=step4back
-            class="appearance-none py-2 px-4  bg-red-600 hover:bg-red-800 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg mb-4 sm:mb-0">Back</button>
-        <button wire:click="moveStep5" wire:key=step4next class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500
-                {{ $toAddress === null || strlen($toAddress) < 4 ? 'disabled:opacity-50' : '' }}"
-            {{ $toAddress === null || strlen($toAddress) < 4 ? 'disabled' : ''  }}>Next</button>
+        <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full my-6">
+            <button wire:click="moveBack" wire:key=step4back
+                class="py-2 px-4  bg-red-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Back</button>
+            <button wire:click="moveStep5" wire:key=step4next
+                class="py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg {{ $toAddress === null || strlen($toAddress) < 4 ? 'disabled:opacity-50' : '' }}"
+                {{ $toAddress === null || strlen($toAddress) < 4 ? 'disabled' : ''  }}>Next</button>
+        </div>
     </div>
 </div>

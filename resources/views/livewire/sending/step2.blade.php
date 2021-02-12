@@ -167,11 +167,11 @@
             @error($size) @include('livewire.components.error-messages.required')
             @enderror
             <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full my-6">
-                <button wire:click="moveBack"
-                    class="appearance-none py-2 px-4  bg-red-600 hover:bg-red-800 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg mb-4 sm:mb-0">Back</button>
-                <button wire:click="moveStep3"
-                    class="appearance-none py-2 px-4  bg-blue-600 hover:bg-blue-800 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg  {{ $size === null ? 'disabled:opacity-50' : '' }}"
-                    {{ $size === null ? "disabled" : ""  }}>Next</button>
+                <button wire:click="moveBack" wire:key=step2back
+                    class="py-2 px-4  bg-red-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Back</button>
+                <button wire:click="moveStep3" wire:key=step2next
+                    class="py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg {{ $size === null || strlen($size) < 3 ? 'disabled:opacity-50' : '' }}"
+                    {{ $size === null || strlen($size) < 3 ? "disabled" : ""  }}>Next</button>
             </div>
         </div>
     </div>

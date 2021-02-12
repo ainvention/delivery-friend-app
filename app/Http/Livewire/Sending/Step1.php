@@ -24,7 +24,7 @@ class Step1 extends Component
     public $modalSwitch = false;
     public $modalSwitchPhoto = false;
     public $modalSwitchCoupon = false;
-
+    public $openEdit = false;
     //when method savePhoto() was runned.
     public $isSetPhoto = false;
 
@@ -182,6 +182,10 @@ class Step1 extends Component
      */
     public function moveStep3()
     {
+        $this->validate([
+            'size' => 'required|string'
+        ]);
+
         $this->step = $this->step + 1;
     }
 
@@ -631,6 +635,9 @@ class Step1 extends Component
 
         $this->storeData();
 
+        //close edit drop-down form in step8-edit-task
+        $this->openEdit = !$this->openEdit;
+
         return $this->alert('success', 'Task successfully saved.', [
             'position' =>  'center',
             'timer' =>  3000,
@@ -898,7 +905,7 @@ class Step1 extends Component
         $this->toDate = $sending->to_date;
         $this->toDateManually = $sending->to_date_manually;
         $this->toTime = $sending->to_time;
-        $this->toTimeManually = $sending->to_time_manually;
+        $this->toTimeManually = date('H:i', strtotime($sending->to_time_manually));
         $this->totalDistance = $sending->total_distance;
         $this->recommendedCost = $sending->recommended_cost;
         $this->couponNumber = $sending->coupon_number;
@@ -916,14 +923,17 @@ class Step1 extends Component
         $this->helpPickUp = $sending->help_pick_up;
         $this->helpDelivery = $sending->help_delivery;
 
-        return $this->alert('info', 'Task edit canceled', [
-           'position' =>  'center',
-           'timer' =>  5000,
-           'toast' =>  false,
-           'confirmButtonText' =>  '',
-           'cancelButtonText' =>  'OK',
-           'showCancelButton' =>  true,
-           'showConfirmButton' =>  false,
-        ]);
+        //close edit drop-down form in step8-edit-task
+        $this->openEdit = !$this->openEdit;
+
+        // return $this->alert('info', 'Task edit canceled', [
+        //    'position' =>  'center',
+        //    'timer' =>  5000,
+        //    'toast' =>  false,
+        //    'confirmButtonText' =>  '',
+        //    'cancelButtonText' =>  'OK',
+        //    'showCancelButton' =>  true,
+        //    'showConfirmButton' =>  false,
+        // ]);
     }
 }

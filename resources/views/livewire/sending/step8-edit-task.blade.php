@@ -38,6 +38,7 @@
                 <div class="flex flex-col md:flex-row w-full">
                     <div class="md:w-4/6 m-4 leading-relaxed">
                         <div class="text-2xl font-bold uppercase">{{ $title }}</div>
+                        <div>Description : <span class="font-bold">{{ $note }}</span></div>
                         <div>Pickup from : <span class="font-bold">{{ $fromAddress }}</span></div>
                         <div>Deliver to : <span class="font-bold">{{ $toAddress }}</span></div>
                         <div>Delivery date / time : <span class="font-bold">
@@ -54,7 +55,7 @@
                     </div>
                     <div class="flex flex-col md:w-2/6 m-4 md:self-start md:justify-end md:text-right leading-relaxed">
                         <span class="text-gray-600 text-xl font-bold">Total delivery cost</span>
-                        <span class="font-bold text-4xl ">{{ $totalDeliveryCost}} NOK</span>
+                        <span class="font-bold text-4xl ">{{ $recommendedCost}} NOK</span>
                         <span>Inclusive of VAT if applicable</span>
                         {{-- <x-jet-button
                     class="w-full md:w-7/12 border-2 md:self-end border-gray-200 bg-green-500 text-white hover:text-gray-600 hover:bg-red-400 justify-center">
@@ -64,35 +65,28 @@
                     </div>
                 </div>
                 <div class="flex flex-col w-full md:flex-row mx-2 space-y-2 md:space-y-0">
-                    <div class="flex w-full md:w-1/6 mx-2 space-x-2">
-                        <input wire:model.defer="isFraglile" type="checkbox" id="fraglile" name="fraglile"
-                            class="w-6 h-6 mx-auto" readonly>
-                        <label for="fraglile" class="w-full mx-auto">Fragle</label>
-                    </div>
-                    <div class="flex w-full md:w-1/6 mx-2 space-x-2">
-                        <input wire:model.defer="needAnimalCage" type="checkbox" id="animalCage" name="animalCage"
-                            class="w-6 h-6 mx-auto" readonly>
-                        <label for="animalCage" class="w-full mx-auto">Animal Case</label>
-                    </div>
-                    <div class="flex w-full md:w-1/6 mx-2 space-x-2">
-                        <input wire:model.defer="needCoolingEquipment" type="checkbox" id="coolingEquipment"
-                            name="coolingEquipment" class="w-6 h-6 mx-auto" readonly>
-                        <label for="coolingEquipment" class="w-full mx-auto">Cooling</label>
-                    </div>
-                    <div class="flex w-full md:w-1/6 mx-2 space-x-2">
-                        <input wire:model.defer="needHelpWrapping" type="checkbox" id="helpWrapping" name="helpWrapping"
-                            class="w-6 h-6 mx-auto" readonly>
-                        <label for="helpWrapping" class="w-full mx-auto">Wrapping</label>
-                    </div>
-                    <div class="flex w-full md:w-1/6 mx-2 space-x-2">
-                        <input wire:model.defer="helpPickUp" type="checkbox" id="pickUp" name="pickUp"
-                            class="w-6 h-6 mx-auto" readonly>
-                        <label for="pickUp" class="w-full mx-auto">Pickup help</label>
-                    </div>
-                    <div class="flex w-full md:w-1/6 mx-2 space-x-2">
-                        <input wire:model.defer="helpDelivery" type="checkbox" id="delivery" name="delivery"
-                            class="w-6 h-6 mx-auto" readonly>
-                        <label for="delivery" class="w-full mx-auto">Delivery help</label>
+                    <div class="flex flex-row w-full mx-2 space-x-2">
+                        <span>Extra needs :&nbsp</span>
+                        <span class="font-bold">
+                            @if($isFraglile == 1)
+                            Fragle,&nbsp
+                            @endif
+                            @if($needAnimalCage == 1)
+                            Animal Cage,&nbsp
+                            @endif
+                            @if($needCoolingEquipment == 1)
+                            Cooling Equipment,
+                            @endif
+                            @if($needHelpWrapping == 1)
+                            Wrapping,&nbsp
+                            @endif
+                            @if($helpPickUp == 1)
+                            Help Pick Up,&nbsp
+                            @endif
+                            @if($helpDelivery == 1)
+                            Help Delivery&nbsp
+                            @endif
+                        </span>
                     </div>
                 </div>
             </div>
@@ -100,10 +94,9 @@
     </div>
 
     <div class="flex flex-col mx-4 text-lg space-y-2 text-left md:mx-20 md:text-center ">
-        <div class="flex">Sit back and relax, we've notified our community of bringers about your delivery. Once we
-            find a match
-            we'll let you knoe. In the meantime, add more details below. The more information you share the easier
-            it is to get a match.
+        <div class="flex">Sit back and relax :), we've notified our community of helpers about your delivery. Once we
+            find a match we'll let you know. In the meantime, add more details below. The more information you share the
+            easier it is to get a match.
         </div>
         <div class="flex flex-row w-1/2 mx-auto justify-evenly space-x-2">
             <div class="flex flex-col">
@@ -114,7 +107,7 @@
                 </div>
             </div>
             <div class="flex flex-col">
-                <span class="text-gray-500">Bringers notified</span>
+                <span class="text-gray-500">Helpers notified</span>
                 <div class="flex flex-row self-center space-x-2">
                     <span class="flex-auto text-gray-300 self-center">@icon('users')</span>
                     <span class="font-bold text-xl">138</span>

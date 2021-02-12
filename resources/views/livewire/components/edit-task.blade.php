@@ -1,16 +1,16 @@
-<div x-data="{ openEdit: false }">
-    <div>
+<div x-data="{ openEdit: $wire.entangle('openEdit') }" wire:key="editTaskDropDownPageKey">
+    <div x-show="!openEdit">
         <div class="w-full mx-4 text-xl text-yellow-500 text-left md:mx-auto md:text-center ">
             <span>We recommend that,</span>
             <br />
             <span>If you have more details on this task, you can find the helper more faster.</span>
         </div>
         <button @click="openEdit = true"
-            class="flex mx-auto p-4 border-gray-400 border-2 text-xl font-bold m-2 my-6 hover:bg-gray-400 hover:text-white rounded-md">
+            class="flex mx-auto p-4 bg-yellow-400 border-gray-400 border-2 text-xl font-bold m-2 my-6 hover:bg-black text-white rounded-md">
             <span class="self-center">@icon('plus')&nbsp Add more information</span>
         </button>
     </div>
-    <div x-show="openEdit" @click.away="openEdit = false" class="w-11/12 mx-6 md:w-8/12 md:mx-auto .leading-relaxed">
+    <div x-show="openEdit" class="w-11/12 mx-6 md:w-8/12 md:mx-auto .leading-relaxed">
         <div name="title">
 
         </div>
@@ -185,12 +185,10 @@
                     <div class="flex flex-row w-full justify-between mb-0">
                         <h3>Is it fragle?</h3>
                         <div class="flex flex-row md:w-1/2 lg:justify-evenly">
-                            <input wire:model.defer="isFraglile" type="radio" name="isFraglile" value="1"
-                                id="isFraglileYes"
+                            <input wire:model="isFraglile" type="radio" name="isFraglile" value="1" id="isFraglileYes"
                                 class="mx-2 w-6 h-8 border-2 border-gray-400 rounded-md hover:bg-gray-400 hover:text-white">
                             <label for="isFraglileYes" class="flex self-center">Yes</label>
-                            <input wire:model.defer="isFraglile" type="radio" name="isFraglile" value="0"
-                                id="isFraglileNo"
+                            <input wire:model="isFraglile" type="radio" name="isFraglile" value="0" id="isFraglileNo"
                                 class="mx-2 w-6 h-8 bg-red-400 text-white border-2 border-gray-400 rounded-md hover:bg-red-600 {{ $isFraglile === true ? 'bg-red-600' : 'bg-gray-600' }}"
                                 checked>
                             <label for="isFraglileNo" class="flex self-center">No</label>
@@ -211,12 +209,10 @@
                     <div class="flex flex-row w-full justify-between mb-0">
                         <h3>Does it need cooling equipment?</h3>
                         <div class="flex flex-row md:w-1/2 lg:justify-evenly">
-                            <input wire:model.defer="needCoolingEquipment" type="radio" name="needCoolingEquipment"
-                                value="1"
+                            <input wire:model="needCoolingEquipment" type="radio" name="needCoolingEquipment" value="1"
                                 class="mx-2 w-6 h-8 border-2 border-gray-400 rounded-md hover:bg-gray-400 hover:text-white">
                             <label for="needCoolingEquipmentYes" class="flex self-center">Yes</label>
-                            <input wire:model.defer="needCoolingEquipment" type="radio" name="needCoolingEquipment"
-                                value="0"
+                            <input wire:model="needCoolingEquipment" type="radio" name="needCoolingEquipment" value="0"
                                 class="mx-2 w-6 h-8 bg-red-400 text-white border-2 border-gray-400 rounded-md hover:bg-red-600 {{ $needCoolingEquipment === true ? 'bg-red-600' : 'bg-gray-600' }}"
                                 checked>
                             <label for="needCoolingEquipmentNo" class="flex self-center">No</label>
@@ -225,10 +221,10 @@
                     <div class="flex flex-row w-full justify-between mb-0">
                         <h3>Need help with wrapping?</h3>
                         <div class="flex flex-row md:w-1/2 lg:justify-evenly">
-                            <input wire:model.defer="needHelpWrapping" type="radio" name="needHelpWrapping" value="1"
+                            <input wire:model="needHelpWrapping" type="radio" name="needHelpWrapping" value="1"
                                 class="mx-2 w-6 h-8 border-2 border-gray-400 rounded-md hover:bg-gray-400 hover:text-white">
                             <label for="needHelpWrappingYes" class="flex self-center">Yes</label>
-                            <input wire:model.defer="needHelpWrapping" type="radio" name="needHelpWrapping" value="0"
+                            <input wire:model="needHelpWrapping" type="radio" name="needHelpWrapping" value="0"
                                 class="mx-2 w-6 h-8 bg-red-400 text-white border-2 border-gray-400 rounded-md hover:bg-red-600 {{ $needHelpWrapping === true ? 'bg-red-600' : 'bg-gray-600' }}"
                                 checked>
                             <label for="needHelpWrappingNo" class="flex self-center">No</label>
@@ -247,10 +243,10 @@
                     <div class="flex flex-row w-full justify-between mb-0">
                         <h3>Can someone help with carrying here?</h3>
                         <div class="flex flex-row md:w-1/2 justify-evenly">
-                            <input wire:model.defer="helpPickUp" type="radio" name="helpPickUp" value="1"
+                            <input wire:model="helpPickUp" type="radio" name="helpPickUp" value="1"
                                 class="mx-2 w-6 h-8 border-2 border-gray-400 rounded-md hover:bg-gray-400 hover:text-white">
                             <label for="helpPickUpYes" class="flex self-center">Yes</label>
-                            <input wire:model.defer="helpPickUp" type="radio" name="helpPickUp" value="0"
+                            <input wire:model="helpPickUp" type="radio" name="helpPickUp" value="0"
                                 class="mx-2 w-6 h-8 bg-red-400 text-white border-2 border-gray-400" checked>
                             <label for="helpPickUpNo" class="flex self-center">No</label>
                         </div>
@@ -268,10 +264,10 @@
                     <div class="flex flex-row w-full justify-between mb-0">
                         <h3>And can someone help to carry here?</h3>
                         <div class="flex flex-row md:w-1/2 justify-evenly">
-                            <input wire:model.defer="helpDelivery" type="radio" name="helpDelivery" value="1"
+                            <input wire:model="helpDelivery" type="radio" name="helpDelivery" value="1"
                                 class="mx-2 w-6 h-8 border-2 border-gray-400 rounded-md hover:bg-gray-400 hover:text-white">
                             <label for="helpDeliveryYes" class="flex self-center">Yes</label>
-                            <input wire:model.defer="helpDelivery" type="radio" name="helpDelivery" value="0"
+                            <input wire:model="helpDelivery" type="radio" name="helpDelivery" value="0"
                                 class="mx-2 w-6 h-8 bg-red-400 text-white border-2 border-gray-400" checked>
                             <label for="helpDeliveryNo" class="flex self-center">No</label>
                         </div>

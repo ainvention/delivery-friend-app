@@ -1,4 +1,4 @@
-<div>
+<div wire:key="searchStep1Pagekey">
     <div
         class="flex flex-col justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
         @include('livewire.components.sessionMessage')

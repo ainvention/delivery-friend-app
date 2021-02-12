@@ -101,11 +101,11 @@
         }
     </style>
     {{-- for step8-edit-task checkbox readonly --}}
-    <style>
+    {{-- <style>
         input[type="checkbox"][readonly] {
             pointer-events: none;
         }
-    </style>
+    </style> --}}
     @livewireStyles
 </head>
 

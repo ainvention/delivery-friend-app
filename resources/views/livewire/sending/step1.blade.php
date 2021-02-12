@@ -36,9 +36,10 @@
                     </div>
                     @endempty
                     <div class="w-full md:w-full">
-                        <label class="block uppercase tracking-wide text-xs font-bold mb-2" for='title'>Title</label>
+                        <label class="block uppercase tracking-wide text-xs font-bold mb-2"
+                            for='title'>Title(required)</label>
                         <input wire:model.debounce.300ms="title" name="sending item title"
-                            class="appearance-none block w-full bg-white font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                            class="block w-full bg-white font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:ring-2"
                             type='text' placeholder="Title(e.g. Office chair)">
                         <x-jet-input-error for="title" class="mt-2" />
                     </div>
@@ -46,7 +47,7 @@
                         <label class="block uppercase tracking-wide text-xs font-bold mb-2" for='note'>Additional
                             note</label>
                         <input wire:model.debounce.1000ms="note" name="note" id="note"
-                            class="appearance-none block w-full bg-white font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                            class="block w-full bg-white font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:ring-2"
                             type='text' placeholder="Additional notes for delivery(Oprional)">
                         <x-jet-input-error for="note" class="mt-2" />
                     </div>
@@ -54,13 +55,13 @@
                         <label class="block uppercase tracking-wide text-xs font-bold mb-2" for='note'>Item
                             weight (Kg)</label>
                         <input wire:model.debounce.1000ms="weight" name="weight" id="weight"
-                            class="appearance-none block w-full bg-white font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                            class="block w-full bg-white font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:ring-2"
                             type='text' placeholder="Item weight(Oprional)">
                         <x-jet-input-error for="weight" class="mt-2" />
                     </div>
                     <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full">
-                        <button wire:click="moveStep2"
-                            class="appearance-none py-2 px-4  bg-blue-600 hover:bg-blue-800 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg {{ $title === null || strlen($title) < 4 ? 'disabled:opacity-50' : '' }}"
+                        <button wire:click="moveStep2" wire:key=step1next
+                            class="py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg {{ $title === null || strlen($title) < 4 ? 'disabled:opacity-50' : '' }}"
                             {{ $title === null || strlen($title) < 4 ? "disabled" : ""  }}>Next</button>
                     </div>
                 </div>

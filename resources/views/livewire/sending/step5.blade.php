@@ -56,9 +56,9 @@
         </div>
     </div>
     <div class="flex flex-col sm:flex-row sm:space-x-4 px-3 mx-2 mb-6 justify-between">
-        <button wire:click="moveBack"
-            class="appearance-none py-2 px-4 bg-red-600 hover:bg-red-800 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg mb-4 sm:mb-0">Back</button>
-        <button wire:click="moveStep6" class="appearance-none py-2 px-4 bg-blue-600 hover:bg-blue-800 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg
+        <button wire:click="moveBack" wire:key=step5back
+            class="py-2 px-4  bg-red-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Back</button>
+        <button wire:click="moveStep6" wire:key=step5next class="py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg
             {{ isset($toDate) || isset($toDateManually) ? '' : ' disabled:opacity-50' }}
             {{ isset($toTime) || isset($toTimeManually) ? '' : ' disabled:opacity-50' }}"
             {{ isset($toDate) || isset($toDateManually) ? "" : "disabled" }}

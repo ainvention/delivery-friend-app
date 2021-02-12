@@ -22,7 +22,7 @@
         </div>
         <div class="flex flex-col items-center">
             <x-jet-label for="toTimeManually" value="{{ __('Select Time') }}" class="text-lg" />
-            <x-jet-input wire:model="toTimeManually" wire:click="$set('toTime', null)" id="fickerTime"
+            <x-jet-input wire:model="toTimeManually" wire:click="$set('toTime', null)" id="fickerTime" type="time"
                 class="mt-2 w-full text-center border-2 border-gray-500" name="toTimeManually" placeholder="Click" />
             <x-jet-input-error for="toTimeManually" class="mt-2" />
         </div>

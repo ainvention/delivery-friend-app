@@ -29,7 +29,7 @@
                 <x-jet-input-error for="recommendedCost" class="ml-4" />
             </div>
             <x-jet-button wire:click="getRecommendedCostManually"
-                class="flex flex-shrink m-2 md:text-xl text-cool-gray-50 bg-green-600 font-extrabold justify-evenly">
+                class="flex flex-shrink m-2 md:text-xl text-white bg-green-600 hover:bg-black font-extrabold justify-evenly">
                 Calculate
             </x-jet-button>
         </div>
@@ -81,8 +81,8 @@
             <span>@icon('chevron-left')</span>
             Back
         </button>
-        <button wire:click="moveStep7"
-            class="sm:w-1/2 appearance-none bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:border-gray-500">Request
+        <button wire:click="moveStep7" wire:key=step6next
+            class="sm:w-1/2 py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center font-semibold shadow-md rounded-lg">Request
             delivery</button>
     </div>
     <script>
