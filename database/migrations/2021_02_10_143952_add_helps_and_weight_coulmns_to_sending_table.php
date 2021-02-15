@@ -14,7 +14,7 @@ class AddHelpsAndWeightCoulmnsToSendingTable extends Migration
     public function up()
     {
         Schema::table('sendings', function (Blueprint $table) {
-            $table->tinyInteger('weight')->nullable();
+            $table->tinyInteger('weight')->default(0)->nullable();
             $table->boolean('help_pick_up')->default(false);
             $table->boolean('help_delivery')->default(false);
         });

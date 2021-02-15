@@ -113,6 +113,7 @@
                 </div>
             </div>
         </div>
+        @include('livewire.components.testing.refreshCurrentPage')
     </div>
 
     {{-- divider --}}
