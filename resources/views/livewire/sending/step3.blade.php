@@ -1,5 +1,5 @@
 <div
-    class="flex flex-col justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
+    class="flex flex-col justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest ">
     @include('livewire.components.sessionMessage')
     <div
         class="text-center flex text-4xl justify-center px-4 py-1 dark:text-white rounded-full leading-relaxed font-semibold tracking-wide text-gray-500">
@@ -19,6 +19,7 @@
     @include('livewire.components.error-messages.required')
     @enderror
 
+    {{-- <div id="searchInput" class="mb-4 text-blue-600 text-lg"> --}}
     <div id="searchInput" class="mb-2 text-blue-600 text-lg">
         <label for="fromAddress">Sender location</label>
         <input wire:model="fromAddress" name="fromAddress" id="address"
@@ -32,7 +33,7 @@
         <input wire:model="fromLat" id="lat" type='hidden'>
         <input wire:model="fromLng" id="lng" type='hidden'>
     </div>
-    <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full my-6">
+    <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full">
         <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full my-6">
             <button wire:click="moveBack" wire:key=step3back
                 class="py-2 px-4  bg-red-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Back</button>
@@ -41,4 +42,3 @@
                 {{ $fromAddress === null|| strlen($fromAddress) < 4  ? 'disabled' : ''  }}>Next</button>
         </div>
     </div>
-</div>

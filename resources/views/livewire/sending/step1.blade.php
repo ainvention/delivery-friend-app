@@ -14,7 +14,7 @@
         </div>
         <div class="flex justify-center my-2 mx-4 md:mx-0">
             <div class="w-full max-w-xl">{{-- form --}}
-                <div class="flex flex-col mx-3 space-y-6">
+                <div class="flex flex-col mx-3 space-y-6 mb-10">
                     @empty($isSetPhoto)
                     <div wire:click="modalTogglePhoto"
                         class="text-center w-full py-20 md:w-full px-3 mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 text-gray-800">
@@ -67,20 +67,51 @@
                 </div>
             </div>
         </div>
-        <script>
-            // var photoModal = document.getElementById('photoModal');
-            // photoModal.addEventListener('click', function(e) {
-            //     if(e.target.className === 'test1'){
-            //         alert('inside clicked, className is : ' +e.target.className);
-            //     } else {
-            //         alert('outside clicked');
-            //     }
-            // })
-        </script>
         {{-- Fix an error which below modal window is executed when reading this page because the $modalSwitch variable value is not assigned. --}}
-        @isset($modalSwitch)
-        @include('livewire.components.photo-upload-modal')
-        @endisset
+        <x-jet-dialog-modal wire:model="modalSwitchPhoto" id="photoModal" class="photo-modal">
+            <x-slot name="title">
+                @empty($isSetPhoto)
+                Add Photo
+                @else
+                Change Photo
+                @endempty
+            </x-slot>
+            <x-slot name="content">
+                <div class="col-span-6 sm:col-span-4">
+                    <x-jet-label for="photo" value="{{ __('Choose a your item photo') }}" />
+                    <x-jet-input wire:model="photo" id="photo" type="file" class="mt-1 block w-full" />
+                    <x-jet-input-error for="photo" class="mt-2" />
+                </div>
+            </x-slot>
+            <x-slot name="footer">
+                <x-jet-secondary-button wire:click="photoDelete">
+                    @empty($isSetPhoto)
+                    {{ __('Cancel') }}
+                    @else
+                    {{ __('Delete') }}
+                    @endempty
+                </x-jet-secondary-button>
+                <x-jet-danger-button class="ml-2" wire:click="savePhoto">
+                    @empty($isSetPhoto)
+                    {{ __('Save') }}
+                    @else
+                    {{ __('Change') }}
+                    @endempty
+                </x-jet-danger-button>
+                <div>
+                    {{-- invalid coupon message --}}
+                    @if (session()->has('error'))
+                    <div class="text-red-500">
+                        {{ session('error') }}
+                    </div>
+                    @elseif (session()->has('message'))
+                    <div class="text-blue-500">
+                        {{ session('message') }}
+                    </div>
+                    @endif
+                </div>
+            </x-slot>
+        </x-jet-dialog-modal>
     </div>
 
     @elseif($step === 2)

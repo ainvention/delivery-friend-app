@@ -2,6 +2,9 @@
 
 use App\Http\Livewire\Sending;
 use App\Http\Livewire\Search;
+use App\Http\Livewire\Ad\Companies;
+use App\Http\Livewire\Ad\Individuals;
+use App\Http\Livewire\ShowPosts;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +34,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/search', function () {
     return view('livewire.search.main');
 })->name('search');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/search/detail/{id}', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/search/detail', function () {
     return view('livewire.search.detail');
 })->name('search-detail');
+
+Route::get('/companies', function () {
+    return view('livewire.ad.companies');
+})->name('companies');
+
+Route::get('/individuals', function () {
+    return view('livewire.ad.individuals');
+})->name('individuals');

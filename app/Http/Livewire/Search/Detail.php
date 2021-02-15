@@ -11,16 +11,14 @@ class Detail extends Component
 
     public $task;
 
-
-    protected $listeners =[
-        'detail' => 'render'
-    ];
-
+    // protected $listeners =[
+    //     'detail' => 'render'
+    // ];
 
 
-    public function mount()
+
+    public function mount($id = 1)
     {
-        $id = $task->id;
         $this->task = Sending::find($id);
     }
 

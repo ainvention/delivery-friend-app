@@ -110,7 +110,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+    <div class="flex flex-col min-h-screen">
         @livewire('navigation-dropdown')
 
         <!-- Page Heading -->
@@ -121,10 +121,10 @@
         </header>
 
         <!-- Page Content -->
-        <main>
+        <main class="mx-auto mb-auto">
             {{ $slot }}
         </main>
-
+        @include('livewire.components.footer')
     </div>
 
     @stack('modals')
