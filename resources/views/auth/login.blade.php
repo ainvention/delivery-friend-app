@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <x-jet-authentication-card>
+    <x-jet-authentication-card class="mb-auto">
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
         </x-slot>

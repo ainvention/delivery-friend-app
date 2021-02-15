@@ -1,5 +1,5 @@
 <div
-    class="flex flex-col justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
+    class="flex flex-col justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest ">
     @include('livewire.components.sessionMessage')
     <div
         class="text-center flex text-4xl justify-center px-4 py-1 dark:text-white rounded-full leading-relaxed font-semibold tracking-wide text-gray-500">
@@ -32,7 +32,7 @@
         <input wire:model="toLat" id="lat" type='hidden'>
         <input wire:model="toLng" id="lng" type='hidden'>
     </div>
-    <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full my-2">
+    <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full">
         <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full my-6">
             <button wire:click="moveBack" wire:key=step4back
                 class="py-2 px-4  bg-red-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Back</button>

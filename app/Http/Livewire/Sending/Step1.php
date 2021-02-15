@@ -106,9 +106,6 @@ class Step1 extends Component
     ];
 
 
-
-
-
     /**
      * render
      *
@@ -117,8 +114,7 @@ class Step1 extends Component
     public function render()
     {
         return view('livewire.sending.step1', [
-            'step' => $this->step,
-            'modalSwitch' => $this->modalSwitch,
+            'step' => $this->step
             ]);
     }
 
@@ -183,8 +179,8 @@ class Step1 extends Component
     public function moveStep3()
     {
         $this->validate([
-            'size' => 'required|string'
-        ]);
+                'size' => 'required|string'
+            ]);
 
         $this->step = $this->step + 1;
     }
@@ -636,7 +632,11 @@ class Step1 extends Component
         $this->storeData();
 
         //close edit drop-down form in step8-edit-task
-        $this->openEdit = !$this->openEdit;
+        // prevent in other steps
+        if ($this->step === 8) {
+            $this->openEdit = !$this->openEdit;
+        }
+
 
         return $this->alert('success', 'Task successfully saved.', [
             'position' =>  'center',

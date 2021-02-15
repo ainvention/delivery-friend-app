@@ -1,4 +1,4 @@
-<div>
+<div class="mx-auto">
     @include('livewire.components.sessionMessage')
     @include('livewire.sending.delete-task-confirmation')
     @include('livewire.components.photo-upload-modal')
@@ -92,8 +92,7 @@
             </div>
         </div>
     </div>
-
-    <div class="flex flex-col mx-4 text-lg space-y-2 text-left md:mx-20 md:text-center ">
+    <div class="flex flex-col mx-4 mb-6 text-lg space-y-2 text-left md:mx-20 md:text-center ">
         <div class="flex">Sit back and relax :), we've notified our community of helpers about your delivery. Once we
             find a match we'll let you know. In the meantime, add more details below. The more information you share the
             easier it is to get a match.
@@ -119,13 +118,6 @@
     {{-- divider --}}
     <div class="m-6 border-b-2 border-gray-200"></div>
 
-    {{-- edit form start --}}
+    {{-- edit form--}}
     @include('livewire.components.edit-task')
-    {{-- edit form end --}}
-    <x-jet-secondary-button wire:click="$emit('moveBack')" class=" mx-1">
-        {{ __('move back') }}
-    </x-jet-secondary-button>
-    <x-jet-secondary-button wire:click='$refresh' class="mx-1">
-        {{ __('Refresh This page') }}
-    </x-jet-secondary-button>
 </div>

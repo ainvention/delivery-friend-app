@@ -1,12 +1,12 @@
-<div x-data="{ openEdit: $wire.entangle('openEdit') }" wire:key="editTaskDropDownPageKey">
-    <div x-show="!openEdit">
+<div x-data="{ openEdit: $wire.entangle('openEdit') }" wire:key="editTaskDropDownPageKey" class="flex flex-col mb-10">
+    <div x-show="!openEdit" class="my-10">
         <div class="w-full mx-4 text-xl text-yellow-500 text-left md:mx-auto md:text-center ">
             <span>We recommend that,</span>
             <br />
             <span>If you have more details on this task, you can find the helper more faster.</span>
         </div>
         <button @click="openEdit = true"
-            class="flex mx-auto p-4 bg-yellow-400 border-gray-400 border-2 text-xl font-bold m-2 my-6 hover:bg-black text-white rounded-md">
+            class="flex mx-auto p-4 bg-yellow-400 border-gray-400 border-2 text-xl font-bold m-2 my-6 hover:bg-black text-white rounded-md mb-10">
             <span class="self-center">@icon('plus')&nbsp Add more information</span>
         </button>
     </div>
@@ -60,16 +60,20 @@
 
 
             <div class="flex flex-col md:flex-row w-full justify-evenly py-1 border-gray-200 border-b-2">
-                <div class="flex w-1/3 text-gray-500 text-left">
+                <div class="flex flex-col w-1/3 text-gray-500 text-left">
                     <span class="flex w-1/2">Total Cost</span>
+                    <span class="text-xs text-green-500">1. Enter your estimated amount.<br />
+                        2. Then 'click' Calculate
+                        button</span>
                 </div>
                 <div class="flex flex-col w-full text-gray-500 ml-0">
-                    <div class="flex w-full">
+                    <div class="flex w-full space-x-2 justify-between">
                         <input wire:model.defer="recommendedCost" id="recommendedCost"
-                            class="w-1/2 text-2xl font-bold outline-none border-transparent" type="number"
-                            name="recommendedCost" required />
+                            class="w-2/5 text-2xl font-bold outline-none border-transparent border-2 border-green-500 rounded-md"
+                            type="number" name="recommendedCost" required />
+                        <span class="text-left text-xl font-bold self-center">NOK</span>
                         <button wire:click="getRecommendedCostManually"
-                            class="w-1/2 md:text-xl text-cool-gray-50 bg-green-600 font-extrabold justify-evenly rounded-md">
+                            class="w-2/5 md:text-xl text-cool-gray-50 bg-green-600 font-extrabold justify-evenly rounded-md">
                             Calculate
                         </button>
                     </div>
@@ -134,7 +138,9 @@
             <div class="flex flex-col md:flex-row w-full justify-evenly py-1 border-gray-200 border-b-2">
                 <div class="flex w-1/3 text-gray-500 text-left">Weight(Kg)</div>
                 <div class="flex flex-row w-full text-gray-500 ml-0">
-                    <input wire:model="weight" class="w-full text-gray-400 text-left" placeholder="type item weights" />
+                    <input wire:model="weight"
+                        class="w-full text-gray-400 text-left border-2 border-green-500 rounded-md"
+                        placeholder="type item weights" />
                 </div>
             </div>
 
@@ -150,7 +156,7 @@
                         @endisset
                         <x-jet-dropdown class="w-full">
                             <x-slot name="trigger">
-                                <span class="text-green-500">{{ __('Edit Date') }}</span>
+                                <button class="p-1 text-white bg-green-600 rounded-md">{{ __('Edit Date') }}</button>
                             </x-slot>
                             <x-slot name="content">
                                 @include('livewire.components.insert-date')
@@ -166,7 +172,7 @@
                         @endisset
                         <x-jet-dropdown class="w-full">
                             <x-slot name="trigger">
-                                <span class="text-green-500">{{ __('Edit Time') }}</span>
+                                <button class="p-1 text-white bg-green-600 rounded-md">{{ __('Edit Time') }}</button>
                             </x-slot>
                             <x-slot name="content">
                                 @include('livewire.components.insert-time')

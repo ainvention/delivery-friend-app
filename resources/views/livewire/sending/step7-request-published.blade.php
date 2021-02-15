@@ -1,4 +1,4 @@
-<div class="w-full h-auto my-4 text-left">
+<div class="flex flex-col w-full my-4 text-left mb-auto">
     @include('livewire.sending.delete-task-confirmation')
     <div class="mt-10 text-center xl:mx-60">
         <h1 class="text-4xl font-extrabold">Your task has been posted!</h1>
@@ -6,9 +6,9 @@
             We have already sent your task out to relevant bringers, and those interested will get back to you with
             questions or a date they can help you out.</h2>
     </div>
-    <div class="flex flex-col mx-10 text-left border-gray-200 border-2 xl:mx-60">
+    <div class="flex flex-col mx-10 text-left border-gray-200 border-2 xl:mx-40 mb-auto">
         <div class="flex flex-col lg:flex-row">
-            <div class="lg:w-full h-auto p-5">
+            <div class="lg:w-full p-5">
                 <h1 class="text-3xl uppercase text-gray-500 font-semibold">{{ $title }}</h1>
                 <h3 class="mt-4 text-xl text-gray-400"> <span class="uppercase font-bold">from</span> :
                     {{ $fromAddress }}</h3>
@@ -145,7 +145,7 @@
         </div>
     </div>
 
-    <div class="flex flex-col mx-10 sm:mx-30">
+    <div class="flex flex-col mx-10 sm:mx-30 mb-auto">
         <h1 class="text-2xl my-10">
             How do I pay for the delivery?
         </h1>
@@ -188,10 +188,4 @@
             </div>
         </div>
     </div>
-    <x-jet-secondary-button wire:click="$emit('moveBack')" class=" mx-1">
-        {{ __('move back') }}
-    </x-jet-secondary-button>
-    <x-jet-secondary-button wire:click='$refresh' class="mx-1">
-        {{ __('Refresh This page') }}
-    </x-jet-secondary-button>
 </div>

@@ -102,7 +102,18 @@
             function getData() {
             console.log('logging');
             const routeData = axios.get(`${url}${element2},${element1};${element4},${element3}?access_token=${mapBoxApiKey}`);
-            return routeData;
+
+            // if(!routeData.status !== 200) {
+            //     document.getElementById('recommendedCost').textContent = 'Loading';
+            // }
+
+            return routeData.then(response => {
+                if (response.status == 200) {
+                    return response;
+                } else {
+                    document.getElementById('recommendedCost').textContent = 'Loading';
+                }
+            });
         }
 
 
