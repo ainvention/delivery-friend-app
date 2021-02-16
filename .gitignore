@@ -13,6 +13,3 @@ npm-debug.log
 yarn-error.log
 composer.lock
 package-lock.json
-.firebaserc
-firebase.json
-database.rules.json
