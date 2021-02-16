@@ -35,16 +35,16 @@ class CreateSendingsTable extends Migration
             $table->date('to_date_manually')->nullable();
             $table->char('to_time', 15)->nullable();
             $table->time('to_time_manually')->nullable();
-            $table->smallInteger('total_distance'); // to 65535
-            $table->float('recommended_cost', 8, 2);
+            $table->smallInteger('total_distance')->default(0); // to 65535
+            $table->float('recommended_cost', 8, 2)->default(0);
             $table->char('coupon_number', 10)->nullable();
             $table->tinyInteger('coupon_price')->nullable();
             $table->tinyInteger('coupon_rate')->nullable();
             $table->float('discounted_cost', 8, 2)->nullable();
-            $table->float('reward', 8, 2);
-            $table->float('service_charge', 8, 2);
-            $table->tinyInteger('insurance_cost'); //to 255
-            $table->float('total_delivery_cost', 8, 2);
+            $table->float('reward', 8, 2)->default(0);
+            $table->float('service_charge', 8, 2)->default(0);
+            $table->tinyInteger('insurance_cost')->default(0); //to 255
+            $table->float('total_delivery_cost', 8, 2)->default(0);
             $table->boolean('is_fraglile')->default(false);
             $table->boolean('need_animal_cage')->default(false);
             $table->boolean('need_cooling_equipment')->default(false);

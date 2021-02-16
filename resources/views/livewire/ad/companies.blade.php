@@ -6,8 +6,14 @@
             har ingen skjulte kostnader og
             du får se alle priser og ledetider før du bestiller. </span>
 
+<<<<<<< HEAD
         <button class="w-full lg:w-1/4 sm:my-10 text-xl bg-green-300 cursor-pointer hover:text-white font-bold border-2 border-gray-500 rounded-md
         p-1 px-0 uppercase">Kom i Gang</button>
+=======
+
+        <button class="w-full lg:w-1/4 sm:my-10 text-xl bg-green-300 cursor-pointer hover:text-white font-bold border-2 border-gray-500 rounded-md
+        p-1 px-0 uppercase"><a href="/login">Kom i Gang</a></button>
+>>>>>>> dev
 
         <span class="text-5xl font-bold">Hvorfor digger bedrifter vi?</span>
         <span class="text-3xl text-gray-500">Vi tilbyr bedrifter en mer bærekraftig og kostnadseffektiv
@@ -96,6 +102,10 @@
             bestilling
             av frakt. Ta kontakt med oss så hjelper vi deg i gang.</span>
         <button class="w-full lg:w-1/4 sm:my-10 text-xl bg-green-300 cursor-pointer hover:text-white font-bold border-2 border-gray-500 rounded-md
+<<<<<<< HEAD
         p-1 px-0 uppercase" href="mailto:alexinvention@gmail.com">kontakt oss</button>
+=======
+        p-1 px-0 uppercase" href="mailto:alexinvention@gmail.com"><a href="/companies">kontakt oss</a></button>
+>>>>>>> dev
     </div>
 </x-guest-layout>

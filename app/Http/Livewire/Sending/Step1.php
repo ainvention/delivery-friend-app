@@ -159,8 +159,8 @@ class Step1 extends Component
     {
         $this->validate([
             'title' => 'required|min:4|max:80',
-            'note' => 'max:80',
-            'weight' => 'nullable|numeric',
+            'note' => 'nullable|string|max:80',
+            'weight' => 'nullable|numeric|min:0|max:65000',
         ]);
 
         $this->step = $this->step + 1;
@@ -581,7 +581,7 @@ class Step1 extends Component
         'photo' => 'nullable|string',
         'note' => 'nullable|max:80',
         'size' => 'string',
-        'weight' => 'nullable|numeric|max:65000',
+        'weight' => 'nullable|numeric|min:0|max:65000',
         'fromAddress' => 'required|string',
         'simpleFromAddress' => 'required|string',
         'fromNote' => 'nullable|string',
@@ -596,15 +596,15 @@ class Step1 extends Component
         'toDateManually' => 'nullable|date',
         'toTime' => 'nullable|string',
         'toTimeManually' => 'nullable|date_format:H:i',
-        'totalDistance' => 'numeric',
+        'totalDistance' => 'numeric|min:0',
         'recommendedCost' => 'required|numeric|min:180|max:99999', // connected with global $this->recommendedCost
         'couponNumber' => 'nullable|string',
         'couponPrice' => 'nullable|numeric',
         'couponRate' => 'nullable|numeric',
-        'reward' => 'required|numeric',
-        'serviceCharge' => 'required|numeric',
-        'insuranceCost' => 'required|numeric',
-        'totalDeliveryCost' => 'nullable|numeric', // not exist at this point
+        'reward' => 'required|numeric|min:0',
+        'serviceCharge' => 'required|numeric|min:0',
+        'insuranceCost' => 'required|numeric|min:0',
+        'totalDeliveryCost' => 'nullable|numeric|min:0', // not exist at this point
         'isFraglile' => 'boolean',
         'needAnimalCage' => 'boolean',
         'needCoolingEquipment' => 'boolean',
@@ -926,6 +926,7 @@ class Step1 extends Component
         //close edit drop-down form in step8-edit-task
         $this->openEdit = !$this->openEdit;
 
+        return session()->flush();
         // return $this->alert('info', 'Task edit canceled', [
         //    'position' =>  'center',
         //    'timer' =>  5000,

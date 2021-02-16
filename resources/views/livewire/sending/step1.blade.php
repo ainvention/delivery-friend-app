@@ -56,7 +56,7 @@
                             weight (Kg)</label>
                         <input wire:model.debounce.1000ms="weight" name="weight" id="weight"
                             class="block w-full bg-white font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:ring-2"
-                            type='text' placeholder="Item weight(Oprional)">
+                            type='number' placeholder="Item weight(Oprional)">
                         <x-jet-input-error for="weight" class="mt-2" />
                     </div>
                     <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full">
