@@ -50,34 +50,16 @@ class UserSeeder extends Seeder
         //     ])->create();
         // }
                 //for Digital Ocean PGSQL
-        $data = [
-            [ 'name' => 'alex sung',
-              'email' => 'alex@alex.no',
-              'email_verified_at' => now(),
-              'password' => bcrypt('alex1234'),
-              'remember_token' => Str::random(10),
-              'current_team_id' => 1,
-            ],
-            [
-              'name' => 'boa choi',
-              'email' => 'boa@boa.no',
-              'email_verified_at' => now(),
-              'password' => bcrypt('alex1234'),
-              'remember_token' => Str::random(10),
-              'current_team_id' => 2,
-            ],
-            [
-              'name' => 'sara sung',
-              'email' => 'sara@sara.no',
-              'email_verified_at' => now(),
-              'password' => bcrypt('alex1234'),
-              'remember_token' => Str::random(10),
-              'current_team_id' => 3,
-            ]
-            ];
 
         if (User::count() == 0) {
-            User::create($data);
+            User::create([
+            'name' => 'alex sung',
+            'email' => 'alex@alex.no',
+            'email_verified_at' => now(),
+            'password' => bcrypt('alex1234'),
+            'remember_token' => Str::random(10),
+            'current_team_id' => 1,
+            ]);
         } else {
             User::factory()->times(50)->state([
                 'created_at' => fn () => now()->subMinutes(rand(0, 59)),
