@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        URL::forceScheme('https');
+
         Blade::directive('icon', function ($expression) {
             return "<i class=\"fas fa-fw fa-{{ $expression }}\"></i>";
         });
