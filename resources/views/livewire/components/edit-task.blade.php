@@ -139,13 +139,8 @@
             <div class="flex flex-col md:flex-row w-full justify-evenly py-1 border-gray-200 border-b-2">
                 <div class="flex w-1/3 text-gray-500 text-left">Weight(Kg)</div>
                 <div class="flex flex-row w-full text-gray-500 ml-0">
-<<<<<<< HEAD
-                    <input wire:model="weight"
-                        class="w-full text-gray-400 text-left border-2 border-green-500 rounded-md"
-=======
                     <input wire:model="weight" type="number"
                         class="w-full text-gray-400 text-left border-2 {{ empty($weight) ? 'bg-green-100 border-2 border-green-500 rounded-md' : '' }}"
->>>>>>> dev
                         placeholder="type item weights" />
                 </div>
             </div>
