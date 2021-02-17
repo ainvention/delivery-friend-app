@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
                 // check if table users is empty
         if (DB::table('users')->get()->count() == 0) {
               DB::table('users')->insert([
-                [ 'id' => 1,
+                [ 'pkey' => 1,
                   'name' => 'alex sung',
                   'email' => 'alex@alex.no',
                   'email_verified_at' => now(),
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
                   'current_team_id' => 1,
                 ],
                 [
-                  'id' => 2,
+                  'pkey' => 2,
                   'name' => 'boa choi',
                   'email' => 'boa@boa.no',
                   'email_verified_at' => now(),
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
                   'current_team_id' => 2,
                 ],
                 [
-                  'id' => 3,
+                  'pkey' => 3,
                   'name' => 'sara sung',
                   'email' => 'sara@sara.no',
                   'email_verified_at' => now(),
