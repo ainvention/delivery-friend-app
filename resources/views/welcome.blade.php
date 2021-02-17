@@ -15,8 +15,7 @@
             <a href="/companies">
                 <button
                     class="w-full text-2xl xl:text-4xl font-bold leading-snug bg-green-400 rounded-2xl px-2 hover:bg-black hover:text-white">Frakt
-                    for
-                    bedrifter<span class="mx-2 hover:bg-black hover:text-white">@icon('chevron-right
+                    for bedrifter<span class="mx-2 hover:bg-black hover:text-white">@icon('chevron-right
                         ')</span>
                 </button>
             </a>
@@ -35,8 +34,7 @@
                 </button>
             </a>
             <span class="text-xl md:text-3xl font-medium">Du kan være sikker på at du alltid vil få tak i en som kan
-                levere varene
-                dine til det tidspunktet som
+                levere varene dine til det tidspunktet som
                 passer best for deg.</span>
         </div>
     </div>
