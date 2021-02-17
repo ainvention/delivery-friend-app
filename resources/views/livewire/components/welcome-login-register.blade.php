@@ -2,11 +2,11 @@
     @if (Route::has('login'))
     <div class="flex items-center">
         @auth
-        <a href="{{ url('/sending') }}"
+        <a href="{{ secure_url'/sending') }}"
             class=" text-2xl uppercase mx-3 text-white cursor-pointer hover:text-gray-600 font-bold">sending</a>
-        <a href="{{ url('/search') }}"
+        <a href="{{ secure_url'/search') }}"
             class="text-2xl uppercase mx-3 text-white cursor-pointer hover:text-gray-600 font-bold">search</a>
-        <a href="{{ url('/dashboard') }}"
+        <a href="{{ secure_url'/dashboard') }}"
             class="text-2xl uppercase mx-3 text-white cursor-pointer hover:text-gray-600 font-bold">dashboard</a>
         @else
         <a href="{{ route('login') }}"

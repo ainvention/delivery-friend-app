@@ -19,7 +19,7 @@
                 <div class="flex flex-col md:flex-row w-full justify-evenly py-1 border-gray-200 border-b-2">
                     <div class="flex flex-col md:flex-row w-full text-gray-500 text-left">
                         <div class="w-full sm:w-1/3 text-gray-500 ml-0">
-                            <img src="{{ asset('images/steps/trygg-logo.png') }}" class="w-1/3 h-auto"
+                            <img src="{{ secure_asset('images/steps/trygg-logo.png') }}" class="w-1/3 h-auto"
                                 alt="tryg insurance logo">
                         </div>
                         <span class="w-full mx-2 md:mx-0 text-left font-semibold">Your item is insured for any

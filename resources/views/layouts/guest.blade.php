@@ -116,13 +116,13 @@
                 <div
                     class="flex flex-col md:flex-row w-full md:justify-end my-auto space-y-2 md:space-y-0 md:space-x-2">
                     @auth
-                    <a href="{{ url('/sending') }}">
+                    <a href="{{ secure_url'/sending') }}">
                         <button class="w-full md:max-w-3xl text-xl mx-3 bg-green-300 cursor-pointer hover:text-white font-bold border-2 border-gray-500 rounded-md
                     p-3 py-2 uppercase">sending</button></a>
-                    <a href="{{ url('/search') }}">
+                    <a href="{{ secure_url'/search') }}">
                         <button class="w-full md:max-w-3xl text-xl mx-3 bg-green-300 cursor-pointer hover:text-white font-bold border-2 border-gray-500 rounded-md
                     p-3 py-2 uppercase">search</button></a>
-                    <a href="{{ url('/dashboard') }}">
+                    <a href="{{ secure_url'/dashboard') }}">
                         <button class="w-full md:max-w-3xl text-xl mx-3 bg-green-300 cursor-pointer hover:text-white font-bold border-2 border-gray-500 rounded-md
                     p-3 py-2 uppercase">dashboard</button></a>
                     @else

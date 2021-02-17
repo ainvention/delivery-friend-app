@@ -17,10 +17,10 @@ module.exports = {
     theme: {
         extend: {
             backgroundImage: {
-                'step1_background_image' : "url('/images/steps/step1-background.png')",
-                'check': "url('/icons/check.svg')",
-                'landscape': "url('/images/landscape/2.jpg')",
-                'snow-background5': "url(/images/uikit/snow_background5.svg"
+                'step1_background_image' : "secure_url'/images/steps/step1-background.png')",
+                'check': "secure_url'/icons/check.svg')",
+                'landscape': "secure_url'/images/landscape/2.jpg')",
+                'snow-background5': "secure_url/images/uikit/snow_background5.svg"
             },
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
