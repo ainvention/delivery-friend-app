@@ -333,7 +333,7 @@ class Step1 extends Component
     {
         $this->validate(
             [
-                'photo' => 'image|mimes:jpg,jpeg,bmp,png|max:2048', // 2MB Max
+                'photo' => 'mimes:jpg,jpeg,bmp,png|max:2048', // 2MB Max
             ]
         );
 
