@@ -66,7 +66,7 @@
     @endif
     <div class="flex flex-col md:flex-row mt-10 text-left bg-gray-200">
         <div class="sm:w-1/3 ml-3 my-2 self-center">
-            <a href="{{ secure_url'https://www.tryg.no') }}" target="_blank"><img
+            <a href="{{ secure_url('https://www.tryg.no') }}" target="_blank"><img
                     src="{{ secure_asset('images/steps/trygg-logo.png') }}" class="w-20 p-2"
                     alt="tryg insurance logo"></a>
         </div>
