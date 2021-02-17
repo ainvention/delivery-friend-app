@@ -45,7 +45,7 @@ return [
         'sending-photos' => [
             'driver' => 'local',
             'root' =>storage_path('app/public/sending-photos'),
-            'url' => env('APP_URL') . '/storage/sending-photos',
+            'url' => env('APP_URL') . '/sending-photos',
             'visibility' => 'public',
         ],
 
@@ -74,7 +74,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
-        public_path('storage/sending-photos') => storage_path('app/public/sending-photos'),
+        public_path('sending-photos') => storage_path('app/public/sending-photos'),
     ],
 
 ];

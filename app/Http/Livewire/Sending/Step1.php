@@ -337,9 +337,8 @@ class Step1 extends Component
             ]
         );
 
-        $name = md5($this->photo . microtime()).'.'.$this->photo->extension();
+        $path = $this->photo->store('sendings', 'public');
 
-        $path = $this->photo->store('sending-photos', $name);
         $this->photo = $path;
 
         $this->isSetPhoto = true;
