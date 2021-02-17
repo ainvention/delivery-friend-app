@@ -9,7 +9,7 @@
     <x-slot name="content">
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="photo" value="{{ __('Choose a your item photo') }}" />
-            <x-jet-input wire:model="photo" id="photo" type="image" class="mt-1 block w-full" />
+            <x-jet-input wire:model="photo" id="photo" type="file" class="mt-1 block w-full" />
             <x-jet-input-error for="photo" class="mt-2" />
         </div>
     </x-slot>
