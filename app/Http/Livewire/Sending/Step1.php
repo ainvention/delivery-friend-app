@@ -333,16 +333,20 @@ class Step1 extends Component
     {
         $this->validate(
             [
-                'photo' => 'mimes:jpg,jpeg,bmp,png|max:2048', // 2MB Max
+                'photo' => 'image|mimes:jpg,jpeg,bmp,png|max:2048', // 2MB Max
             ]
         );
 
-        $path = $this->photo->store('sending-photos', 'public');
-        $this->photo = $path;
+        $name = md5($this->photo . microtime()).'.'.$this->photo->extension();
+
+        $this->photo = $this->photo->store('sending-photos', $name);
 
         $this->isSetPhoto = true;
 
         $this->modalTogglePhoto();
+
+
+
 
         return $this->alert('success', 'Item photo saved!', [
             'position' =>  'center',
