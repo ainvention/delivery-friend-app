@@ -6,11 +6,7 @@
             leverer til det tidspunktet som passer best for deg.</span>
 
         <button class="w-full lg:w-1/4 sm:my-10 text-xl bg-green-300 cursor-pointer hover:text-white font-bold border-2 border-gray-500 rounded-md
-<<<<<<< HEAD
-        p-1 px-0 uppercase">Kom i Gang</button>
-=======
         p-1 px-0 uppercase"><a href="/login">Kom i Gang</a></button>
->>>>>>> dev
 
         <div class="my-10 space-y-6">
             <span class="text-5xl font-bold">5 gode grunner til å velge Oss!</span>
@@ -63,11 +59,6 @@
             </div>
         </div>
         <button class="w-full lg:w-1/4 sm:my-10 text-xl bg-green-300 cursor-pointer hover:text-white font-bold border-2 border-gray-500 rounded-md
-<<<<<<< HEAD
-        p-1 uppercase" href="mailto:alexinvention@gmail.com">kontakt oss</button>
-    </div>
-=======
         p-1 uppercase" href="mailto:alexinvention@gmail.com"><a href="/individuals">kontakt oss</a>
     </div></button>
->>>>>>> dev
 </x-guest-layout>
