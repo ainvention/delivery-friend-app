@@ -338,7 +338,7 @@ class Step1 extends Component
             ]
         );
 
-        $path = $this->photo->store('sendings', $this->photo);
+        $path = $this->photo->store('sendings');
 
         $this->photo = $path;
 
