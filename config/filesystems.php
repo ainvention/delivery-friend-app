@@ -42,10 +42,10 @@ return [
             'visibility' => 'public',
         ],
 
-        'sending-photos' => [
+        'sendings' => [
             'driver' => 'local',
-            'root' =>storage_path('app/public/sending-photos'),
-            'url' => env('APP_URL') . '/sending-photos',
+            'root' =>storage_path('app/public/sendings'),
+            'url' => env('APP_URL') . '/sendings',
             'visibility' => 'public',
         ],
 
@@ -74,7 +74,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
-        public_path('sending-photos') => storage_path('app/public/sending-photos'),
+        public_path('sendings') => storage_path('app/public/sendings'),
     ],
 
 ];
