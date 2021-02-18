@@ -341,8 +341,8 @@ class Step1 extends Component
         $path = $this->photo->store('public');
 
         if (!file_exists($path)) {
-            // File::makeDirectory($path, $mode = 0755, true, true);
-            Storage::disk('sendings')->put($path, 'Contents');
+            File::makeDirectory($path, $mode = 0755, true, true);
+            // Storage::disk('sendings')->put($path, 'Contents'); output : ~/storage/temp/asdfasdf
         }
 
         $this->isSetPhoto = true;
