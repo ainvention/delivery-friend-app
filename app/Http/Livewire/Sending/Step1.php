@@ -338,12 +338,14 @@ class Step1 extends Component
             ]
         );
 
-        $path = $this->photo->storeAs('sendings', $this->photo);
-        $this->photo = $path;
+        // $path = $this->photo->storeAs('sendings', $this->photo);
+        $path = $this->photo;
 
-        // if (!file_exists($path)) {
-        //     File::makeDirectory($path, $mode = 0755, true, true);
-        // }
+        if (!file_exists($path)) {
+            // File::makeDirectory($path, $mode = 0755, true, true);
+            $test = Stogage::disk('sendings')->put($path);
+            dd($test);
+        }
 
         $this->isSetPhoto = true;
 
