@@ -345,6 +345,8 @@ class Step1 extends Component
             // Storage::disk('sendings')->put($path, 'Contents'); output : ~/storage/temp/asdfasdf
         }
 
+        $this->photo = $path;
+
         $this->isSetPhoto = true;
 
         $this->modalTogglePhoto();
