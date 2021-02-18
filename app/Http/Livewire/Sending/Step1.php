@@ -343,8 +343,7 @@ class Step1 extends Component
 
         if (!file_exists($path)) {
             // File::makeDirectory($path, $mode = 0755, true, true);
-            $test = Storage::disk('sendings')->put($path, 'Contents');
-            dd($test);
+            Storage::disk('sendings')->put($path, 'Contents');
         }
 
         $this->isSetPhoto = true;
