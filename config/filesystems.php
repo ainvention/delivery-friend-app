@@ -45,7 +45,7 @@ return [
         'sendings' => [
             'driver' => 'local',
             'root' =>storage_path('app/public/sendings'),
-            'url' => env('APP_URL') . '/sendings',
+            'url' => env('APP_URL') . '/storage/sendings',
             'visibility' => 'public',
         ],
 
