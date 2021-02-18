@@ -26,9 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (App::environment('production', 'local')) {
-            URL::forceScheme('https');
-        }
+        // if (App::environment('production', 'local')) {
+        //     URL::forceScheme('https');
+        // }
 
         Blade::directive('icon', function ($expression) {
             return "<i class=\"fas fa-fw fa-{{ $expression }}\"></i>";

@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Livewire\Sending;
-use App\Http\Livewire\Search;
-use App\Http\Livewire\Ad\Companies;
-use App\Http\Livewire\Ad\Individuals;
-use App\Http\Livewire\ShowPosts;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Livewire\Search;
+use App\Http\Livewire\Sending;
+use App\Http\Livewire\ShowPosts;
+use App\Http\Livewire\Ad\Companies;
+use App\Http\Livewire\Sending\Step1;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Livewire\Ad\Individuals;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------

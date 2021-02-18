@@ -20,6 +20,7 @@ class CreateSendingsTable extends Migration
             $table->string('photo')->nullable();
             $table->char('title', 40);
             $table->char('note', 80)->nullable();
+            $table->unsignedSmallInteger('weight')->default(0);
             $table->char('size', 10);
             $table->char('from_address', 80);
             $table->char('simple_from_address', 30);
@@ -35,10 +36,10 @@ class CreateSendingsTable extends Migration
             $table->date('to_date_manually')->nullable();
             $table->char('to_time', 15)->nullable();
             $table->time('to_time_manually')->nullable();
-            $table->smallInteger('total_distance')->default(0); // to 65535
+            $table->unsignedSmallInteger('total_distance')->default(0); // to 65535
             $table->float('recommended_cost', 8, 2)->default(0);
             $table->char('coupon_number', 10)->nullable();
-            $table->tinyInteger('coupon_price')->nullable();
+            $table->unsignedSmallInteger('coupon_price')->nullable();
             $table->tinyInteger('coupon_rate')->nullable();
             $table->float('discounted_cost', 8, 2)->nullable();
             $table->float('reward', 8, 2)->default(0);
@@ -49,6 +50,8 @@ class CreateSendingsTable extends Migration
             $table->boolean('need_animal_cage')->default(false);
             $table->boolean('need_cooling_equipment')->default(false);
             $table->boolean('need_help_wrapping')->default(false);
+            $table->boolean('help_pick_up')->default(false);
+            $table->boolean('help_delivery')->default(false);
             $table->softDeletesTz($column = 'deleted_at', $precision = 0); //time zone
             $table->timestamps();
         });
