@@ -341,6 +341,10 @@ class Step1 extends Component
 
         $this->photo = $path;
 
+        if (!file_exists($$path)) {
+            File::makeDirectory($path, $mode = 0755, true, true);
+        }
+
         $this->isSetPhoto = true;
 
         $this->modalTogglePhoto();
