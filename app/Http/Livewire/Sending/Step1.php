@@ -338,8 +338,7 @@ class Step1 extends Component
             ]
         );
 
-        // $path = $this->photo->storeAs('sendings', $this->photo);
-        $path = $this->photo;
+        $path = $this->photo->store('sendings');
 
         if (!file_exists($path)) {
             // File::makeDirectory($path, $mode = 0755, true, true);
