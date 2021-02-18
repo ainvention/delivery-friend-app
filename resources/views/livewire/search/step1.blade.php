@@ -79,11 +79,11 @@
                     </div>
                 </x-slot>
                 <x-slot name="footer">
-                    <x-jet-danger-button wire:click="modalToggle('cancel')">
+                    <x-jet-danger-button wire:click.prevent="modalToggle('cancel')">
                         {{  __('Cancel') }}
                         @csrf
                     </x-jet-danger-button>
-                    <x-jet-secondary-button wire:click="modalToggle('save')">
+                    <x-jet-secondary-button wire:click.prevent="modalToggle('save')">
                         @csrf
                         {{  __('Save') }}
                     </x-jet-secondary-button>
@@ -107,10 +107,10 @@
                     placeholder=" Send from">
                 <input wire:model="toAddress" class="flex w-full  border-2 border-gray-300 mr-4" type="text"
                     placeholder=" Delivery To">
-                <input wire:click="modalToggle" class="flex w-full  border-2 border-gray-300 mr-4" type="text"
+                <input wire:click.prevent="modalToggle" class="flex w-full  border-2 border-gray-300 mr-4" type="text"
                     placeholder=" Detail info">
             </div>
-            <x-jet-button wire:click="searchTask"
+            <x-jet-button wire:click.prevent="searchTask"
                 class="flex w-1/4 border-2 border-gray-200 bg-blue-500 text-white hover:text-gray-600 hover:bg-red-400 justify-center">
                 {{ __('Search') }}
             </x-jet-button>
@@ -157,7 +157,7 @@
                         </div>
                     </div>
                     <div class="flex flex-col lg:w-7/12">
-                        <x-jet-button wire:click="detail({{ $task->id }})"
+                        <x-jet-button wire:click.prevent="detail({{ $task->id }})"
                             class="w-full border-2 border-gray-200 bg-green-500 text-white hover:text-gray-600 hover:bg-red-400 justify-center">
                             See
                             more details &nbsp @icon('hand-point-right')

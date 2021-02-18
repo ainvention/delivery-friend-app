@@ -74,11 +74,11 @@
             </div>
         </x-slot>
         <x-slot name="footer">
-            <x-jet-danger-button wire:click="modalToggle('cancel')">
+            <x-jet-danger-button wire:click.prevent="modalToggle('cancel')">
                 {{  __('Cancel') }}
                 @csrf
             </x-jet-danger-button>
-            <x-jet-secondary-button wire:click="modalToggle('save')">
+            <x-jet-secondary-button wire:click.prevent="modalToggle('save')">
                 @csrf
                 {{  __('Save') }}
             </x-jet-secondary-button>

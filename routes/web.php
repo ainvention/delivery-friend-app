@@ -94,3 +94,10 @@ Route::get('/companies', function () {
 Route::get('/individuals', function () {
     return view('livewire.ad.individuals');
 })->name('individuals');
+
+// Route::group(['middleware' => ['auth', 'verified']], function () {
+//     Route::resource('communities', \App\Http\Controllers\CommunityController::class);
+//     Route::resource('communities', \App\Http\Controllers\CommunityController::class);
+//     Route::get('communities', \App\Http\Controllers\CommunityController::class);
+//     Route::get('communities', \App\Http\Controllers\CommunityController::class);
+// });

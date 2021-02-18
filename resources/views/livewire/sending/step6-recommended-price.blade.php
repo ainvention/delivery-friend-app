@@ -27,7 +27,7 @@
             @enderror --}}
             <x-jet-input-error for="recommendedCost" class="ml-4" />
         </div>
-        <x-jet-button wire:click="getRecommendedCostManually"
+        <x-jet-button wire:click.prevent="getRecommendedCostManually"
             class="flex flex-shrink m-2 md:text-xl text-white bg-green-600 hover:bg-black font-extrabold justify-evenly">
             Calculate
         </x-jet-button>
@@ -77,11 +77,11 @@
         </div>
     </div>
     <div class="flex flex-col sm:flex-row justify-between sm:space-x-20 text-xl my-10">
-        <button wire:click="moveBack" class="sm:w-1/2 text-gray-400 p-4">
+        <button wire:click.prevent="moveBack" class="sm:w-1/2 text-gray-400 p-4">
             <span>@icon('chevron-left')</span>
             Back
         </button>
-        <button wire:click="moveStep7" wire:key=step6next
+        <button wire:click.prevent="moveStep7" wire:key=step6next
             class="sm:w-1/2 py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center font-semibold shadow-md rounded-lg">Request
             delivery</button>
     </div>

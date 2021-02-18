@@ -14,14 +14,14 @@
         </div>
     </x-slot>
     <x-slot name="footer">
-        <x-jet-secondary-button wire:click="photoDelete">
+        <x-jet-secondary-button wire:click.prevent="photoDelete">
             @empty($isSetPhoto)
             {{ __('Cancel') }}
             @else
             {{ __('Delete') }}
             @endempty
         </x-jet-secondary-button>
-        <x-jet-danger-button class="ml-2" wire:click="savePhoto">
+        <x-jet-danger-button class="ml-2" wire:click.prevent="savePhoto">
             @empty($isSetPhoto)
             {{ __('Save') }}
             @else
