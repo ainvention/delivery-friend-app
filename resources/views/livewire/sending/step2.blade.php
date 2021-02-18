@@ -89,7 +89,6 @@
                                     a
                                     Car</label><span>Painting, guitar, pet etc.</span></td>
                             <td class="ml-4">
-                                <?xml version='1.0' encoding='iso-8859-1'?>
                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32px"
                                     viewBox="0 0 304.328 304.328" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     enable-background="new 0 0 304.328 304.328">
