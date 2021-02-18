@@ -9,7 +9,7 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
+use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -338,7 +338,7 @@ class Step1 extends Component
             ]
         );
 
-        $path = $this->photo->store('photos');
+        $path = $this->photo->store('public');
 
         if (!file_exists($path)) {
             File::makeDirectory($path, $mode = 0755, true, true);
