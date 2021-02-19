@@ -19,7 +19,7 @@ class Step1 extends Component
     use WithFileUploads;
 
     //core property for page state define
-    public $step = 1;
+    public $step;
 
     // for modal switching
     public $modalSwitch = false;
@@ -107,6 +107,14 @@ class Step1 extends Component
     ];
 
 
+
+
+
+    public function mount()
+    {
+        $this->step = 1;
+    }
+
     /**
      * render
      *
@@ -164,7 +172,7 @@ class Step1 extends Component
             'weight' => 'nullable|numeric|min:0|max:65000',
         ]);
 
-        $this->step = $this->step + 1;
+        $this->step = 2;
     }
 
 
@@ -183,7 +191,7 @@ class Step1 extends Component
                 'size' => 'required|string'
             ]);
 
-        $this->step = $this->step + 1;
+        $this->step = 3;
     }
 
 
@@ -206,7 +214,7 @@ class Step1 extends Component
             'fromLng' => 'required',
         ]);
 
-        $this->step = $this->step + 1;
+        $this->step = 4;
     }
 
 
@@ -228,7 +236,7 @@ class Step1 extends Component
             'toLng' => 'required',
         ]);
 
-        $this->step = $this->step + 1;
+        $this->step = 5;
     }
 
 
@@ -255,7 +263,7 @@ class Step1 extends Component
             $this->toTimeManually = null;
         }
 
-        $this->step = $this->step + 1;
+        $this->step = 6;
     }
 
 
@@ -282,7 +290,7 @@ class Step1 extends Component
             'showConfirmButton' =>  false,
           ]);
 
-        $this->step = $this->step + 1;
+        $this->step = 7;
     }
 
 
@@ -296,7 +304,7 @@ class Step1 extends Component
      */
     public function editTask()
     {
-        $this->step = $this->step + 1;
+        $this->step = 8;
     }
 
 
@@ -338,12 +346,16 @@ class Step1 extends Component
             ]
         );
 
-        $path = $this->photo->store('public');
+        /**
+         * 1. filesystem에 정의된 'public' 디스크를 찾고
+         * 2. url은 이미지 파일을 웹에 띄울때 사용되는 주소이고
+         * 3. root 는 실제로 앱이 설치된 폴더의 물리 경로를 의미한다.
+         * 4. store('폴더이름지정', "config/filesystem 에 저장된 'disks'의 배열이름")
+         * storage/app/public/sending-photos/파일이름 형식으로 저장된다.
+         */
+        $path = $this->photo->store('sending-photos', 'public');
 
-        // if (!file_exists($path)) {
-        //     File::makeDirectory($path, $mode = 0755, true, true);
-        //     // Storage::disk('sendings')->put($path, 'Contents'); output : ~/storage/temp/asdfasdf
-        // }
+        $this->photo = $path;
 
         $this->isSetPhoto = true;
 
@@ -586,7 +598,7 @@ class Step1 extends Component
     {
         $this->validate([
         'title' => 'required|min:4',
-        'photo' => 'nullable|mimes:jpg,jpeg,bmp,png|max:2048',
+        'photo' => 'nullable|string',
         'note' => 'nullable|max:80',
         'size' => 'string',
         'weight' => 'nullable|numeric|min:0|max:65000',
