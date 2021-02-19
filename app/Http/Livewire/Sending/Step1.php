@@ -69,7 +69,7 @@ class Step1 extends Component
     public $serviceCharge;
     public $insuranceCost = 49;
     public $totalDeliveryCost;
-    public $isFraglile ;
+    public $isFraglile = false ;
     public $needAnimalCage = false;
     public $needCoolingEquipment = false;
     public $needHelpWrapping = false;
@@ -586,7 +586,7 @@ class Step1 extends Component
     {
         $this->validate([
         'title' => 'required|min:4',
-        'photo' => 'nullable|string',
+        'photo' => 'nullable|mimes:jpg,jpeg,bmp,png|max:2048',
         'note' => 'nullable|max:80',
         'size' => 'string',
         'weight' => 'nullable|numeric|min:0|max:65000',
