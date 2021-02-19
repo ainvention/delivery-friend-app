@@ -126,14 +126,13 @@
             {{ $slot }}
         </main>
         @include('livewire.components.footer')
+        @stack('modals')
+        @livewireScripts
+
+        {{-- below two lines need to adjust SweetAlert2 --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <x-livewire-alert::scripts />
     </div>
-
-    @stack('modals')
-    @livewireScripts
-
-    {{-- below two lines need to adjust SweetAlert2 --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <x-livewire-alert::scripts />
 </body>
 
 </html>

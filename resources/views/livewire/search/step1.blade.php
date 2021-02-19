@@ -124,7 +124,7 @@
                 <div class="flex flex-col sm:flex-row sm:w-8/12 space-y-2">
                     @isset($task->photo)
                     <div class="w-28 sm:self-center">
-                        <img src=" {{ secure_asset('storage/'.$task->photo) }}" alt="item photo" class="p-2">
+                        <img src=" {{ asset($task->photo) }}" alt="item photo" class="p-2">
                     </div>
                     @else
                     <div class="w-28 px-2 self-center bg-gray-600">
@@ -148,7 +148,7 @@
                 <div class="flex flex-col lg:flex-row lg:w-4/12 sm:self-center">
                     <div class="flex flex-row lg:w-5/12">
                         <div class="w-12 pr-2 sm:px-2">
-                            <img src="{{ secure_asset('storage/'.$task->photo) }}" alt="img"
+                            <img src="{{ asset($task->photo) }}" alt="img"
                                 class="rounded-full w-12 h-12 object-scale-down" />
                         </div>
                         <div class="text-sm">

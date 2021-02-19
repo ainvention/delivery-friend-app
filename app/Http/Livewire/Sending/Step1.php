@@ -19,7 +19,7 @@ class Step1 extends Component
     use WithFileUploads;
 
     //core property for page state define
-    public $step = 1;
+    public $step;
 
     // for modal switching
     public $modalSwitch = false;
@@ -39,37 +39,37 @@ class Step1 extends Component
     public $marginRate = 25; //25% to system owner.
     public $minimumMargin = 31;
 
-    public $currentTaskId = null;
-    public $title = null;
-    public $photo = null;
-    public $note = null;
-    public $size = null;
-    public $weight = null;
-    public $fromAddress = null;
-    public $simpleFromAddress = null;
-    public $fromNote = null;
-    public $fromLat = null;
-    public $fromLng = null;
-    public $toAddress = null;
-    public $simpleToAddress = null;
-    public $toNote = null;
-    public $toLat = null;
-    public $toLng = null;
-    public $toDate = null;
-    public $toDateManually = null;
-    public $toTime = null;
-    public $toTimeManually = null;
-    public $totalDistance = null;
-    public $recommendedCost = null;
-    public $couponNumber = null;
-    public $couponPrice = null;
-    public $couponRate = null;
-    public $discountedCost = null;
-    public $reward = null;
-    public $serviceCharge = null;
+    public $currentTaskId;
+    public $title;
+    public $photo;
+    public $note;
+    public $size;
+    public $weight;
+    public $fromAddress;
+    public $simpleFromAddress;
+    public $fromNote;
+    public $fromLat;
+    public $fromLng;
+    public $toAddress;
+    public $simpleToAddress;
+    public $toNote;
+    public $toLat;
+    public $toLng;
+    public $toDate;
+    public $toDateManually;
+    public $toTime;
+    public $toTimeManually;
+    public $totalDistance;
+    public $recommendedCost;
+    public $couponNumber;
+    public $couponPrice;
+    public $couponRate;
+    public $discountedCost;
+    public $reward;
+    public $serviceCharge;
     public $insuranceCost = 49;
-    public $totalDeliveryCost = null;
-    public $isFraglile = false;
+    public $totalDeliveryCost;
+    public $isFraglile = false ;
     public $needAnimalCage = false;
     public $needCoolingEquipment = false;
     public $needHelpWrapping = false;
@@ -106,6 +106,14 @@ class Step1 extends Component
         'totalDeliveryCost.required' => 'some error occurred!'
     ];
 
+
+
+
+
+    public function mount()
+    {
+        $this->step = 1;
+    }
 
     /**
      * render
@@ -164,7 +172,7 @@ class Step1 extends Component
             'weight' => 'nullable|numeric|min:0|max:65000',
         ]);
 
-        $this->step = $this->step + 1;
+        $this->step = 2;
     }
 
 
@@ -183,7 +191,7 @@ class Step1 extends Component
                 'size' => 'required|string'
             ]);
 
-        $this->step = $this->step + 1;
+        $this->step = 3;
     }
 
 
@@ -206,7 +214,7 @@ class Step1 extends Component
             'fromLng' => 'required',
         ]);
 
-        $this->step = $this->step + 1;
+        $this->step = 4;
     }
 
 
@@ -228,7 +236,7 @@ class Step1 extends Component
             'toLng' => 'required',
         ]);
 
-        $this->step = $this->step + 1;
+        $this->step = 5;
     }
 
 
@@ -255,7 +263,7 @@ class Step1 extends Component
             $this->toTimeManually = null;
         }
 
-        $this->step = $this->step + 1;
+        $this->step = 6;
     }
 
 
@@ -282,7 +290,7 @@ class Step1 extends Component
             'showConfirmButton' =>  false,
           ]);
 
-        $this->step = $this->step + 1;
+        $this->step = 7;
     }
 
 
@@ -296,7 +304,7 @@ class Step1 extends Component
      */
     public function editTask()
     {
-        $this->step = $this->step + 1;
+        $this->step = 8;
     }
 
 
@@ -338,12 +346,14 @@ class Step1 extends Component
             ]
         );
 
-        $path = $this->photo->store('public');
-
-        if (!file_exists($path)) {
-            File::makeDirectory($path, $mode = 0755, true, true);
-            // Storage::disk('sendings')->put($path, 'Contents'); output : ~/storage/temp/asdfasdf
-        }
+        /**
+         * 1. filesystem에 정의된 'public' 디스크를 찾고
+         * 2. url은 이미지 파일을 웹에 띄울때 사용되는 주소이고
+         * 3. root 는 실제로 앱이 설치된 폴더의 물리 경로를 의미한다.
+         * 4. store('폴더이름지정', "config/filesystem 에 저장된 'disks'의 배열이름")
+         * storage/app/public/sending-photos/파일이름 형식으로 저장된다.
+         */
+        $path = $this->photo->store('sending-photos', 'public');
 
         $this->photo = $path;
 
