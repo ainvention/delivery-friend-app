@@ -31,7 +31,7 @@
                     </div>
                     @else
                     <div wire:click="modalTogglePhoto" class="flex flex-col text-center">
-                        <img src="{{ secure_url($photo) }}" class="object-scale-down max-h-72 w-full sm:p-6">
+                        <img src="{{ $photo }}" class="object-scale-down max-h-72 w-full sm:p-6">
                         <span class="w-full italic">Click photo to change.</span>
                     </div>
                     @endempty

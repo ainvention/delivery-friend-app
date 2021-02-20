@@ -9,6 +9,7 @@ use Livewire\Component;
 use Illuminate\Http\File;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -361,6 +362,10 @@ class Step1 extends Component
         $path = $this->photo->store('images', 'public');
 
         $this->photo = Storage::url($path);
+
+        if (App::environment('production')) {
+            $this->photo = url(secure_url($this->photo));
+        }
 
         $this->isSetPhoto = true;
 
