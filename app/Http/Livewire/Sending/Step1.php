@@ -363,7 +363,8 @@ class Step1 extends Component
         // Image::create([
         //     'file_path' => $path,
         // ]);
-        Storage::disk('public')->put($path, 'Contents');
+        // $test = Storage::disk('public')->put($path, 'Contents');
+
 
 
         $this->photo = Storage::url($path);
