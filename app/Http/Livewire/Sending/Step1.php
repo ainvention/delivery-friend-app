@@ -360,13 +360,6 @@ class Step1 extends Component
          */
         $path = $this->photo->store('images', 'public');
 
-        // Image::create([
-        //     'file_path' => $path,
-        // ]);
-        // $test = Storage::disk('public')->put($path, 'Contents');
-
-
-
         $this->photo = Storage::url($path);
 
         $this->isSetPhoto = true;
