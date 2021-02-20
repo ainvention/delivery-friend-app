@@ -18,7 +18,7 @@
             </div>
             <div class="lg:w-1/2 p-5 align-middle">
                 @isset($photo)
-                <img src="{{ secure_asset('storage/'.$photo)}}" alt="Your sending item photo">
+                <img src="{{ asset('storage/'.$photo)}}" alt="Your sending item photo">
                 @else
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="max-w-sm">
                     <defs>

@@ -44,7 +44,7 @@ class Step1 extends Component
     public $photo;
     public $note;
     public $size;
-    public $weight;
+    public $weight = 0;
     public $fromAddress;
     public $simpleFromAddress;
     public $fromNote;

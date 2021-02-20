@@ -172,5 +172,5 @@
         </div>
     </div>
 </div>
-{{-- <img src="{{ secure_asset('storage/'.$users->where('id', $task->user_id)->get('profile_photo_path')) }}"
+{{-- <img src="{{ asset('storage/'.$users->where('id', $task->user_id)->get('profile_photo_path')) }}"
 --}}

@@ -67,8 +67,7 @@
     <div class="flex flex-col md:flex-row mt-10 text-left bg-gray-200">
         <div class="sm:w-1/3 ml-3 my-2 self-center">
             <a href="{{ secure_url('https://www.tryg.no') }}" target="_blank"><img
-                    src="{{ secure_asset('images/steps/trygg-logo.png') }}" class="w-20 p-2"
-                    alt="tryg insurance logo"></a>
+                    src="{{ asset('images/steps/trygg-logo.png') }}" class="w-20 p-2" alt="tryg insurance logo"></a>
         </div>
         <div class="sm:max-w-full mx-3 my-2 text-lg text-gray-500 self-center">
             Your item is insured up to 10,000 NOK in Norway through Tryg Forsikring. You can rest assured that your
