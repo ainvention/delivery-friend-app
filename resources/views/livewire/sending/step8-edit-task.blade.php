@@ -6,7 +6,7 @@
         <div class="flex flex-col md:flex-row md:w-full space-y-2 mb-6">
             @isset($photo)
             <div class="md:w-1/6 md:self-center">
-                <img src=" {{ asset($photo) }}" alt="item photo" class="p-2">
+                <img src=" {{ url($photo) }}" alt="item photo" class="p-2">
             </div>
             @else
             <div class="md:w-1/6 m-2 self-center">

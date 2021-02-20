@@ -1,5 +1,5 @@
 <div
-    class="flex flex-col justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest ">
+    class="flex flex-col justify-center my-10 sm:mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest ">
     @include('livewire.components.sessionMessage')
     <div
         class="text-center flex text-4xl justify-center px-4 py-1 dark:text-white rounded-full leading-relaxed font-semibold tracking-wide text-gray-500">

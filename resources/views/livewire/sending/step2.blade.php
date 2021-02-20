@@ -12,7 +12,7 @@
                 <table class="table-auto">
                     <tbody>
                         <tr class="flex flex-col sm:flex-row">
-                            <td><input wire:model.ignore=size value='POCKET' type="radio" name="POCKET"
+                            <td><input wire:model=size value='POCKET' type="radio" name="POCKET"
                                     class="w-8 h-8 m-4 border-1 border-gray-400" />
                             </td>
                             <td class="flex flex-col ml-4">
@@ -36,7 +36,7 @@
                             </td>
                         </tr>
                         <tr class="flex flex-col sm:flex-row">
-                            <td><input wire:model.ignore=size type="radio" value='BAG' name="BAG"
+                            <td><input wire:model=size type="radio" value='BAG' name="BAG"
                                     class="w-8 h-8 m-4 border-1 border-gray-400" />
                             </td>
                             <td class="flex flex-col ml-4"><label for="BAG" class="text-lg tex-black">Fits in
@@ -82,7 +82,7 @@
                             </td>
                         </tr>
                         <tr class="flex flex-col sm:flex-row">
-                            <td><input wire:model.ignore=size type="radio" value="CAR" name="CAR"
+                            <td><input wire:model=size type="radio" value="CAR" name="CAR"
                                     class="w-8 h-8 m-4 border-1 border-gray-400" />
                             </td>
                             <td class="flex flex-col ml-4"><label for="CAR" class="text-lg tex-black">Fits in
@@ -103,7 +103,7 @@
                             </td>
                         </tr>
                         <tr class="flex flex-col sm:flex-row">
-                            <td><input wire:model.ignore=size type="radio" value='SUV' name="SUV"
+                            <td><input wire:model=size type="radio" value='SUV' name="SUV"
                                     class="w-8 h-8 m-4 border-1 border-gray-400" />
                             </td>
                             <td class="flex flex-col ml-4"><label for="SUV" class="text-lg tex-black">Fits
@@ -124,7 +124,7 @@
                             </td>
                         </tr>
                         <tr class="flex flex-col sm:flex-row">
-                            <td><input wire:model.ignore=size type="radio" value='VAN' name="VAN"
+                            <td><input wire:model=size type="radio" value='VAN' name="VAN"
                                     class="w-8 h-8 m-4 border-1 border-gray-400" />
                             </td>
                             <td class="flex flex-col ml-4"><label for="VAN" class="text-lg tex-black">Fits in

@@ -2,14 +2,15 @@
 
 namespace App\Http\Livewire\Sending;
 
+use App\Models\Image;
 use App\Models\Coupon;
 use App\Models\Sending;
 use Livewire\Component;
+use Illuminate\Http\File;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -44,7 +45,7 @@ class Step1 extends Component
     public $photo;
     public $note;
     public $size;
-    public $weight = 0;
+    public $weight;
     public $fromAddress;
     public $simpleFromAddress;
     public $fromNote;
@@ -172,7 +173,7 @@ class Step1 extends Component
             'weight' => 'nullable|numeric|min:0|max:65000',
         ]);
 
-        if ($this->weight < 0 || $this->weight === '') {
+        if ($this->weight < 0 || $this->weight === '') {// case : weight === null just pass
             $this->weight = 0;
         }
 
@@ -357,9 +358,15 @@ class Step1 extends Component
          * 4. store('폴더이름지정', "config/filesystem 에 저장된 'disks'의 배열이름")
          * storage/app/public/sending-photos/파일이름 형식으로 저장된다.
          */
-        $path = $this->photo->store('sending-photos', 'public');
+        $path = $this->photo->store('images', 'public');
 
-        $this->photo = $path;
+        // Image::create([
+        //     'file_path' => $path,
+        // ]);
+        Storage::disk('public')->put($path, 'Contents');
+
+
+        $this->photo = Storage::url($path);
 
         $this->isSetPhoto = true;
 
