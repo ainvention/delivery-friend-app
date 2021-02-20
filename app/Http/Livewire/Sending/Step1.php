@@ -172,7 +172,7 @@ class Step1 extends Component
             'weight' => 'nullable|numeric|min:0|max:65000',
         ]);
 
-        if ($this->weight < 0 || is_null($this->weight)) {
+        if ($this->weight < 0 || $this->weight === '') {
             $this->weight = 0;
         }
 
