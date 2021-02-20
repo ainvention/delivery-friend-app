@@ -69,7 +69,7 @@
                     var result = data.results[i];
                     // conlosle.log(result);
                     document.getElementById('address').value= result.properties.Place_addr;
-                    console.log('result by search: ' + result);
+                    // console.log('result by search: ' + result);
                 }
             });
 
