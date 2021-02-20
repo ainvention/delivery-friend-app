@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://delivery.jswizard.no/'),
+    'url' => env('APP_URL'),
 
     'asset_url' => env('ASSET_URL', null),
 
