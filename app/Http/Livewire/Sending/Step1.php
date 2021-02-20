@@ -363,10 +363,6 @@ class Step1 extends Component
 
         $this->photo = Storage::url($path);
 
-        if (App::environment('production')) {
-            $this->photo = secure_url($this->photo);
-        }
-
         $this->isSetPhoto = true;
 
         $this->modalTogglePhoto();
