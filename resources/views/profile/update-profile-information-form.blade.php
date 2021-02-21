@@ -25,7 +25,7 @@
 
             <!-- Current Profile Photo -->
             <div class="mt-2" x-show="! photoPreview">
-                <img src="{{ url($this->user->profile_photo_url) }}" alt="{{ $this->user->name }}"
+                <img src="{{ secure_url($this->user->profile_photo_url) }}" alt="{{ $this->user->name }}"
                     class="rounded-full h-20 w-20 object-cover">
             </div>
 
