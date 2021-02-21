@@ -90,9 +90,7 @@
         var element3 = @this.toLat;
         var element4 = @this.toLng;
 
-        // var mapBoxApiKey= '{{ env('MAPBOX_ACCESS_TOKEN', NULL)}}';
-        var mapBoxApiKey='pk.eyJ1IjoiYWxleGludmVudGlvbiIsImEiOiJja2ttZXN0dHQzN29uMnVvY3U5am13ZGt6In0._f_4UOuTHo-35LfZOVEyxw'
-
+        var mapBoxApiKey= '{{ env('MAPBOX_ACCESS_TOKEN')}}';
         var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/';
 
 
