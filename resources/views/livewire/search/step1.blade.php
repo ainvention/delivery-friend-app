@@ -148,8 +148,8 @@
                 <div class="flex flex-col lg:flex-row lg:w-4/12 sm:self-center">
                     <div class="flex flex-row lg:w-5/12">
                         <div class="w-12 pr-2 sm:px-2">
-                            <img src="{{ asset('/storage/'.$task->photo) }}" alt="img"
-                                class="rounded-full w-12 h-12 object-scale-down" />
+                            <img src="{{ url('storage/'.DB::table('users')->where('id', $task->user_id)->value('profile_photo_path')) }}"
+                                alt="img" class="rounded-full w-12 h-12 object-scale-down" />
                         </div>
                         <div class="text-sm">
                             <div class="text-gray-400">SENDER</div>
