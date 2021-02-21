@@ -130,11 +130,11 @@
                         <button class="w-full md:max-w-3xl text-xl mx-3 bg-green-300 cursor-pointer hover:text-white font-bold border-2 border-gray-500 rounded-md
                     p-3 py-2 uppercase">Loggg inn</button></a>
 
-                    @if (Route::has('register'))
+                    {{-- @if (Route::has('register'))
                     <a href="{{ route('register') }}">
-                        <button class="w-full md:max-w-3xl text-xl mx-3 bg-green-300 cursor-pointer hover:text-white font-bold border-2 border-gray-500 rounded-md
+                    <button class="w-full md:max-w-3xl text-xl mx-3 bg-green-300 cursor-pointer hover:text-white font-bold border-2 border-gray-500 rounded-md
                          p-3 py-2 uppercase">Registrer deg</button></a>
-                    @endif
+                    @endif --}}
                     @endauth
                 </div>
                 @endif

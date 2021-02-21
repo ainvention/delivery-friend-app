@@ -107,6 +107,7 @@
 
             return routeData.then(response => {
                 if (response.status == 200) {
+                    console.log('OK : status 200!!');
                     return response;
                 } else {
                     document.getElementById('recommendedCost').textContent = 'Loading';
