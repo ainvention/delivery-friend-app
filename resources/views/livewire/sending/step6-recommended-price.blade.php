@@ -1,9 +1,12 @@
 <div
-    class="flex flex-col justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
-    <div wire:loading.delay>
-        Processing calculate ...
+    class="flex flex-col w-full justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
+    @empty($recommendedCost)
+    <div class="text-2xl text-center m-auto">
+        Calculating our recommended cost...
     </div>
+    @endempty
 
+    @isset($recommendedCost)
     @include('livewire.components.sessionMessage')
     <div
         class="flex flex-col mb-5 text-5xl text-left sm:text-center px-4 py-1 dark:text-white rounded-full leading-snug font-semibold tracking-wide text-gray-500">
@@ -16,11 +19,11 @@
             helper</span>
     </div>
 
-    <div class="flex flex-col lg:flex-row border-gray-300 border-2">
+    <div class="flex flex-col w-full lg:flex-row border-gray-300 border-2">
         <div class="flex-col sm:flex-row flex-1 text-4xl text-left text-black font-extrabold">
             <span class="flex-auto pl-3 text-gray-300 self-center">@icon('credit-card')</span>
             <x-jet-input wire:model.ignore="recommendedCost" id="recommendedCost"
-                class="flex-1 w-32 text-4xl font-bold outline-none border-transparent" type="number"
+                class="flex-1 md:w-40 text-4xl font-bold outline-none border-transparent" type="number"
                 name="recommendedCost" required />
             <span class="flex-1 pl-3 ">NOK</span>
             {{-- @error('recommendedCosts') <span class="error text-sm pl-3 text-red-600">{{ $message }}</span>
@@ -28,7 +31,7 @@
             <x-jet-input-error for="recommendedCost" class="ml-4" />
         </div>
         <x-jet-button wire:click="getRecommendedCostManually" wire:loading.attr="disabled"
-            class="flex flex-shrink m-2 md:text-xl text-white bg-green-600 hover:bg-black font-extrabold justify-evenly">
+            class="flex m-2 md:text-xl text-white bg-green-600 hover:bg-black font-extrabold justify-evenly">
             Calculate
         </x-jet-button>
     </div>
@@ -84,7 +87,9 @@
             class="sm:w-1/2 py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center font-semibold shadow-md rounded-lg">Request
             delivery</button>
     </div>
+    @endisset
 </div>
+{{-- This script must posit out of target page(step6), js must render after DOM rendering finished. --}}
 <script>
     var element1 = @this.fromLat;
     var element2 = @this.fromLng;
