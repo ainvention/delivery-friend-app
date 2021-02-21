@@ -20,14 +20,14 @@
         <div class="flex-col sm:flex-row flex-1 text-4xl text-left text-black font-extrabold">
             <span class="flex-auto pl-3 text-gray-300 self-center">@icon('credit-card')</span>
             <x-jet-input wire:model.ignore="recommendedCost" id="recommendedCost"
-                class="flex-1 w-32 text-4xl font-bold outline-none border-transparent" type="number"
+                class="flex-2 w-160 text-4xl font-bold outline-none border-transparent" type="number"
                 name="recommendedCost" required />
             <span class="flex-1 pl-3 ">NOK</span>
             {{-- @error('recommendedCosts') <span class="error text-sm pl-3 text-red-600">{{ $message }}</span>
             @enderror --}}
             <x-jet-input-error for="recommendedCost" class="ml-4" />
         </div>
-        <x-jet-button wire:click.prevent="getRecommendedCostManually"
+        <x-jet-button wire:click="getRecommendedCostManually"
             class="flex flex-shrink m-2 md:text-xl text-white bg-green-600 hover:bg-black font-extrabold justify-evenly">
             Calculate
         </x-jet-button>
@@ -76,11 +76,11 @@
         </div>
     </div>
     <div class="flex flex-col sm:flex-row justify-between sm:space-x-20 text-xl my-10">
-        <button wire:click.prevent="moveBack" class="sm:w-1/2 text-gray-400 p-4">
+        <button wire:click="moveBack" class="sm:w-1/2 text-gray-400 p-4">
             <span>@icon('chevron-left')</span>
             Back
         </button>
-        <button wire:click.prevent="moveStep7" wire:key=step6next
+        <button wire:click="moveStep7" wire:key=step6next
             class="sm:w-1/2 py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center font-semibold shadow-md rounded-lg">Request
             delivery</button>
     </div>

@@ -165,9 +165,9 @@
             @error($size) @include('livewire.components.error-messages.required')
             @enderror
             <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full">
-                <button wire:click.prevent="moveBack" wire:key=step2back
+                <button wire:click="moveBack" wire:key=step2back
                     class="py-2 px-4  bg-red-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Back</button>
-                <button wire:click.prevent="moveStep3" wire:key=step2next
+                <button wire:click="moveStep3" wire:key=step2next
                     class="py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg {{ $size === null || strlen($size) < 3 ? 'disabled:opacity-50' : '' }}"
                     {{ $size === null || strlen($size) < 3 ? "disabled" : ""  }}>Next</button>
             </div>

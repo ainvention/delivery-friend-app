@@ -36,16 +36,14 @@
                         <div class="flex w-3/4 text-red-600 text-left">
                             <span>Photo included</span>
                         </div>
-                        <button wire:click.prevent="modalTogglePhoto"
-                            class="w-1/4 flex m-auto text-green-500 justify-end">
+                        <button wire:click="modalTogglePhoto" class="w-1/4 flex m-auto text-green-500 justify-end">
                             <span>Edit</span>
                         </button>
                         @else
                         <div class="flex w-3/4 text-gray-400 text-left">
                             <span>Not set</span>
                         </div>
-                        <button wire:click.prevent="modalTogglePhoto"
-                            class="flex w-1/4 m-auto text-green-500 justify-end">
+                        <button wire:click="modalTogglePhoto" class="flex w-1/4 m-auto text-green-500 justify-end">
                             <span>Add</span>
                         </button>
                         @endisset
@@ -74,7 +72,7 @@
                             class="w-2/5 text-2xl font-bold outline-none border-transparent border-2 border-green-500 rounded-md"
                             type="number" name="recommendedCost" required />
                         <span class="text-left text-xl font-bold self-center">NOK</span>
-                        <button wire:click.prevent="getRecommendedCostManually"
+                        <button wire:click="getRecommendedCostManually"
                             class="w-2/5 md:text-xl text-cool-gray-50 bg-green-600 font-extrabold justify-evenly rounded-md">
                             Calculate
                         </button>
@@ -293,10 +291,10 @@
             </div>
             @endif
             <div class="text-right my-4">
-                <x-jet-secondary-button wire:click.prevent="cancelEditTask">
+                <x-jet-secondary-button wire:click="cancelEditTask">
                     {{ __('Cancel') }}
                 </x-jet-secondary-button>
-                <x-jet-danger-button wire:click.prevent="publishTask" class="ml-2">
+                <x-jet-danger-button wire:click="publishTask" class="ml-2">
                     {{ __('Save') }}
                 </x-jet-danger-button>
             </div>

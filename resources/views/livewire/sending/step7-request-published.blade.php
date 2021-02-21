@@ -51,10 +51,10 @@
                 <h2>Do you have a coupon?</h2>
             </div>
             <div class="flex mt-2 justify-start">
-                <x-jet-secondary-button wire:click.prevent="couponNotUse" class="mx-1">
+                <x-jet-secondary-button wire:click="couponNotUse" class="mx-1">
                     {{ __('No') }}
                 </x-jet-secondary-button>
-                <x-jet-secondary-button wire:click.prevent="modalToggleCoupon" class="mx-1">
+                <x-jet-secondary-button wire:click="modalToggleCoupon" class="mx-1">
                     {{ __('Yes') }}
                 </x-jet-secondary-button>
             </div>
@@ -86,11 +86,11 @@
             </x-slot>
 
             <x-slot name="footer">
-                <x-jet-secondary-button wire:click.prevent="modalToggleCoupon">
+                <x-jet-secondary-button wire:click="modalToggleCoupon">
                     {{ __('Cancel') }}
                 </x-jet-secondary-button>
 
-                <x-jet-danger-button class="ml-2" wire:click.prevent="useCoupon">
+                <x-jet-danger-button class="ml-2" wire:click="useCoupon">
                     {{ __('Save') }}
                 </x-jet-danger-button>
             </x-slot>
@@ -137,7 +137,7 @@
         @endif
 
         <div class="flex justify-end mx-5 my-5">
-            <button wire:click.prevent="moveStep1"
+            <button wire:click="moveStep1"
                 class="w-full sm:w-1/2 appearance-none bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:border-gray-500 {{ $couponAdjusted === true ? '' : 'disabled:opacity-50'}}"
                 {{ $couponAdjusted === true ? '' : 'disabled'}}>
                 {{ __('Continue to your task  >') }}
@@ -174,14 +174,14 @@
                 Anything you need to change about your task?
             </h3>
             <div class="flex flex-col md:flex-row w-full md:w-1/2">
-                <button wire:click.prevent="editTask"
+                <button wire:click="editTask"
                     class="w-full md:w-1/2 my-2 appearance-none font-bold border bg-green-500 text-white border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-green-200 hover:text-gray-600 focus:outline-none focus:border-gray-500">
                     Edit your task info
                 </button>
                 <h3 class="md:flex md:mx-5 hidden my-2 text-base text-gray-500 self-center">
                     OR
                 </h3>
-                <button wire:click.prevent="modalToggle"
+                <button wire:click="modalToggle"
                     class="w-full md:w-1/2 my-2 appearance-none bg-red-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-red-200 hover:text-gray-600 focus:outline-none focus:border-gray-500">
                     Delete your task
                 </button>

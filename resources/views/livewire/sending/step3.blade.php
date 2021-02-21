@@ -35,10 +35,11 @@
     </div>
     <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full">
         <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full my-6">
-            <button wire:click.prevent="moveBack" wire:key=step3back
+            <button wire:click="moveBack" wire:key=step3back
                 class="py-2 px-4  bg-red-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Back</button>
-            <button wire:click.prevent="moveStep4" wire:key=step3next
+            <button wire:click="moveStep4" wire:key=step3next
                 class="py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg {{ $fromAddress === null || strlen($fromAddress) < 4 ? 'disabled:opacity-50' : '' }}"
                 {{ $fromAddress === null|| strlen($fromAddress) < 4  ? 'disabled' : ''  }}>Next</button>
         </div>
     </div>
+</div>

@@ -1,4 +1,5 @@
 <x-guest-layout>
+    <div class="md:h-20"></div>
     <div
         class="flex flex-col m-auto md:mt-10 justify-center space-y-4 text-gray-900 uppercase text-4xl md:text-6xl font-bold md:mx-4 text-center mb-10">
         <span>Send hva som

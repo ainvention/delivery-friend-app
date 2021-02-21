@@ -23,14 +23,14 @@
                     <div class="w-1/2 text-red-600 text-left">
                         <span>Photo included</span>
                     </div>
-                    <button wire:click.prevent="modalTogglePhoto" class="w-1/2 m-auto text-green-500 text-right">
+                    <button wire:click="modalTogglePhoto" class="w-1/2 m-auto text-green-500 text-right">
                         <span>Edit</span>
                     </button>
                     @else
                     <div class="w-1/2 text-gray-400 text-left">
                         <span>Not set</span>
                     </div>
-                    <button wire:click.prevent="modalTogglePhoto" class="w-1/2  m-auto text-green-500 text-right">
+                    <button wire:click="modalTogglePhoto" class="w-1/2  m-auto text-green-500 text-right">
                         <span>Add</span>
                     </button>
                     @endisset
@@ -56,7 +56,7 @@
                     <input wire:model.debounce.1000ms="recommendedCost" id="recommendedCost"
                         class="w-1/2 text-2xl font-bold outline-none border-transparent" type="number"
                         name="recommendedCost" required />
-                    <button wire:click.prevent="getRecommendedCostManually"
+                    <button wire:click="getRecommendedCostManually"
                         class="w-1/2 md:text-xl text-cool-gray-50 bg-green-600 font-extrabold justify-evenly rounded-md">
                         Calculate
                     </button>
@@ -245,10 +245,10 @@
         </div>
     </x-slot>
     <x-slot name="footer">
-        <x-jet-secondary-button wire:click.prevent="modalToggleEdit">
+        <x-jet-secondary-button wire:click="modalToggleEdit">
             {{ __('Cancel') }}
         </x-jet-secondary-button>
-        <x-jet-danger-button wire:click.prevent="publishTask" class="ml-2">
+        <x-jet-danger-button wire:click="publishTask" class="ml-2">
             {{ __('Save') }}
         </x-jet-danger-button>
     </x-slot>

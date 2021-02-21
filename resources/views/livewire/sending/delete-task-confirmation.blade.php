@@ -9,11 +9,11 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click.prevent="modalToggle">
+            <x-jet-secondary-button wire:click="modalToggle">
                 {{ __('Nevermind') }}
             </x-jet-secondary-button>
 
-            <x-jet-danger-button class=" ml-2" wire:click.prevent="deleteTask">
+            <x-jet-danger-button class=" ml-2" wire:click="deleteTask">
                 {{ __('Delete') }}
             </x-jet-danger-button>
         </x-slot>

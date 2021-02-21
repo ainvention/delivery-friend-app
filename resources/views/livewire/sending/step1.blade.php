@@ -16,7 +16,7 @@
             <div class="w-full max-w-xl">{{-- form --}}
                 <div class="flex flex-col mx-3 space-y-6 mb-10">
                     @empty($isSetPhoto)
-                    <div wire:click.prevent="modalTogglePhoto"
+                    <div wire:click="modalTogglePhoto"
                         class="text-center w-full py-20 md:w-full px-3 mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 text-gray-800">
                         <svg class="block m-auto h-16" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
@@ -60,7 +60,7 @@
                         <x-jet-input-error for="weight" class="mt-2" />
                     </div>
                     <div class="flex flex-col sm:flex-row sm:space-x-4 justify-between w-full md:w-full">
-                        <button wire:click.prevent="moveStep2" wire:key=step1next
+                        <button wire:click="moveStep2" wire:key=step1next
                             class="py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg {{ $title === null || strlen($title) < 4 ? 'disabled:opacity-50' : '' }}"
                             {{ $title === null || strlen($title) < 4 ? "disabled" : ""  }}>Next</button>
                     </div>
@@ -84,14 +84,14 @@
                 </div>
             </x-slot>
             <x-slot name="footer">
-                <x-jet-secondary-button wire:click.prevent="photoDelete">
+                <x-jet-secondary-button wire:click="photoDelete">
                     @empty($isSetPhoto)
                     {{ __('Cancel') }}
                     @else
                     {{ __('Delete') }}
                     @endempty
                 </x-jet-secondary-button>
-                <x-jet-danger-button class="ml-2" wire:click.prevent="savePhoto">
+                <x-jet-danger-button class="ml-2" wire:click="savePhoto">
                     @empty($isSetPhoto)
                     {{ __('Save') }}
                     @else
