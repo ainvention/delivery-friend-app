@@ -68,7 +68,7 @@
                 for (var i = data.results.length - 1; i >= 0; i--) {
                     var result = data.results[i];
                     document.getElementById('address').value= result.properties.Place_addr;
-                    // console.log(result);
+                    console.log(result);
                 }
             });
 
