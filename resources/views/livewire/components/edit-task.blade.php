@@ -1,14 +1,21 @@
-<div x-data="{ openEdit: $wire.entangle('openEdit') }" wire:key="editTaskDropDownPageKey" class="flex flex-col mb-10">
-    <div x-show="!openEdit" class="my-10">
+<div x-data="{ openEdit: $wire.entangle('openEdit') }" wire:key="editTaskDropDownPageKey"
+    class="flex flex-col w-full mb-10 px-2">
+    <div x-show="!openEdit" class="flex flex-col my-10 mx-4">
         <div class="w-full mx-4 text-xl text-yellow-500 text-left md:mx-auto md:text-center ">
             <span>We recommend that,</span>
             <br />
             <span>If you have more details on this task, you can find the helper more faster.</span>
         </div>
-        <button @click="openEdit = true"
-            class="flex mx-auto p-4 bg-yellow-400 border-gray-400 border-2 text-xl font-bold m-2 my-6 hover:bg-black text-white rounded-md mb-10">
-            <span class="self-center">@icon('plus')&nbsp Add more information</span>
-        </button>
+        <div class="flex flex-col mx-2 sm:flex-row sm:space-x-4 justify-between w-full">
+            <button @click="openEdit = true"
+                class="m-2 py-2 px-4 bg-green-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">
+                <span class="self-center">@icon('plus')&nbsp Add more information</span>
+            </button>
+            <button wire:click="moveStep1"
+                class="m-2 py-2 px-4  bg-red-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">
+                <span class="self-center">@icon('check')&nbsp Finish</span>
+            </button>
+        </div>
     </div>
     <div x-show="openEdit" class="w-11/12 mx-6 md:w-8/12 md:mx-auto .leading-relaxed">
         <div name="title">
