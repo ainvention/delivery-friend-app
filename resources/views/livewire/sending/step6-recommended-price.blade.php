@@ -20,14 +20,14 @@
         <div class="flex-col sm:flex-row flex-1 text-4xl text-left text-black font-extrabold">
             <span class="flex-auto pl-3 text-gray-300 self-center">@icon('credit-card')</span>
             <x-jet-input wire:model.ignore="recommendedCost" id="recommendedCost"
-                class="flex-2 w-160 text-4xl font-bold outline-none border-transparent" type="number"
+                class="flex-1 w-32 text-4xl font-bold outline-none border-transparent" type="number"
                 name="recommendedCost" required />
             <span class="flex-1 pl-3 ">NOK</span>
             {{-- @error('recommendedCosts') <span class="error text-sm pl-3 text-red-600">{{ $message }}</span>
             @enderror --}}
             <x-jet-input-error for="recommendedCost" class="ml-4" />
         </div>
-        <x-jet-button wire:click="getRecommendedCostManually"
+        <x-jet-button wire:click="getRecommendedCostManually" wire:loading.attr="disabled"
             class="flex flex-shrink m-2 md:text-xl text-white bg-green-600 hover:bg-black font-extrabold justify-evenly">
             Calculate
         </x-jet-button>
@@ -80,7 +80,7 @@
             <span>@icon('chevron-left')</span>
             Back
         </button>
-        <button wire:click="moveStep7" wire:key=step6next
+        <button wire:click="moveStep7" wire:loading.attr="disabled" wire:key=step6next
             class="sm:w-1/2 py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center font-semibold shadow-md rounded-lg">Request
             delivery</button>
     </div>
@@ -90,7 +90,8 @@
         var element3 = @this.toLat;
         var element4 = @this.toLng;
 
-        var mapBoxApiKey= '{{ env('MAPBOX_ACCESS_TOKEN')}}';
+        // var mapBoxApiKey= '{{ env('MAPBOX_ACCESS_TOKEN', NULL)}}';
+        var mapBoxApiKey='pk.eyJ1IjoiYWxleGludmVudGlvbiIsImEiOiJja2ttZXN0dHQzN29uMnVvY3U5am13ZGt6In0._f_4UOuTHo-35LfZOVEyxw'
 
         var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/';
 
