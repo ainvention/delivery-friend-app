@@ -20,7 +20,7 @@ class CreateSendingsTable extends Migration
             $table->string('photo')->nullable();
             $table->char('title', 40);
             $table->char('note', 80)->nullable();
-            $table->unsignedSmallInteger('weight')->default(0);
+            $table->unsignedSmallInteger('weight')->nullable()->default(0);
             $table->char('size', 10);
             $table->char('from_address', 80);
             $table->char('simple_from_address', 30);
