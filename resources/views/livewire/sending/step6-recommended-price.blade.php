@@ -84,51 +84,51 @@
             class="sm:w-1/2 py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center font-semibold shadow-md rounded-lg">Request
             delivery</button>
     </div>
-    <script>
-        var element1 = @this.fromLat;
-        var element2 = @this.fromLng;
-        var element3 = @this.toLat;
-        var element4 = @this.toLng;
-
-        var mapBoxApiKey= '{{ env('MAPBOX_ACCESS_TOKEN')}}';
-        var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/';
-
-
-
-        // access Mapbox API to get Navigation data
-        // https://docs.mapbox.com/api/navigation/directions/
-            function getData() {
-            console.log('logging');
-            const routeData = axios.get(`${url}${element2},${element1};${element4},${element3}?access_token=${mapBoxApiKey}`);
-
-            // if(!routeData.status !== 200) {
-            //     document.getElementById('recommendedCost').textContent = 'Loading';
-            // }
-
-            return routeData.then(response => {
-                if (response.status == 200) {
-                    console.log('OK : status 200!!');
-                    return response;
-                } else {
-                    document.getElementById('recommendedCost').textContent = 'Loading';
-                }
-            });
-        }
-
-
-        // Main function to change Promised data status to fullfilled.
-        // get routes data
-        // pass a parameter(totalDistance) by Event emit
-        async function run() {
-            const data = await getData();
-            console.log(data);
-            var dist = data.data.routes[0].distance;
-            var distance = Math.round(Math.round(dist)/1000);
-            window.livewire.emit('passTotalDistance', distance);
-            window.livewire.emit('getRecommendedCost', distance);
-        }
-
-        //main trigger
-        run();
-    </script>
 </div>
+<script>
+    var element1 = @this.fromLat;
+    var element2 = @this.fromLng;
+    var element3 = @this.toLat;
+    var element4 = @this.toLng;
+
+    var mapBoxApiKey= '{{ env('MAPBOX_ACCESS_TOKEN')}}';
+    var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/';
+
+
+
+    // access Mapbox API to get Navigation data
+    // https://docs.mapbox.com/api/navigation/directions/
+        function getData() {
+        console.log('logging');
+        const routeData = axios.get(`${url}${element2},${element1};${element4},${element3}?access_token=${mapBoxApiKey}`);
+
+        // if(!routeData.status !== 200) {
+        //     document.getElementById('recommendedCost').textContent = 'Loading';
+        // }
+
+        return routeData.then(response => {
+            if (response.status == 200) {
+                console.log('OK : status 200!!');
+                return response;
+            } else {
+                document.getElementById('recommendedCost').textContent = 'Loading';
+            }
+        });
+    }
+
+
+    // Main function to change Promised data status to fullfilled.
+    // get routes data
+    // pass a parameter(totalDistance) by Event emit
+    async function run() {
+        const data = await getData();
+        console.log(data);
+        var dist = data.data.routes[0].distance;
+        var distance = Math.round(Math.round(dist)/1000);
+        window.livewire.emit('passTotalDistance', distance);
+        window.livewire.emit('getRecommendedCost', distance);
+    }
+
+    //main trigger
+    run();
+</script>
