@@ -140,7 +140,7 @@
             <button wire:click="moveStep1"
                 class="w-full sm:w-1/2 appearance-none bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:border-gray-500 {{ $couponAdjusted === true ? '' : 'disabled:opacity-50'}}"
                 {{ $couponAdjusted === true ? '' : 'disabled'}}>
-                {{ __('Continue to your task  >') }}
+                {{ __('Continue to make new task  >') }}
             </button>
         </div>
     </div>

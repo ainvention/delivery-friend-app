@@ -113,9 +113,7 @@
                 </div>
             </div>
         </div>
-        @include('livewire.components.testing.refreshCurrentPage')
     </div>
-
     {{-- divider --}}
     <div class="m-6 border-b-2 border-gray-200"></div>
 
