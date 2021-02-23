@@ -34,12 +34,13 @@ class ContactSenderPage extends Component
             'priceSuggestion' => 'required|numeric|min:180|max:65000',
         ]);
 
-        $this->openContact = !$this->openContact;
+        $this->openContact = false;
+
         return $this->alert('success', 'Message sent!,', [
             'position' =>  'center',
             'timer' =>  3000,
             'toast' =>  false,
-            'text' =>  'Sender will reply you when opened.'.$this->selectedTaskId,
+            'text' =>  'Sender will reply you when opened.',
             'confirmButtonText' =>  '',
             'cancelButtonText' =>  'OK',
             'showCancelButton' =>  false,

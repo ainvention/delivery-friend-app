@@ -86,15 +86,13 @@
             </div>
         </div>
     </div>
-    <div x-show="!openContact" class="flex flex-col md:flex-row sm:space-x-4">
+    <div x-show="!openContact" class="flex flex-col md:flex-row md:space-x-4">
         <button wire:click="$emit('movePage', 'home')"
             class="py-2 px-4  bg-gray-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Back
             to Search</button>
         <button @click="openContact = true"
-            class="mt-4 sm:mt-0 py-2 px-4 bg-blue-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Contact
+            class="mt-4 md:mt-0 py-2 px-4 bg-blue-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Contact
             Sender @icon('envelope')</button>
     </div>
-    <div x-show="openContact">
-        @livewire('search.contact-sender-page', ['selectedTask' => $selectedTask])
-    </div>
+    @livewire('search.contact-sender-page', ['selectedTask' => $selectedTask])
 </div>
