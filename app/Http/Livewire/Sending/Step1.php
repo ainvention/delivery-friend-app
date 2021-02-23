@@ -399,16 +399,6 @@ class Step1 extends Component
         $this->isSetPhoto = false;
 
         $this->modalTogglePhoto();
-
-        $this->alert('info', 'We recommend add a photo.', [
-            'position' =>  'center',
-            'timer' =>  5000,
-            'toast' =>  false,
-            'confirmButtonText' =>  '',
-            'cancelButtonText' =>  'OK',
-            'showCancelButton' =>  true,
-            'showConfirmButton' =>  false,
-        ]);
     }
 
 

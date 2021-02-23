@@ -1,5 +1,4 @@
-<div x-data="{ openEdit: $wire.entangle('openEdit') }" wire:key="editTaskDropDownPageKey"
-    class="flex flex-col w-full mb-10 px-2">
+<div x-data="{ openEdit: $wire.entangle('openEdit') }" class="flex flex-col w-full mb-10 px-2">
     <div x-show="!openEdit" class="flex flex-col my-10 mx-4">
         <div class="w-full mx-4 text-xl text-yellow-500 text-left md:mx-auto md:text-center ">
             <span>We recommend that,</span>

@@ -16,7 +16,7 @@
             <div class="w-full max-w-xl">{{-- form --}}
                 <div class="flex flex-col mx-3 space-y-6 mb-10">
                     @empty($isSetPhoto)
-                    <div wire:click="modalTogglePhoto"
+                    <div x-data="{}" x-cloak wire:click="modalTogglePhoto"
                         class="text-center w-full py-20 md:w-full px-3 mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 text-gray-800">
                         <svg class="block m-auto h-16" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">

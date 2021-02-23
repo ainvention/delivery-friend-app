@@ -1,5 +1,5 @@
 <div
-    class="flex flex-col w-full justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
+    class="flex flex-col justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
     @empty($recommendedCost)
     <div class="text-2xl text-center m-auto">
         Calculating our recommended cost...
@@ -19,7 +19,7 @@
             helper</span>
     </div>
 
-    <div class="flex flex-col w-full lg:flex-row border-gray-300 border-2">
+    <div class="flex flex-col lg:flex-row border-gray-300 border-2">
         <div class="flex-col sm:flex-row flex-1 text-4xl text-left text-black font-extrabold">
             <span class="flex-auto pl-3 text-gray-300 self-center">@icon('credit-card')</span>
             <x-jet-input wire:model.ignore="recommendedCost" id="recommendedCost"

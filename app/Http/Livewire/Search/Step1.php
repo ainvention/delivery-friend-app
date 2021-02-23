@@ -2,32 +2,47 @@
 
 namespace App\Http\Livewire\Search;
 
-use App\Models\Sending;
 use App\Models\User;
+use App\Models\Sending;
 use Livewire\Component;
 
 class Step1 extends Component
 {
-
     // public $tasks;
-
 
     // public function mount()
     // {
     //     $this->tasks = Sending::paginate(10);
     // }
 
-        // for modal switching
-        public $modalSwitch = false;
+    public $page = 'home';
 
-        public $often;
-        public $size;
-        public $distance = null;
-        public $task;
+    public $often;
+    public $size;
+    public $selectedTask;
+    public $selectedTaskId;
+    public $dateSuggestion;
+    public $priceSuggestion;
+    public $openContact = false;
+    public $modalSwitch = false;
 
 
 
+    protected $listeners = ['moveDetailPage', 'movePage'];
 
+
+
+    public function moveDetailPage($id)
+    {
+        $this->selectedTask = Sending::where('id', $id)->first();
+        $this->page = 'detail';
+    }
+
+
+    public function movePage($page)
+    {
+        $this->page = $page;
+    }
 
     /**
      * render
@@ -49,29 +64,6 @@ class Step1 extends Component
 
 
 
-        /**
-     * On/Off modalToggle
-     *
-     * @return void
-     */
-    public function modalToggle($param = null)
-    {
-        $this->modalSwitch = !$this->modalSwitch;
-
-        if ($param === 'cancel') {
-            $this->often = null;
-            $this->size = null;
-            $this->distance = null;
-        } elseif ($param === 'save') {
-            $this->often = $this->often;
-            $this->size = $this->size;
-            $this->distance = $this->distance;
-        }
-    }
-
-
-
-
 
     public function searchTask()
     {
@@ -82,12 +74,5 @@ class Step1 extends Component
         // ->where('to_date', [$from, $to])
         // ->where('size', $this->size)
         // ->where
-    }
-
-
-    public function detail($id)
-    {
-        $this->task = Sending::find($id);
-        $this->emit('detail', ['task' => $this->task]);
     }
 }

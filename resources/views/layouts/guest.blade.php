@@ -37,64 +37,6 @@
     {{-- Mix Script & Style --}}
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
-
-    <style>
-        .map {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-        }
-    </style>
-    <style>
-        #results {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #results>div {
-            width: 33%;
-            text-align: center;
-            line-height: 24px;
-        }
-
-        @media (max-width: 814px) {
-
-            #results {
-                flex-flow: column;
-            }
-
-            #results>div {
-                width: 100%;
-                margin-bottom: 24px;
-            }
-
-        }
-
-        video,
-        canvas {
-            border: 2px solid rgba(255, 255, 255, 1);
-            background: #263238;
-            height: 198px;
-            width: 100%;
-        }
-    </style>
     @livewireStyles
 </head>
 
