@@ -44,6 +44,16 @@ class Step1 extends Component
         $this->page = $page;
     }
 
+
+    // public function contactFormClose()
+    // {
+    //     $this->openContact = false;
+    // }
+
+
+
+
+
     /**
      * render
      *

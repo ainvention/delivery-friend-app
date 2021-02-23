@@ -12,8 +12,6 @@ class ContactSenderPage extends Component
     public $messageToSender;
     public $openContact = false;
 
-    protected $listeners = ['sendMessageToSender'];
-
     public function mount()
     {
         $this->dateSuggestion = $this->selectedTask->to_time_manually;
@@ -34,7 +32,7 @@ class ContactSenderPage extends Component
             'priceSuggestion' => 'required|numeric|min:180|max:65000',
         ]);
 
-        $this->openContact = false;
+        $this->emit('contactFormToggle'); //in search/DetailPage
 
         return $this->alert('success', 'Message sent!,', [
             'position' =>  'center',

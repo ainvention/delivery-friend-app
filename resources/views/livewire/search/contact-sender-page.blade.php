@@ -1,4 +1,4 @@
-<div x-show="openContact" class="text-gray-600 body-font relative">
+<div class="text-gray-600 body-font relative">
     <div class="container py-24 mx-auto">
         <div class="text-center w-full mb-12">
             <span class="text-2xl text-center text-gray-500">Send message to sender</span>
@@ -33,10 +33,6 @@
                     Message</button>
             </div>
         </form>
-        <div class="w-full mt-4 md:mt-0 relative mx-2 my-2 sm:space-y-4">
-            <button @click="openContact = false"
-                class="py-2 px-2 bg-gray-300 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Cancel</button>
-        </div>
     </div>
     <script>
         flatpickr("#fickerDate", {

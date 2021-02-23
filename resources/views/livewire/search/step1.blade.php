@@ -1,6 +1,6 @@
 <div>
     @if($page == 'home')
-    <div class="flex flex-col justify-center my-10 mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
+    <div class="flex flex-col justify-center my-10 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
         @include('livewire.components.sessionMessage')
 
         {{-- main page start --}}

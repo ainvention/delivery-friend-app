@@ -12,7 +12,7 @@ class DetailPage extends Component
     public $selectedTask;
     public $openContact = false;
 
-    protected $listeners = [];
+    protected $listeners = ['contactFormToggle']; // contactFormToggle for after message sent
 
     public function render()
     {
@@ -21,6 +21,8 @@ class DetailPage extends Component
         ]);
     }
 
-
-
+    public function contactFormToggle()
+    {
+        $this->openContact = !$this->openContact;
+    }
 }

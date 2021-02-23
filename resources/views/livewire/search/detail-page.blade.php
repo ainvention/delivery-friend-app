@@ -88,11 +88,17 @@
     </div>
     <div x-show="!openContact" class="flex flex-col md:flex-row md:space-x-4">
         <button wire:click="$emit('movePage', 'home')"
-            class="py-2 px-4  bg-gray-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Back
-            to Search</button>
-        <button @click="openContact = true"
-            class="mt-4 md:mt-0 py-2 px-4 bg-blue-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Contact
-            Sender @icon('envelope')</button>
+            class="py-2 px-4  bg-gray-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Back</button>
+        <button wire:click="contactFormToggle"
+            class="mt-4 md:mt-0 py-2 px-4 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg {{ $openContact === false ? 'bg-blue-600': 'bg-red-600' }}">
+            @if($openContact === false)
+            Contact Sender @icon('envelope')
+            @else
+            Cancel
+            @endif
+        </button>
     </div>
-    @livewire('search.contact-sender-page', ['selectedTask' => $selectedTask])
+    <div x-show="openContact">
+        @livewire('search.contact-sender-page', ['selectedTask' => $selectedTask])
+    </div>
 </div>

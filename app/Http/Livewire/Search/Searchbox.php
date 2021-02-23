@@ -6,7 +6,9 @@ use Livewire\Component;
 
 class Searchbox extends Component
 {
-    public $distance = null;
+    public $often;
+    public $size;
+    public $distance;
     // for modal switching
     public $modalSwitch = false;
 
