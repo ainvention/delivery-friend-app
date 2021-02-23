@@ -31,7 +31,6 @@
                 class="py-2 px-2 bg-gray-300 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Cancel</button>
         </div>
     </div>
-    @include('livewire.components.testing.refreshCurrentPage')
     <script>
         flatpickr("#fickerDate", {
             defaultDate: 'today',
