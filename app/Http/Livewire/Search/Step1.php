@@ -77,12 +77,9 @@ class Step1 extends Component
 
     public function searchTask()
     {
-        // $toDate = $this->toDate;
-        // $toTime = $this->toDate
         // Sending::where('from_address', $this->fromAddress)
         // ->where('to_address', $this->toAddress)
-        // ->where('to_date', [$from, $to])
         // ->where('size', $this->size)
-        // ->where
+        // ->get();
     }
 }

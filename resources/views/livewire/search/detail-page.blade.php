@@ -7,7 +7,7 @@
         </div>
         @else
         <div class="md:w-1/6 m-2 self-center">
-            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="max-w-sm">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="p-2">
                 <defs>
                     <style>
                         .cls-1 {
@@ -86,11 +86,25 @@
             </div>
         </div>
     </div>
+    <div>
+
+        <div class="flex flex-col my-6">
+            @if(DB::table('users')->where('id', $selectedTask->user_id)->value('profile_photo_path') !== null)
+            <img src="{{ url('storage/'.DB::table('users')->where('id', $selectedTask->user_id)->value('profile_photo_path')) }}"
+                class="flex w-32 h-32 self-center rounded-full object-cover">
+            @else
+            <img src="{{ url('storage/profile-photos/defaultAvatar.png') }}"
+                class="flex w-32 h-32 self-center rounded-full object-cover">
+            @endif
+            <span class="uppercase text-xl font-bold
+            self-center">{{ DB::table('users')->where('id', $selectedTask->user_id)->value('name') }}</span>
+        </div>
+    </div>
     <div x-show="!openContact" class="flex flex-col md:flex-row md:space-x-4">
         <button wire:click="$emit('movePage', 'home')"
-            class="py-2 px-4  bg-gray-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">Back</button>
+            class="py-2 px-4  bg-gray-600 hover:bg-black text-white w-full text-center text-base font-semibold rounded-lg">Back</button>
         <button wire:click="contactFormToggle"
-            class="mt-4 md:mt-0 py-2 px-4 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg {{ $openContact === false ? 'bg-blue-600': 'bg-red-600' }}">
+            class="mt-4 md:mt-0 py-2 px-4 hover:bg-black text-white w-full text-center text-base font-semibold rounded-lg {{ $openContact === false ? 'bg-blue-600': 'bg-red-600' }}">
             @if($openContact === false)
             Contact Sender @icon('envelope')
             @else

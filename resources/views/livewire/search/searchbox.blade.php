@@ -5,17 +5,14 @@
 
         </x-slot>
         <x-slot name="content">
-            <label class="text-xl text-gray-400">This trip happens...</label>
+            {{-- <label class="text-xl text-gray-400">This trip happens...</label>
             <div class="flex flex-col sm:flex-row w-full">
                 <div class="flex items-center mr-4 mb-4">
                     <input wire:model="often" id="regular" type="radio" name="often" value="regular"
                         class="w-8 h-8 m-4 border-1 border-gray-400" checked />
                     <label for="regular" class="flex items-center cursor-pointer text-xl">
                         Regular</label>
-                    <input wire:model="often" id="schedule" type="radio" name="often" value="schedule"
-                        class="w-8 h-8 m-4 border-1 border-gray-400" />
-                    <label for="schedule" class="flex items-center cursor-pointer text-xl">
-                        Schedule</label>
+
                     <input wire:model="often" id="selection" type="radio" name="often" value="selection"
                         class="w-8 h-8 m-4 border-1 border-gray-400" />
                     <label for="selection" class="flex items-center cursor-pointer text-xl">
@@ -25,7 +22,7 @@
                     <label for="specific" class="flex items-center cursor-pointer text-xl">
                         Specifix</label>
                 </div>
-            </div>
+            </div> --}}
 
             <label class="text-xl text-gray-400">And you're going there by...</label>
             <div class="flex flex-col sm:flex-row w-full">

@@ -1,6 +1,6 @@
 <div>
     @if($step === 1)
-    <div
+    <div x-data="{modalSwitchPhoto:false}" x-cloak
         class="flex flex-col justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
         @include('livewire.components.sessionMessage')
         <div
@@ -16,7 +16,7 @@
             <div class="w-full max-w-xl">{{-- form --}}
                 <div class="flex flex-col mx-3 space-y-6 mb-10">
                     @empty($isSetPhoto)
-                    <div x-data="{}" x-cloak wire:click="modalTogglePhoto"
+                    <div wire:click="modalTogglePhoto"
                         class="text-center w-full py-20 md:w-full px-3 mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 text-gray-800">
                         <svg class="block m-auto h-16" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
@@ -91,7 +91,7 @@
                     {{ __('Delete') }}
                     @endempty
                 </x-jet-secondary-button>
-                <x-jet-danger-button class="ml-2" wire:click="savePhoto">
+                <x-jet-danger-button class="ml-2 bg-blue-600" wire:click="savePhoto">
                     @empty($isSetPhoto)
                     {{ __('Save') }}
                     @else

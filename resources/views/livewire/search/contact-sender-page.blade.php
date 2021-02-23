@@ -1,7 +1,9 @@
 <div class="text-gray-600 body-font relative">
     <div class="container py-24 mx-auto">
         <div class="text-center w-full mb-12">
-            <span class="text-2xl text-center text-gray-500">Send message to sender</span>
+            <span class="text-2xl text-center text-gray-500">Send message to
+                <span
+                    class="font-bold uppercase">{{ DB::table('users')->where('id', $selectedTask->user_id)->value('name') }}</span></span>
         </div>
         <form wire:submit.prevent="sendMessageToSender" class="mx-auto">
             <div class="w-full relative mx-2 my-2 text-lg">

@@ -300,7 +300,7 @@
                 <x-jet-secondary-button wire:click="cancelEditTask">
                     {{ __('Cancel') }}
                 </x-jet-secondary-button>
-                <x-jet-danger-button wire:click="publishTask" class="ml-2">
+                <x-jet-danger-button wire:click="publishTask" class="bg-blue-600 hover:bg-black ml-2">
                     {{ __('Save') }}
                 </x-jet-danger-button>
             </div>
