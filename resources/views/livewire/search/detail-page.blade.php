@@ -1,5 +1,5 @@
 <div x-data="{ openContact: $wire.entangle('openContact') }"
-    class="flex flex-col m-6 justify-between border-b-2 border-gray-200">
+    class="flex flex-col max-w-7xl m-6 justify-between border-b-2 border-gray-200">
     <div class="flex flex-col md:flex-row md:w-full space-y-2 mb-6">
         @isset($selectedTask->photo)
         <div class="md:w-1/6 md:self-center">
