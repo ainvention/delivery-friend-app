@@ -2,15 +2,15 @@
 
 namespace App\Http\Livewire\Sending;
 
-use App\Models\Image;
+use Image;
 use App\Models\Coupon;
 use App\Models\Sending;
 use Livewire\Component;
 use Illuminate\Http\File;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -348,7 +348,7 @@ class Step1 extends Component
     {
         $this->validate(
             [
-                'photo' => 'mimes:jpg,jpeg,bmp,png|max:2048', // 2MB Max
+                'photo' => 'image|max:4096', // 2MB Max
             ]
         );
 
@@ -360,15 +360,9 @@ class Step1 extends Component
          * storage/app/public/sending-photos/파일이름 형식으로 저장된다.
          */
         $path = $this->photo->store('images', 'public');
-
         $this->photo = Storage::url($path);
-
         $this->isSetPhoto = true;
-
         $this->modalTogglePhoto();
-
-
-
 
         return $this->alert('success', 'Item photo saved!', [
             'position' =>  'center',
