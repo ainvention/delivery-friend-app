@@ -29,12 +29,12 @@
         {{-- search box modal start --}}
         @livewire('search.searchbox')
         <div class="flex flex-col mt-10">
-            <div class="flex border-b-2 border-gray-200 sm:text-xl">
-                {{ $count}} deliveries found
+            <div class="flex border-b-2 border-gray-300 text-xl">
+                Total {{ $count}} deliveries found
             </div>
             @foreach ($tasks as $task)
             <div wire:click="$emit('moveDetailPage', {{ $task->id}})" wire:key="{{ $loop->index }}"
-                class="flex flex-col sm:flex-row .shadow-lg  border-b-2 border-gray-200">
+                class="flex flex-col sm:flex-row py-4 .shadow-lg  border-b-2 border-gray-300">
                 <div class="flex flex-col sm:flex-row sm:w-8/12 space-y-2">
                     @isset($task->photo)
                     <div class="w-24 sm:self-center">
@@ -78,7 +78,7 @@
                                 alt="img" class="rounded-full w-12 h-12 object-cover">
                             @else
                             <img src="{{ url('storage/profile-photos/defaultAvatar.png') }}"
-                                class="flex w-12 h-12 self-center rounded-full object-cover">
+                                class="flex w-10 h-10 self-center rounded-full object-cover">
                             @endif
                         </div>
                         <div class="flex flex-row sm:flex-col text-sm self-center">
