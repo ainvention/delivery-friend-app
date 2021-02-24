@@ -62,7 +62,7 @@
             </div>
             <div class="flex flex-col w-full md:flex-row mx-2 space-y-2 md:space-y-0">
                 <div class="flex flex-row w-full mx-2 space-x-2">
-                    <span>Extra needs :&nbsp</span>
+                    <span>Extra needs:&nbsp</span>
                     <span class="font-bold">
                         @if($isFraglile == 1)
                         Fragle,&nbsp

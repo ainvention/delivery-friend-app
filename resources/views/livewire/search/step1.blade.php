@@ -71,7 +71,7 @@
                 </div>
                 <div class="flex flex-col lg:flex-row lg:w-4/12 sm:self-center">
                     <div class="flex flex-row lg:w-5/12">
-                        <div class="w-14 pr-2 sm:px-2">
+                        <div class="w-14 h-auto sm:pr-2 sm:px-2">
                             @if(DB::table('users')->where('id', $task->user_id)->value('profile_photo_path') !==
                             null)
                             <img src="{{ url('storage/'.DB::table('users')->where('id', $task->user_id)->value('profile_photo_path')) }}"
