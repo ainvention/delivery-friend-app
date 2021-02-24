@@ -359,7 +359,7 @@ class Step1 extends Component
          * 4. store('폴더이름지정', "config/filesystem 에 저장된 'disks'의 배열이름")
          * storage/app/public/sending-photos/파일이름 형식으로 저장된다.
          */
-        $path = $this->photo->store('images', 'public');
+        $path = $this->photo->store('sending-photos', 'public');
         $this->photo = Storage::url($path);
         $this->isSetPhoto = true;
         $this->modalTogglePhoto();
@@ -627,14 +627,18 @@ class Step1 extends Component
             $this->validate([
                 'toDateManually' => 'date'
             ]);
-
             $this->toDate = null;
-        } elseif ($this->toTimeManually !== null) {
+        }
+
+        if ($this->toTimeManually !== null) {
             $this->validate([
                 'toTimeManually' => 'date_format:H:i'
             ]);
-
             $this->toTime = null;
+        }
+
+        if ($this->weight < 0 || $this->weight === '') {// case : weight === null just pass
+            $this->weight = 0;
         }
 
         $this->getTotalDeliveryCost();
