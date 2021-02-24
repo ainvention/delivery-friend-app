@@ -941,8 +941,6 @@ class Step1 extends Component
 
         //close edit drop-down form in step8-edit-task
         $this->openEdit = !$this->openEdit;
-
-        return session()->flush();
         // return $this->alert('info', 'Task edit canceled', [
         //    'position' =>  'center',
         //    'timer' =>  5000,
