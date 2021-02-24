@@ -1,6 +1,6 @@
 <div>
     @if($step === 1)
-    <div x-data="{modalSwitchPhoto:false}" x-cloak
+    <div
         class="flex flex-col justify-center my-10 mx-4 xl:mx-4 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
         @include('livewire.components.sessionMessage')
         <div
@@ -15,6 +15,57 @@
         <div class="flex justify-center my-2 mx-4 md:mx-0">
             <div class="w-full max-w-xl">{{-- form --}}
                 <div class="flex flex-col mx-3 space-y-6 mb-10">
+
+
+                    {{-- Fix an error which below modal window is executed when reading this page because the $modalSwitch variable value is not assigned. --}}
+                    <div x-data="{modalSwitchPhoto:false}" x-cloak>
+                        <x-jet-dialog-modal wire:model="modalSwitchPhoto" id="photoModal" class="photo-modal">
+                            <x-slot name="title">
+                                @empty($isSetPhoto)
+                                Add Photo
+                                @else
+                                Change Photo
+                                @endempty
+                            </x-slot>
+                            <x-slot name="content">
+                                <div class="col-span-6 sm:col-span-4">
+                                    <x-jet-label for="photo" value="{{ __('Choose a your item photo') }}" />
+                                    <x-jet-input wire:model="photo" id="photo" type="file" class="mt-1 block w-full" />
+                                    <x-jet-input-error for="photo" class="mt-2" />
+                                </div>
+                            </x-slot>
+                            <x-slot name="footer">
+                                <x-jet-secondary-button wire:click="photoDelete" class="hover:bg-black">
+                                    @empty($isSetPhoto)
+                                    {{ __('Cancel') }}
+                                    @else
+                                    {{ __('Delete') }}
+                                    @endempty
+                                </x-jet-secondary-button>
+                                <x-jet-danger-button class="ml-2 bg-blue-600 hover:bg-black" wire:click="savePhoto">
+                                    @empty($isSetPhoto)
+                                    {{ __('Save') }}
+                                    @else
+                                    {{ __('Change') }}
+                                    @endempty
+                                </x-jet-danger-button>
+                                <div>
+                                    {{-- invalid coupon message --}}
+                                    @if (session()->has('error'))
+                                    <div class="text-red-500">
+                                        {{ session('error') }}
+                                    </div>
+                                    @elseif (session()->has('message'))
+                                    <div class="text-blue-500">
+                                        {{ session('message') }}
+                                    </div>
+                                    @endif
+                                </div>
+                            </x-slot>
+                        </x-jet-dialog-modal>
+                    </div>
+
+
                     @empty($isSetPhoto)
                     <div wire:click="modalTogglePhoto"
                         class="text-center w-full py-20 md:w-full px-3 mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 text-gray-800">
@@ -35,6 +86,8 @@
                         <span class="w-full italic">Click photo to change.</span>
                     </div>
                     @endempty
+
+
                     <div class="w-full md:w-full">
                         <label class="block uppercase tracking-wide text-xs font-bold mb-2"
                             for='title'>Title(required)</label>
@@ -64,54 +117,11 @@
                             class="py-2 px-4  bg-blue-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg {{ $title === null || strlen($title) < 4 ? 'disabled:opacity-50' : '' }}"
                             {{ $title === null || strlen($title) < 4 ? "disabled" : ""  }}>Next</button>
                     </div>
+
+
                 </div>
             </div>
         </div>
-        {{-- Fix an error which below modal window is executed when reading this page because the $modalSwitch variable value is not assigned. --}}
-        <x-jet-dialog-modal wire:model="modalSwitchPhoto" id="photoModal" class="photo-modal">
-            <x-slot name="title">
-                @empty($isSetPhoto)
-                Add Photo
-                @else
-                Change Photo
-                @endempty
-            </x-slot>
-            <x-slot name="content">
-                <div class="col-span-6 sm:col-span-4">
-                    <x-jet-label for="photo" value="{{ __('Choose a your item photo') }}" />
-                    <x-jet-input wire:model="photo" id="photo" type="file" class="mt-1 block w-full" />
-                    <x-jet-input-error for="photo" class="mt-2" />
-                </div>
-            </x-slot>
-            <x-slot name="footer">
-                <x-jet-secondary-button wire:click="photoDelete">
-                    @empty($isSetPhoto)
-                    {{ __('Cancel') }}
-                    @else
-                    {{ __('Delete') }}
-                    @endempty
-                </x-jet-secondary-button>
-                <x-jet-danger-button class="ml-2 bg-blue-600" wire:click="savePhoto">
-                    @empty($isSetPhoto)
-                    {{ __('Save') }}
-                    @else
-                    {{ __('Change') }}
-                    @endempty
-                </x-jet-danger-button>
-                <div>
-                    {{-- invalid coupon message --}}
-                    @if (session()->has('error'))
-                    <div class="text-red-500">
-                        {{ session('error') }}
-                    </div>
-                    @elseif (session()->has('message'))
-                    <div class="text-blue-500">
-                        {{ session('message') }}
-                    </div>
-                    @endif
-                </div>
-            </x-slot>
-        </x-jet-dialog-modal>
     </div>
 
     @elseif($step === 2)

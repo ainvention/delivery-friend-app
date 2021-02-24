@@ -75,11 +75,11 @@
                 <div class="flex flex-col w-full text-gray-500 ml-0">
                     <div class="flex w-full space-x-2 justify-between">
                         <input wire:model.defer="recommendedCost" id="recommendedCost"
-                            class="w-2/5 text-2xl font-bold outline-none border-transparent border-2 border-green-500 rounded-md"
+                            class="w-2/5 text-2xl font-bold outline-none border-transparent border-2 focus:border-black rounded-md"
                             type="number" name="recommendedCost" required />
                         <span class="text-left text-xl font-bold self-center">NOK</span>
                         <button wire:click="getRecommendedCostManually"
-                            class="w-2/5 md:text-xl text-cool-gray-50 bg-green-600 font-extrabold justify-evenly rounded-md">
+                            class="w-2/5 md:text-xl text-cool-gray-50 bg-green-600 hover:bg-black font-extrabold justify-evenly rounded-md">
                             Calculate
                         </button>
                     </div>
@@ -163,7 +163,8 @@
                         @endisset
                         <x-jet-dropdown class="w-full">
                             <x-slot name="trigger">
-                                <button class="p-1 text-white bg-green-600 rounded-md">{{ __('Edit Date') }}</button>
+                                <button
+                                    class="p-1 text-white bg-green-600 hover:bg-black rounded-md">{{ __('Edit Date') }}</button>
                             </x-slot>
                             <x-slot name="content">
                                 @include('livewire.components.insert-date')
@@ -179,7 +180,8 @@
                         @endisset
                         <x-jet-dropdown class="w-full">
                             <x-slot name="trigger">
-                                <button class="p-1 text-white bg-green-600 rounded-md">{{ __('Edit Time') }}</button>
+                                <button
+                                    class="p-1 text-white bg-green-600 hover:bg-black rounded-md">{{ __('Edit Time') }}</button>
                             </x-slot>
                             <x-slot name="content">
                                 @include('livewire.components.insert-time')
@@ -297,7 +299,7 @@
             </div>
             @endif
             <div class="text-right my-4">
-                <x-jet-secondary-button wire:click="cancelEditTask">
+                <x-jet-secondary-button wire:click="cancelEditTask" class='hover:bg-black'>
                     {{ __('Cancel') }}
                 </x-jet-secondary-button>
                 <x-jet-danger-button wire:click="publishTask" class="bg-blue-600 hover:bg-black ml-2">
