@@ -481,6 +481,7 @@ class Step1 extends Component
             }
 
             // delete a record from current Sending task
+            // also filtering in case of upload and cancel clicked in Step1
             if ($this->currentTaskId !== null) {
                 $currentTask = Sending::find($this->currentTaskId);
                 if ($currentTask->photo !== null) {
