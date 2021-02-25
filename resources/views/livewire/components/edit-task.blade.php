@@ -8,11 +8,11 @@
         <div class="flex flex-col mx-2 sm:flex-row sm:space-x-4 justify-between w-full">
             <button @click="openEdit = true"
                 class="m-2 py-2 px-4 bg-green-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">
-                <span class="self-center">@icon('plus')&nbsp Add more information</span>
+                <span class="self-center">@icon('plus')&nbsp; Add more information</span>
             </button>
             <button wire:click="moveStep1"
                 class="m-2 py-2 px-4  bg-red-600 hover:bg-black text-white w-full text-center text-base font-semibold shadow-md rounded-lg">
-                <span class="self-center">@icon('check')&nbsp Finish</span>
+                <span class="self-center">@icon('check')&nbsp; Finish</span>
             </button>
         </div>
     </div>

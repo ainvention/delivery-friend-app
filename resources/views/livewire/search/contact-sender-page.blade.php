@@ -2,7 +2,7 @@
     <div class="container py-24 mx-auto">
         <div class="text-center w-full mb-12">
             <span class="flex flex-col sm:flex-row text-2xl justify-center text-gray-500">
-                <span>Send message to &nbsp</span>
+                <span>Send message to &nbsp;</span>
                 <span
                     class="font-bold uppercase">{{ DB::table('users')->where('id', $selectedTask->user_id)->value('name') }}
                 </span>

@@ -89,7 +89,7 @@
                     <div class="flex flex-col lg:w-7/12 sm:mx-2">
                         <x-jet-button
                             class="w-full border-2 border-gray-200 bg-green-500 text-white hover:text-gray-600 hover:bg-red-400 justify-center">
-                            more details &nbsp @icon('hand-point-right')
+                            more details &nbsp; @icon('hand-point-right')
                         </x-jet-button>
                     </div>
                 </div>

@@ -47,39 +47,39 @@
                         {{ "Fits in a ". $selectedTask->size.', '.$selectedTask->total_distance.' km'}}
                     </div>
                     <br />
-                    <div>Bringer's reward <span class="font-bold">{{ $selectedTask->reward }} NOK</span></div>
-                    <div>Insurance and Service fee <span class="font-bold">{{ $selectedTask->service_charge }}
-                            NOK</span>
+                    <div>@icon('shield-alt')&nbsp;Item is insured up to <b>10,000 NOK</b></div>
+                    <div>@icon('credit-card')&nbsp;Sender pays the <span
+                            class="font-bold">{{ $selectedTask->service_charge }}
+                            NOK</span>&nbsp;Insurance and service fee.
                     </div>
-                    <div>Included insurance <span class="font-bold">{{ $selectedTask->insurance_cost }} NOK</span></div>
                 </div>
                 <div class="flex flex-col md:w-2/6 m-4 md:self-start md:justify-end md:text-right leading-relaxed">
-                    <span class="text-gray-600 text-xl font-bold">Total delivery cost</span>
-                    <span class="font-bold text-4xl ">{{ $selectedTask->recommended_cost}} NOK</span>
+                    <span class="text-gray-600 text-xl font-bold">You should get</span>
+                    <span class="font-bold text-4xl ">{{ $selectedTask->reward}} NOK</span>
                     <span>Inclusive of VAT if applicable</span>
                 </div>
             </div>
             <div class="flex flex-col w-full md:flex-row mx-2 space-y-2 md:space-y-0">
                 <div class="flex flex-row w-full mx-2 space-x-2">
-                    <span>Extra needs :&nbsp</span>
+                    <span>@icon('info-circle')&nbsp;Extra needs :&nbsp;</span>
                     <span class="font-bold">
                         @if($selectedTask->is_fraglile == 1)
-                        Fragle,&nbsp
+                        Fragle,&nbsp;
                         @endif
                         @if($selectedTask->need_animal_cage == 1)
-                        Animal Cage,&nbsp
+                        Animal Cage,&nbsp;
                         @endif
                         @if($selectedTask->need_cooling_equipment == 1)
                         Cooling Equipment,
                         @endif
                         @if($selectedTask->need_help_wrapping == 1)
-                        Wrapping,&nbsp
+                        Wrapping,&nbsp;
                         @endif
                         @if($selectedTask->help_pick_up == 1)
-                        Help Pick Up,&nbsp
+                        Help Pick Up,&nbsp;
                         @endif
                         @if($selectedTask->help_delivery == 1)
-                        Help Delivery&nbsp
+                        Help Delivery&nbsp;
                         @endif
                     </span>
                 </div>

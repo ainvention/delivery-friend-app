@@ -56,31 +56,31 @@
                     {{-- <x-jet-button
                 class="w-full md:w-7/12 border-2 md:self-end border-gray-200 bg-green-500 text-white hover:text-gray-600 hover:bg-red-400 justify-center">
                 See
-                more details &nbsp @icon('hand-point-right')
+                more details &nbsp; @icon('hand-point-right')
             </x-jet-button> --}}
                 </div>
             </div>
             <div class="flex flex-col w-full md:flex-row mx-2 space-y-2 md:space-y-0">
                 <div class="flex flex-row w-full mx-2 space-x-2">
-                    <span>Extra needs:&nbsp</span>
+                    <span>Extra needs:&nbsp;</span>
                     <span class="font-bold">
                         @if($isFraglile == 1)
-                        Fragle,&nbsp
+                        Fragle,&nbsp;
                         @endif
                         @if($needAnimalCage == 1)
-                        Animal Cage,&nbsp
+                        Animal Cage,&nbsp;
                         @endif
                         @if($needCoolingEquipment == 1)
                         Cooling Equipment,
                         @endif
                         @if($needHelpWrapping == 1)
-                        Wrapping,&nbsp
+                        Wrapping,&nbsp;
                         @endif
                         @if($helpPickUp == 1)
-                        Help Pick Up,&nbsp
+                        Help Pick Up,&nbsp;
                         @endif
                         @if($helpDelivery == 1)
-                        Help Delivery&nbsp
+                        Help Delivery&nbsp;
                         @endif
                     </span>
                 </div>
