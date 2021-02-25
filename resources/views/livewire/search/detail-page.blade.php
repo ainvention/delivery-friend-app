@@ -2,11 +2,11 @@
     class="flex flex-col max-w-7xl m-6 justify-between border-b-2 border-gray-200">
     <div class="flex flex-col md:flex-row md:w-full space-y-2 mb-6">
         @isset($selectedTask->photo)
-        <div class="md:w-1/6 md:self-center">
+        <div class="md:w-2/6 md:self-center">
             <img src=" {{ url('/storage/sending-photos/'.$selectedTask->photo) }}" alt="item photo" class="p-2">
         </div>
         @else
-        <div class="md:w-1/6 m-2 self-center">
+        <div class="md:w-2/6 m-2 self-center">
             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="p-2">
                 <defs>
                     <style>
