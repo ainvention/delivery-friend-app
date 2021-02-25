@@ -51,7 +51,7 @@
                             NOK</b></div>
                     <div><span class="text-green-500">@icon('credit-card')</span>&nbsp;Sender pays the <span
                             class="font-bold">{{ $selectedTask->service_charge }}
-                            NOK</span>&nbsp;Insurance and service fee.
+                            NOK</span>&nbsp; for Insurance and service fee.
                     </div>
                     <div class="flex flex-col w-full md:flex-row space-y-2 md:space-y-0">
                         <div class="flex flex-col sm:flex-row w-full space-x-2">
