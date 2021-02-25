@@ -86,7 +86,7 @@
                 </div>
                 <div class="flex flex-col md:w-2/6 m-4 md:self-start md:justify-end md:text-right leading-relaxed">
                     <span class="text-gray-600 text-xl font-bold">You should get</span>
-                    <span class="font-bold text-blue-600 text-5xl ">{{ $selectedTask->reward}} NOK</span>
+                    <span class="font-bold text-blue-600 text-6xl ">{{ $selectedTask->reward}} NOK</span>
                     <span>Inclusive of VAT if applicable</span>
                 </div>
             </div>
