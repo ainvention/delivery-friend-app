@@ -63,7 +63,7 @@ class Step1 extends Component
     {
         // pass the object to the view in the render() method,
         // along with pagination it does not need to be a public prop
-        $tasks = Sending::paginate(10)->withQueryString('created_at');
+        $tasks = Sending::orderBy('created_at', 'desc')->paginate(10);
         $taskCount = $tasks->count();
         return view('livewire.search.step1', [
             'tasks' => $tasks,
