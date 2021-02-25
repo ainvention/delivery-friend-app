@@ -442,7 +442,7 @@ class Step1 extends Component
                 $newPhoto->file_name = $this->photo;
                 $newPhoto->save();
             } else {
-                $currentPhoto->photo = $this->photo;
+                $currentPhoto->file_name = $this->photo;
                 $currentPhoto->save();
             }
 
@@ -801,6 +801,10 @@ class Step1 extends Component
 
         // whatever task is a new task or a edited task
         $this->currentTaskId = $sending->id;
+
+        if ($this->step >= 6) {
+            $this->storePhotoToDb();
+        }
     }
 
 
