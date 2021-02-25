@@ -6,7 +6,7 @@
             <img src=" {{ url('/storage/sending-photos/'.$selectedTask->photo) }}" alt="item photo" class="p-2">
         </div>
         @else
-        <div class="md:w-2/6 m-2 self-center">
+        <div class="md:w-1/6 m-2 self-center">
             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="p-2">
                 <defs>
                     <style>
@@ -86,7 +86,10 @@
                 </div>
                 <div class="flex flex-col md:w-2/6 m-4 md:self-start md:justify-end md:text-right leading-relaxed">
                     <span class="text-gray-600 text-xl font-bold">You should get</span>
-                    <span class="font-bold text-blue-600 text-6xl ">{{ $selectedTask->reward}} NOK</span>
+                    <div class="flex flex-row md:flex-col xl:flex-row font-bold text-blue-600 text-6xl">
+                        <span class="mr-3 md:mr-0 xl:mr-3">{{ $selectedTask->reward}}</span>
+                        <p> NOK</p>
+                    </div>
                     <span>Inclusive of VAT if applicable</span>
                 </div>
             </div>
