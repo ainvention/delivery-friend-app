@@ -1,4 +1,4 @@
-<x-jet-dialog-modal wire:model="modalSwitchPhoto" id="photoModal" class="photo-modal">
+<x-jet-dialog-modal wire:model="modalSwitchPhoto" id="photoModal">
     <x-slot name="title">
         @empty($isSetPhoto)
         Add Photo

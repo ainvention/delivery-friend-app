@@ -15,7 +15,7 @@
         <div class="flex flex-col w-full md:w-1/2 mx-4 md:mx-10 mb-20 space-y-10">
             <a href="/companies">
                 <button
-                    class="w-full text-2xl xl:text-4xl font-bold leading-snug bg-green-400 rounded-2xl px-2 hover:bg-black hover:text-white">Frakt
+                    class="w-full text-2xl xl:text-4xl font-bold leading-snug bg-green-400 rounded-2xl px-4 py-4 hover:bg-black hover:text-white">Frakt
                     for bedrifter<span class="mx-2 hover:bg-black hover:text-white">@icon('chevron-right
                         ')</span>
                 </button>
@@ -28,7 +28,7 @@
         <div class="flex flex-col w-full md:w-1/2 mx-4 md:mx-10 space-y-10">
             <a href="/individuals">
                 <button
-                    class="w-full text-2xl xl:text-4xl font-bold leading-snug bg-blue-400 rounded-2xl px-2 hover:bg-black hover:text-white">Og
+                    class="w-full text-2xl xl:text-4xl font-bold leading-snug bg-blue-400 rounded-2xl px-4 py-4 hover:bg-black hover:text-white">Og
                     for
                     private<span class="mx-2 hover:bg-black hover:text-white">@icon('chevron-right
                         ')</span>

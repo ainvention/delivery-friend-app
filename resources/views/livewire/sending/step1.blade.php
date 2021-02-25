@@ -19,7 +19,7 @@
 
                     {{-- Fix an error which below modal window is executed when reading this page because the $modalSwitch variable value is not assigned. --}}
                     <div x-data="{modalSwitchPhoto:false}" x-cloak>
-                        <x-jet-dialog-modal wire:model="modalSwitchPhoto" id="photoModal" class="photo-modal">
+                        <x-jet-dialog-modal wire:model="modalSwitchPhoto" id="photoModal">
                             <x-slot name="title">
                                 @empty($isSetPhoto)
                                 Add Photo
@@ -68,7 +68,7 @@
 
                     @empty($isSetPhoto)
                     <div wire:click="modalTogglePhoto"
-                        class="text-center w-full py-20 md:w-full px-3 mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 text-gray-800">
+                        class="text-center w-full py-20 md:w-full px-3 mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 text-gray-800 rounded-lg">
                         <svg class="block m-auto h-16" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

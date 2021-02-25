@@ -1,9 +1,12 @@
 <div class="text-gray-600 body-font relative">
     <div class="container py-24 mx-auto">
         <div class="text-center w-full mb-12">
-            <span class="text-2xl text-center text-gray-500">Send message to
+            <span class="flex flex-col sm:flex-row text-2xl justify-center text-gray-500">
+                <span>Send message to &nbsp</span>
                 <span
-                    class="font-bold uppercase">{{ DB::table('users')->where('id', $selectedTask->user_id)->value('name') }}</span></span>
+                    class="font-bold uppercase">{{ DB::table('users')->where('id', $selectedTask->user_id)->value('name') }}
+                </span>
+            </span>
         </div>
         <form wire:submit.prevent="sendMessageToSender" class="mx-auto">
             <div class="w-full relative mx-2 my-2 text-lg">
@@ -14,7 +17,7 @@
                 <x-jet-input-error for="messageToSender" class="my-2" />
             </div>
 
-            <div class="w-full relative mx-2 my-2 sm:space-y-4 mt-4">
+            <div class="w-full relative mx-2 my-2 space-y-4 mt-4">
                 <x-jet-label value="{{ __('Suggestion details') }}" class="text-xl" />
                 <div>
                     <span>Date</span>
