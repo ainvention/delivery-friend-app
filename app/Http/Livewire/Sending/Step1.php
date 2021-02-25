@@ -3,10 +3,10 @@
 namespace App\Http\Livewire\Sending;
 
 use Image;
+use App\Models\Photo;
 use App\Models\Coupon;
 use App\Models\Sending;
 use Livewire\Component;
-use Illuminate\Http\File;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class Step1 extends Component
 {
@@ -91,8 +92,40 @@ class Step1 extends Component
     ];
 
     protected $rules = [
-        'recommendedCost' => 'numeric|min:200',
-        'totalDeliveryCost' => 'required',
+        'recommendedCost' => 'required|numeric|min:180|max:99999', // connected with global
+        'totalDeliveryCost' => 'nullable|numeric|min:0', // not exist at this point
+        'title' => 'required|min:4|max:80',
+        'note' => 'nullable|string|max:80',
+        'weight' => 'nullable|numeric|min:0|max:65000',
+        'size' => 'required|string',
+        'fromAddress' => 'required|string',
+        'simpleFromAddress' => 'required|string',
+        'fromNote' => 'nullable|max:80',
+        'fromLat' => 'required|string',
+        'fromLng' => 'required|string',
+        'toAddress' => 'required|string',
+        'simpleToAddress' => 'required|string',
+        'toNote' => 'nullable|string|max:80',
+        'toLat' => 'required|string',
+        'toLng' => 'required|string',
+        'toDateManually' => 'nullable|date',
+        'toDate' => 'nullable|string',
+        'toTimeManually' => 'nullable|date_format:H:i',
+        'toTime' => 'nullable|string',
+        'totalDistance' => 'numeric|min:0',
+        'couponNumber' => 'nullable|string',
+        'couponPrice' => 'nullable|numeric',
+        'couponRate' => 'nullable|numeric',
+        'reward' => 'required|numeric|min:0',
+        'serviceCharge' => 'required|numeric|min:0',
+        'insuranceCost' => 'required|numeric|min:0',
+        'isFraglile' => 'boolean',
+        'needAnimalCage' => 'boolean',
+        'needCoolingEquipment' => 'boolean',
+        'needHelpWrapping' => 'boolean',
+        'helpPickUp' => 'boolean',
+        'helpDelivery' => 'boolean',
+        //photo validate rule not included
     ];
 
     protected $messages = [
@@ -283,6 +316,8 @@ class Step1 extends Component
      */
     public function moveStep7()
     {
+        $this->validate();
+
         $this->publishTask();
 
         $this->alert('success', 'Congratulation,', [
@@ -330,6 +365,11 @@ class Step1 extends Component
 
 
 
+    /**
+     * modalTogglePhoto
+     * for front-end button
+     * @return void
+     */
     public function modalTogglePhoto()
     {
         $this->modalSwitchPhoto = !$this->modalSwitchPhoto;
@@ -339,41 +379,80 @@ class Step1 extends Component
 
 
 
-        /**
+    /**
      * savePhoto
-     *
+     * It just add to Livewire property in the during of processing.
      * @return void
      */
     public function savePhoto()
     {
-        $this->validate(
-            [
-                'photo' => 'image|max:4096', // 2MB Max
-            ]
-        );
+        if ($this->photo) {
+            $this->validate(['photo' => 'image|max:2048',]);
+            $path = $this->photo->store('sending-photos', 'public');
+            // $this->photo = Storage::url($path); <== 'sending-photos/asdfaauihyesfklajhsdkf.jpg'
+            $this->photo = str_replace('sending-photos/', '', $path);
 
-        /**
-         * 1. filesystem에 정의된 'public' 디스크를 찾고
-         * 2. url은 이미지 파일을 웹에 띄울때 사용되는 주소이고
-         * 3. root 는 실제로 앱이 설치된 폴더의 물리 경로를 의미한다.
-         * 4. store('폴더이름지정', "config/filesystem 에 저장된 'disks'의 배열이름")
-         * storage/app/public/sending-photos/파일이름 형식으로 저장된다.
-         */
-        $path = $this->photo->store('sending-photos', 'public');
-        $this->photo = Storage::url($path);
-        $this->isSetPhoto = true;
-        $this->modalTogglePhoto();
+            if ($this->step >= 6) {
+                $this->storePhotoToDb();
+            }
 
-        return $this->alert('success', 'Item photo saved!', [
-            'position' =>  'center',
-            'timer' =>  3000,
-            'toast' =>  false,
-            'text' =>  '',
-            'confirmButtonText' =>  '',
-            'cancelButtonText' =>  'OK',
-            'showCancelButton' =>  true,
-            'showConfirmButton' =>  false,
-        ]);
+
+            $this->isSetPhoto = true;
+
+            $this->modalTogglePhoto();
+
+            return $this->alert('success', 'Item photo saved!', [
+                'position' =>  'center',
+                'timer' =>  3000,
+                'toast' =>  false,
+                'confirmButtonText' =>  '',
+                'cancelButtonText' =>  'OK',
+                'showCancelButton' =>  true,
+                'showConfirmButton' =>  false,
+            ]);
+        } else {
+            return $this->alert('error', 'No file chosen!', [
+                'position' =>  'center',
+                'timer' =>  3000,
+                'toast' =>  false,
+                'confirmButtonText' =>  '',
+                'cancelButtonText' =>  'OK',
+                'showCancelButton' =>  true,
+                'showConfirmButton' =>  false,
+            ]);
+        }
+    }
+
+
+
+
+
+    /**
+     * storePhotoToDb
+     * Store uploaded file path to Photo table in DB.
+     * @return void
+     */
+    public function storePhotoToDb()
+    {
+        if ($this->photo) {
+            $currentPhoto = Photo::where('file_name', $this->photo)->first();
+            if ($currentPhoto === null) {
+                $newPhoto = new Photo;
+                $newPhoto->task_id = $this->currentTaskId;
+                $newPhoto->file_name = $this->photo;
+                $newPhoto->save();
+            } else {
+                $currentPhoto->photo = $this->photo;
+                $currentPhoto->save();
+            }
+
+            // in case of not exist photo or adit photo after a task made.
+            $currentSending = Sending::find($this->currentTaskId);
+            if (isset($currentSending)) {
+                $currentSending->photo = $this->photo;
+                $currentSending->save();
+            }
+        }
     }
 
 
@@ -389,10 +468,31 @@ class Step1 extends Component
      */
     public function photoDelete()
     {
+        if ($this->photo) {
+            $path = storage_path().'/app/public/sending-photos/'.$this->photo;
+            // delete a file from server
+            if (File::exists($path)) {
+                unlink($path);
+            }
+
+            //delete a file from Photo table in DB
+            if (Photo::where('file_name', $this->photo)) {
+                Photo::where('file_name', $this->photo)->delete();
+            }
+
+            // delete a record from current Sending task
+            $currentTask = Sending::find($this->currentTaskId);
+            if ($currentTask->photo) {
+                $currentTask->photo = null;
+                $currentTask->save();
+            }
+        }
+
         $this->photo = null;
+
         $this->isSetPhoto = false;
 
-        $this->modalTogglePhoto();
+        $this->modalSwitchPhoto = false;
     }
 
 
@@ -560,7 +660,8 @@ class Step1 extends Component
             $this->couponPrice = $coupon->price;
             $this->totalDeliveryCost = $this->totalDeliveryCost - $coupon->price;
             $this->discountedCost = $coupon->price;
-        } elseif (isset($coupon->rate)) {
+        }
+        if (isset($coupon->rate)) {
             $this->couponRate = $coupon->rate;
 
             //Insurance cost is not adjust to discount.
@@ -586,42 +687,7 @@ class Step1 extends Component
      */
     public function publishTask()
     {
-        $this->validate([
-        'title' => 'required|min:4',
-        'photo' => 'nullable|string',
-        'note' => 'nullable|max:80',
-        'size' => 'string',
-        'weight' => 'nullable|numeric|min:0|max:65000',
-        'fromAddress' => 'required|string',
-        'simpleFromAddress' => 'required|string',
-        'fromNote' => 'nullable|string',
-        'fromLat' => 'required|string',
-        'fromLng' => 'required|string',
-        'toAddress' => 'required|string',
-        'simpleToAddress' => 'required|string',
-        'toNote' => 'nullable|string',
-        'toLat' => 'required|string',
-        'toLng' => 'required|string',
-        'toDate' => 'nullable|string',
-        'toDateManually' => 'nullable|date',
-        'toTime' => 'nullable|string',
-        'toTimeManually' => 'nullable|date_format:H:i',
-        'totalDistance' => 'numeric|min:0',
-        'recommendedCost' => 'required|numeric|min:180|max:99999', // connected with global $this->recommendedCost
-        'couponNumber' => 'nullable|string',
-        'couponPrice' => 'nullable|numeric',
-        'couponRate' => 'nullable|numeric',
-        'reward' => 'required|numeric|min:0',
-        'serviceCharge' => 'required|numeric|min:0',
-        'insuranceCost' => 'required|numeric|min:0',
-        'totalDeliveryCost' => 'nullable|numeric|min:0', // not exist at this point
-        'isFraglile' => 'boolean',
-        'needAnimalCage' => 'boolean',
-        'needCoolingEquipment' => 'boolean',
-        'needHelpWrapping' => 'boolean',
-        'helpPickUp' => 'boolean',
-        'helpDelivery' => 'boolean',
-        ]);
+        $this->validate();
 
         if ($this->toDateManually !== null) {
             $this->validate([
@@ -672,6 +738,8 @@ class Step1 extends Component
     {
         $currendTask = Sending::find($this->currentTaskId);
         $currendTask->delete();
+
+        $this->photoDelete();
     }
 
 
@@ -685,15 +753,11 @@ class Step1 extends Component
      */
     public function storeData()
     {
-
-        // check : make new task or edit current task
-
         // check : make new task or edit current task
         if ($this->currentTaskId === null) {
-            $sending = new Sending;
+            $sending = new Sending; //Temp instance, did't get space in DB when before execute save().
             $sending->user_id = Auth::id();
             $sending->user_name = Auth::user()->name;
-            $this->currentTaskId = $sending->id;
         } else {
             $sending = Sending::find($this->currentTaskId);
         }
@@ -733,7 +797,6 @@ class Step1 extends Component
         $sending->need_help_wrapping = $this->needHelpWrapping;
         $sending->help_pick_up = $this->helpPickUp;
         $sending->help_delivery = $this->helpDelivery;
-
         $sending->save();
 
         // whatever task is a new task or a edited task

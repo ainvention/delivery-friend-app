@@ -34,11 +34,12 @@
             </div>
             @foreach ($tasks as $task)
             <div wire:click="$emit('moveDetailPage', {{ $task->id}})" wire:key="{{ $loop->index }}"
-                class="flex flex-col sm:flex-row py-4 .shadow-lg  border-b-2 border-gray-300">
+                class="flex flex-col sm:flex-row py-4 .shadow-lg  border-b-2 border-gray-300 hover:bg-gray-100">
                 <div class="flex flex-col sm:flex-row sm:w-8/12 space-y-2">
                     @isset($task->photo)
                     <div class="w-24 sm:self-center">
-                        <img src=" {{ url($task->photo) }}" alt="item photo" class="p-2 object-scale-down">
+                        <img src=" {{ url('/storage/sending-photos/'.$task->photo) }}" alt="item photo"
+                            class="p-2 object-scale-down">
                     </div>
                     @else
                     <div class="w-12 mx-2 sm:self-center text-center">
