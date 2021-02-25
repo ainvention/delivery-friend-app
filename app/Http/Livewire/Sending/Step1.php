@@ -468,7 +468,7 @@ class Step1 extends Component
      */
     public function photoDelete()
     {
-        if ($this->photo) {
+        if ($this->photo !== null) {
             $path = storage_path().'/app/public/sending-photos/'.$this->photo;
             // delete a file from server
             if (File::exists($path)) {
@@ -481,10 +481,12 @@ class Step1 extends Component
             }
 
             // delete a record from current Sending task
-            $currentTask = Sending::find($this->currentTaskId);
-            if ($currentTask->photo) {
-                $currentTask->photo = null;
-                $currentTask->save();
+            if ($this->currentTaskId !== null) {
+                $currentTask = Sending::find($this->currentTaskId);
+                if ($currentTask->photo !== null) {
+                    $currentTask->photo = null;
+                    $currentTask->save();
+                }
             }
         }
 
