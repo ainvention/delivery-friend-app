@@ -7,6 +7,7 @@
             questions or a date they can help you out.</h2>
     </div>
     <div class="flex flex-col mx-10 text-left border-gray-200 border-2 xl:mx-40 mb-auto">
+
         <div class="flex flex-col lg:flex-row">
             <div class="lg:w-full p-5">
                 <h1 class="text-3xl uppercase text-gray-500 font-semibold">{{ $title }}</h1>
@@ -45,6 +46,7 @@
                 @endisset
             </div>
         </div>
+
         <div class="flex flex-col m-5 {{ $couponAdjusted === true ? 'hidden' : ''}}"
             {{ $couponAdjusted === true ? 'disabled' : ''}}>
             <div class="flex text-xl text-gray-400">
@@ -59,6 +61,7 @@
                 </x-jet-secondary-button>
             </div>
         </div>
+
         <x-jet-dialog-modal wire:model="modalSwitchCoupon">
             <x-slot name="title">
                 Add Coupon

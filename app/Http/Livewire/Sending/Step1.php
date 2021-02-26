@@ -960,8 +960,25 @@ class Step1 extends Component
 
     public function deleteTask()
     {
-        Sending::where('id', $this->currentTaskId)->delete();
-        redirect()->to('/sending');
+        $targetData = Sending::where('id', $this->currentTaskId)->first();
+
+        // In case of target task not exist
+        if ($targetData === null) {
+            session()->flash('message', "Task not exist, Let's make a new task.");
+            redirect()->to('/sending');
+        }
+
+        // In case of target task exist and prevent Null access error.
+        if ($this->currentTaskId !== null && $targetData !== null) {
+            if ($targetData->user_id === Auth::id()) {
+                $targetData->delete();
+            }
+            // delete photo file in any case
+            Photo::where('task_id', $this->currentTaskId)->delete();
+
+            session()->flash('message', "Task has been deleted. Let's make a new task.");
+            redirect()->to('/sending');
+        }
     }
 
 
