@@ -13,7 +13,7 @@
                 </a>
             </span>
         </div>
-        <div class="flex w-full flex-col sm:flex-row justify-between">
+        <div class="flex w-full flex-col sm:flex-row justify-between space-y-4 sm:space-y-0">
             <input wire:model="fromAddress" class="flex w-full border-2 border-gray-300 mx-0 sm:mx-2 rounded-xl"
                 type="text" placeholder=" Send from">
             <input wire:model="toAddress" class="flex w-full  border-2 border-gray-300 mx-0 sm:mx-2 rounded-xl"
@@ -35,7 +35,7 @@
             </div>
             @foreach ($tasks as $task)
             <div wire:click="$emit('moveDetailPage', {{ $task->id}})" wire:key="{{ $loop->index }}"
-                class="flex flex-col sm:flex-row py-4 .shadow-lg  border-b-2 border-gray-300 hover:bg-gray-100">
+                class="flex flex-col sm:flex-row py-4 mx-2 sm:mx-0 .shadow-lg  border-b-2 border-gray-300 hover:bg-gray-100">
                 <div class="flex flex-col sm:flex-row sm:w-8/12 space-y-2">
                     @isset($task->photo)
                     <div class="w-24 sm:self-center">
@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col lg:flex-row lg:w-4/12 sm:self-center">
-                    <div class="flex flex-row lg:w-5/12">
+                    <div class="flex flex-row lg:w-5/12 my-2 sm:my-0">
                         <div class="w-14 h-auto sm:pr-2 sm:px-2">
                             @if(DB::table('users')->where('id', $task->user_id)->value('profile_photo_path') !==
                             null)
