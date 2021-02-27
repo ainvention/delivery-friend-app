@@ -55,7 +55,7 @@
 
                                 <div wire:loading.remove class="flex flex-row w-full mx-auto justify-end">
                                     <button
-                                        class="inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-600 transition ease-in-out duration-150 ml-2 text-white w-bg-blue-600 hover:bg-black"
+                                        class="inline-flex items-center px-4 py-2 bg-blue-600 border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 hover:bg-black"
                                         wire:click="savePhoto">
                                         @empty($isSetPhoto)
                                         {{ __('Save') }}
