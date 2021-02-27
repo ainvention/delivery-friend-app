@@ -112,7 +112,7 @@
 
 <body class="font-sans antialiased">
     <div class="flex flex-col min-h-screen">
-        @include('cookieConsent::index')
+        {{-- @include('cookieConsent::index') --}}
         @livewire('navigation-dropdown')
 
         <!-- Page Heading -->
