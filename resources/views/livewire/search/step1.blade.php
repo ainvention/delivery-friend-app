@@ -22,8 +22,9 @@
                 class="flex w-full  border-2 border-gray-300 mx-0 sm:mx-2 rounded-xl" type="text"
                 placeholder=" Detail info">
             <x-jet-button wire:click=""
-                class="flex w-full border-2 border-gray-200 bg-blue-500 text-white hover:text-gray-600 hover:bg-red-400 justify-center mx-0 sm:mx-2">
-                {{ __('Search') }}
+                class="flex w-full border-2 border-gray-200 bg-blue-500 text-white hover:text-gray-600 hover:bg-red-400 justify-center mx-0 sm:mx-2"
+                disabled>
+                {{ __('Search(now developing)') }}
             </x-jet-button>
         </div>
         {{-- search box modal start --}}
