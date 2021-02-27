@@ -45,18 +45,18 @@
                                 </div>
                             </x-slot>
                             <x-slot name="footer">
-                                <div class="flex flex-row justify-end text-center">
-                                    <x-jet-secondary-button wire:click="photoDelete" class="hover:bg-black">
-                                        @empty($isSetPhoto)
-                                        {{ __('Cancel') }}
-                                        @else
-                                        {{ __('Delete') }}
-                                        @endempty
-                                    </x-jet-secondary-button>
+                                <div wire:loading.remove class="flex flex-row w-full mx-auto justify-end">
+                                    <div class="flex flex-row justify-end text-center">
+                                        <x-jet-secondary-button wire:click="photoDelete" class="hover:bg-black">
+                                            @empty($isSetPhoto)
+                                            {{ __('Cancel') }}
+                                            @else
+                                            {{ __('Delete') }}
+                                            @endempty
+                                        </x-jet-secondary-button>
 
-                                    <div wire:loading.remove class="flex flex-row w-full mx-auto justify-end">
                                         <button
-                                            class="flex items-center px-4 py-2 bg-blue-600 border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 hover:bg-black"
+                                            class="flex items-center px-4 py-2 text-white bg-blue-600 border border-gray-300 rounded-md font-semibold text-xs uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 hover:bg-black"
                                             wire:click="savePhoto">
                                             @empty($isSetPhoto)
                                             {{ __('Save') }}
