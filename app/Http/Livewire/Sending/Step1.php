@@ -765,6 +765,7 @@ class Step1 extends Component
             $sending = Sending::find($this->currentTaskId);
         }
 
+        //below code will adjust with all() method for more simply, but now it is test mode.
         $sending->photo = $this->photo;
         $sending->title = $this->title;
         $sending->note = $this->note;
