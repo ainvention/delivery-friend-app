@@ -53,7 +53,8 @@
                                         {{ __('Delete') }}
                                         @endempty
                                     </x-jet-secondary-button>
-                                    <x-jet-secondary-button class="ml-2 text-white bg-blue-600 hover:bg-black"
+                                    <x-jet-secondary-button
+                                        class="ml-2 text-white active:text-white bg-blue-600 hover:bg-black"
                                         wire:click="savePhoto">
                                         @empty($isSetPhoto)
                                         {{ __('Save') }}
