@@ -41,42 +41,38 @@
                                     </div>
                                 </div> --}}
                                 <div wire:loading class="text-green-600 font-semibold">
-                                    Now loading, please wait..
+                                    Now loading, please wait...
                                 </div>
                             </x-slot>
                             <x-slot name="footer">
                                 <div wire:loading.remove>
-                                    <div class="flex flex-row justify-end text-center">
-                                        <x-jet-secondary-button wire:click="photoDelete" class="hover:bg-black">
-                                            @empty($isSetPhoto)
-                                            {{ __('Cancel') }}
-                                            @else
-                                            {{ __('Delete') }}
-                                            @endempty
-                                        </x-jet-secondary-button>
-
-                                        <button
-                                            class="flex items-center px-4 py-2 text-white bg-blue-600 border border-gray-300 rounded-md font-semibold text-xs uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 hover:bg-black"
-                                            wire:click="savePhoto">
-                                            @empty($isSetPhoto)
-                                            {{ __('Save') }}
-                                            @else
-                                            {{ __('Change') }}
-                                            @endempty
-                                        </button>
+                                    <x-jet-secondary-button wire:click="photoDelete" class="hover:bg-black">
+                                        @empty($isSetPhoto)
+                                        {{ __('Cancel') }}
+                                        @else
+                                        {{ __('Delete') }}
+                                        @endempty
+                                    </x-jet-secondary-button>
+                                    <x-jet-secondary-button class="ml-2 text-white bg-blue-600 hover:bg-black"
+                                        wire:click="savePhoto">
+                                        @empty($isSetPhoto)
+                                        {{ __('Save') }}
+                                        @else
+                                        {{ __('Change') }}
+                                        @endempty
+                                    </x-jet-secondary-button>
+                                    <div>
+                                        {{-- invalid coupon message --}}
+                                        @if (session()->has('error'))
+                                        <div class="text-red-500">
+                                            {{ session('error') }}
+                                        </div>
+                                        @elseif (session()->has('message'))
+                                        <div class="text-blue-500">
+                                            {{ session('message') }}
+                                        </div>
+                                        @endif
                                     </div>
-                                </div>
-                                <div>
-                                    {{-- invalid coupon message --}}
-                                    @if (session()->has('error'))
-                                    <div class="text-red-500">
-                                        {{ session('error') }}
-                                    </div>
-                                    @elseif (session()->has('message'))
-                                    <div class="text-blue-500">
-                                        {{ session('message') }}
-                                    </div>
-                                    @endif
                                 </div>
                             </x-slot>
                         </x-jet-dialog-modal>
