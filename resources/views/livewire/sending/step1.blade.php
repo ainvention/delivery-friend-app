@@ -54,7 +54,7 @@
                                         @endempty
                                     </x-jet-secondary-button>
                                     <x-jet-secondary-button
-                                        class="ml-2 text-white active:text-white bg-blue-600 hover:bg-black inline-flex items-center px-4 py-2 border border-gray-300 rounded-md font-semibold text-xs  uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 transition ease-in-out duration-150"
+                                        class="ml-2 text-white active:text-white bg-blue-600 hover:bg-black inline-flex items-center px-4 py-2 border border-gray-300 rounded-md font-semibold text-xs  uppercase tracking-widest shadow-sm focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150"
                                         wire:click="savePhoto">
                                         @empty($isSetPhoto)
                                         {{ __('Save') }}
