@@ -53,15 +53,15 @@
                                     @endempty
                                 </x-jet-secondary-button>
 
-                                <x-jet-danger-button class="ml-2 bg-blue-600 hover:bg-black" wire:click="savePhoto">
-                                    <div wire:loading.remove class="flex flex-row">
+                                <div wire:loading.remove class="flex flex-row w-full mx-auto justify-end">
+                                    <button class="ml-2 bg-blue-600 hover:bg-black" wire:click="savePhoto">
                                         @empty($isSetPhoto)
                                         {{ __('Save') }}
                                         @else
                                         {{ __('Change') }}
                                         @endempty
-                                    </div>
-                                </x-jet-danger-button>
+                                    </button>
+                                </div>
 
                                 <div>
                                     {{-- invalid coupon message --}}
