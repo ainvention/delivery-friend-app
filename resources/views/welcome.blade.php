@@ -1,6 +1,6 @@
 <x-guest-layout>
-    <div class="h-full max-h-screen">
-        <div class="md:h-1/12"></div>
+    <div class="max-h-screen">
+        <div class="md:h-20"></div>
         <div
             class="flex flex-col m-auto justify-center space-y-2 text-gray-900 uppercase text-4xl md:text-6xl font-bold md:mx-4 text-center mb-10">
             <span>Send hva som
