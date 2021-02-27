@@ -387,7 +387,7 @@ class Step1 extends Component
     public function savePhoto()
     {
         if ($this->photo) {
-            $this->validate(['photo' => 'image|max:2048',]);
+            $this->validate(['photo' => 'image|max:4096',]);
             $path = $this->photo->store('sending-photos', 'public');
             // $this->photo = Storage::url($path); <== 'sending-photos/asdfaauihyesfklajhsdkf.jpg'
             $this->photo = str_replace('sending-photos/', '', $path);
