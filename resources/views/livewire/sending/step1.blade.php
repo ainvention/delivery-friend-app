@@ -33,12 +33,15 @@
                                     <x-jet-input wire:model="photo" id="photo" type="file" class="mt-1 block w-full" />
                                     <x-jet-input-error for="photo" class="mt-2" />
                                 </div>
-                                <h1 class=>Progress Bar</h1>
+                                {{-- <h1 class=>Progress Bar</h1>
                                 <div class="h-3 relative max-w-xl rounded-full overflow-hidden">
                                     <div class="w-full h-full bg-gray-200 absolute"></div>
                                     <div id="bar"
                                         class="transition-all ease-out duration-1000 h-full bg-green-500 relative w-0">
                                     </div>
+                                </div> --}}
+                                <div wire:loading>
+                                    Now loading...
                                 </div>
                             </x-slot>
                             <x-slot name="footer">
