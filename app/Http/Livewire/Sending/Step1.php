@@ -386,41 +386,24 @@ class Step1 extends Component
      */
     public function savePhoto()
     {
-        if ($this->photo) {
-            $this->validate(['photo' => 'mimes:jpg,gif,png,svg|max:4098',]);
-            $path = $this->photo->store('sending-photos', 'public');
-            // $this->photo = Storage::url($path); <== 'sending-photos/asdfaauihyesfklajhsdkf.jpg'
-            $this->photo = str_replace('sending-photos/', '', $path);
-
-            if ($this->step >= 6) {
-                $this->storePhotoToDb();
-            }
-
-
-            $this->isSetPhoto = true;
-
-            $this->modalTogglePhoto();
-
-            return $this->alert('success', 'Item photo saved!', [
-                'position' =>  'center',
-                'timer' =>  3000,
-                'toast' =>  false,
-                'confirmButtonText' =>  '',
-                'cancelButtonText' =>  'OK',
-                'showCancelButton' =>  true,
-                'showConfirmButton' =>  false,
-            ]);
-        } else {
-            return $this->alert('error', 'No file chosen!', [
-                'position' =>  'center',
-                'timer' =>  3000,
-                'toast' =>  false,
-                'confirmButtonText' =>  '',
-                'cancelButtonText' =>  'OK',
-                'showCancelButton' =>  true,
-                'showConfirmButton' =>  false,
-            ]);
+        $this->validate(['photo' => 'mimes:jpeg,bmp,png,svg|max:8192',]);
+        $path = $this->photo->store('sending-photos', 'public');
+        // $this->photo = Storage::url($path); <== 'sending-photos/asdfaauihyesfklajhsdkf.jpg'
+        $this->photo = str_replace('sending-photos/', '', $path);
+        if ($this->step >= 6) {
+            $this->storePhotoToDb();
         }
+        $this->isSetPhoto = true;
+        $this->modalTogglePhoto();
+        return $this->alert('success', 'Item photo saved!', [
+            'position' =>  'center',
+            'timer' =>  3000,
+            'toast' =>  false,
+            'confirmButtonText' =>  '',
+            'cancelButtonText' =>  'OK',
+            'showCancelButton' =>  true,
+            'showConfirmButton' =>  false,
+        ]);
     }
 
 
