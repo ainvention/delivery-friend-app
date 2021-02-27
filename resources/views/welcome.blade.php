@@ -1,17 +1,19 @@
 <x-guest-layout>
-    <div class="md:h-16"></div>
-    <div
-        class="flex flex-col m-auto justify-center space-y-4 text-gray-900 uppercase text-4xl md:text-6xl font-bold md:mx-4 text-center mb-10">
-        <span>Send hva som
-            helst,
-            hvor
-            som helst,</span>
-        <span>når som helst.</span>
+    <div class="h-full max-h-screen">
+        <div class="md:h-1/12"></div>
+        <div
+            class="flex flex-col m-auto justify-center space-y-2 text-gray-900 uppercase text-4xl md:text-6xl font-bold md:mx-4 text-center mb-10">
+            <span>Send hva som
+                helst,
+                hvor
+                som helst,</span>
+            <span>når som helst.</span>
+        </div>
+        <div class=" w-8/12 mx-auto md:my-20">
+            @include('livewire.components.svgs.delivery1')
+        </div>
     </div>
-    <div class=" w-8/12 mx-auto md:my-20">
-        @include('livewire.components.svgs.delivery1')
-    </div>
-    <div class="flex flex-col md:flex-row mt-10">
+    <div class="flex flex-col md:flex-row mt-6">
         <div class="flex flex-col w-full md:w-1/2 mx-4 md:mx-10 mb-20 space-y-10">
             <a href="/companies">
                 <button
