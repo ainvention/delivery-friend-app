@@ -6,7 +6,7 @@
         {{-- main page start --}}
         <div
             class="flex flex-col text-center mb-5 text-4xl item-center justify-center px-4 dark:text-white rounded-full leading-relaxed font-semibold tracking-wide">
-            Our customer needs your help!
+            Help us & reduce your opportunity costs!
             </h2>
             <span class="text-lg">or <a href="/sending" class="text-blue-500">
                     to send a item
