@@ -45,7 +45,7 @@
                                 </div>
                             </x-slot>
                             <x-slot name="footer">
-                                <div wire:loading.remove class="flex flex-row w-full mx-auto justify-end">
+                                <div wire:loading.remove>
                                     <div class="flex flex-row justify-end text-center">
                                         <x-jet-secondary-button wire:click="photoDelete" class="hover:bg-black">
                                             @empty($isSetPhoto)
