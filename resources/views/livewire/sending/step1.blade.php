@@ -52,15 +52,17 @@
                                     {{ __('Delete') }}
                                     @endempty
                                 </x-jet-secondary-button>
-                                <div wire:loading.remove class="flex flex-row">
-                                    <x-jet-danger-button class="ml-2 bg-blue-600 hover:bg-black" wire:click="savePhoto">
+
+                                <x-jet-danger-button class="ml-2 bg-blue-600 hover:bg-black" wire:click="savePhoto">
+                                    <div wire:loading.remove class="flex flex-row">
                                         @empty($isSetPhoto)
                                         {{ __('Save') }}
                                         @else
                                         {{ __('Change') }}
                                         @endempty
-                                    </x-jet-danger-button>
-                                </div>
+                                    </div>
+                                </x-jet-danger-button>
+
                                 <div>
                                     {{-- invalid coupon message --}}
                                     @if (session()->has('error'))
