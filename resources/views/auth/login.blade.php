@@ -46,7 +46,7 @@
                 </x-jet-button>
             </div>
         </form>
-        <span class="flex justify-center mt-6 text-lg font-medium">Test ID : alex@alex.no / PASS : alex1234</span>
+        <span class="flex justify-center mt-6 text-lg font-medium">Test ID : test@test.no / PASS : test1234</span>
         <span class="flex justify-center mt-2 text-red-500 ">Ver. 0.7</span>
     </x-jet-authentication-card>
 </x-guest-layout>
