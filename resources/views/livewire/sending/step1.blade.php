@@ -40,7 +40,7 @@
                                         class="transition-all ease-out duration-1000 h-full bg-green-500 relative w-0">
                                     </div>
                                 </div> --}}
-                                <div wire:loading>
+                                <div wire:loading class="text-green-600 font-semibold">
                                     Now loading...
                                 </div>
                             </x-slot>
@@ -53,7 +53,7 @@
                                     @endempty
                                 </x-jet-secondary-button>
                                 <x-jet-danger-button class="ml-2 bg-blue-600 hover:bg-black" wire:click="savePhoto()"
-                                    wire:loading.attr="disabled">
+                                    wire:loading.class.remove="bg-blue-100" wire:loading.attr="disabled">
                                     @empty($isSetPhoto)
                                     {{ __('Save') }}
                                     @else
