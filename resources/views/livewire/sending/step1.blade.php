@@ -41,7 +41,7 @@
                                     </div>
                                 </div> --}}
                                 <div wire:loading class="text-green-600 font-semibold">
-                                    Now loading...
+                                    Now loading, please wait..
                                 </div>
                             </x-slot>
                             <x-slot name="footer">
@@ -52,14 +52,15 @@
                                     {{ __('Delete') }}
                                     @endempty
                                 </x-jet-secondary-button>
-                                <x-jet-danger-button class="ml-2 bg-blue-600 hover:bg-black" wire:click="savePhoto"
-                                    wire:loading.attr="disabled">
-                                    @empty($isSetPhoto)
-                                    {{ __('Save') }}
-                                    @else
-                                    {{ __('Change') }}
-                                    @endempty
-                                </x-jet-danger-button>
+                                <div wire:loading.remove>
+                                    <x-jet-danger-button class="ml-2 bg-blue-600 hover:bg-black" wire:click="savePhoto">
+                                        @empty($isSetPhoto)
+                                        {{ __('Save') }}
+                                        @else
+                                        {{ __('Change') }}
+                                        @endempty
+                                    </x-jet-danger-button>
+                                </div>
                                 <div>
                                     {{-- invalid coupon message --}}
                                     @if (session()->has('error'))
