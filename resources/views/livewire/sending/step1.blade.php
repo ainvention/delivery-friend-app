@@ -40,7 +40,7 @@
                                         class="transition-all ease-out duration-1000 h-full bg-green-500 relative w-0">
                                     </div>
                                 </div> --}}
-                                <div wire:loading class="text-green-600 font-semibold">
+                                <div wire:loading class="text-green-600 font-semibold mt-2">
                                     Now loading, please wait...
                                 </div>
                             </x-slot>
