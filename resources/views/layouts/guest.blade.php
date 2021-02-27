@@ -40,7 +40,7 @@
     @livewireStyles
 </head>
 
-<body class="flex flex-col w-full mx-auto h-screen antialiased">
+<body class="flex flex-col max-h-screen w-full mx-auto antialiased">
     <div class="flex flex-col h-screen">
         @auth
         @livewire('navigation-dropdown')
