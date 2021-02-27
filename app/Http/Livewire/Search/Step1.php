@@ -83,4 +83,17 @@ class Step1 extends Component
         // ->where('size', $this->size)
         // ->get();
     }
+
+    public function nowDelevoping()
+    {
+        // return $this->alert('success', 'We are developing a service!', [
+        //     'position' =>  'center',
+        //     'timer' =>  5000,
+        //     'toast' =>  false,
+        //     'confirmButtonText' =>  'to get more accurate map information.',
+        //     'cancelButtonText' =>  'OK',
+        //     'showCancelButton' =>  true,
+        //     'showConfirmButton' =>  false,
+        // ]);
+    }
 }
