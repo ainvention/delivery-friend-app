@@ -30,7 +30,7 @@ class Step1 extends Component
     public function moveDetailPage($id)
     {
         $this->selectedTask = Sending::where('id', $id)->first();
-        $this->page = 'detail';
+        $this->pageName = 'detail';
     }
 
 
