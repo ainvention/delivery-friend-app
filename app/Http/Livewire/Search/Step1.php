@@ -6,10 +6,17 @@ use App\Models\User;
 use App\Models\Sending;
 use Livewire\Component;
 
+
 class Step1 extends Component
 {
 
-    //$page is already used in pagination, so changed to pageName.
+    // public $tasks;
+
+    // public function mount()
+    // {
+    //     $this->tasks = Sending::paginate(10);
+    // }
+
     public $pageName = 'home';
 
     public $often;
@@ -34,15 +41,18 @@ class Step1 extends Component
     }
 
 
-    public function movePage($page)
+    public function movePage($pageQuery)
     {
-        $this->pageName = $page;
+        $this->pageName = $pageQuery;
     }
 
-    // public function updatingSearch()
+
+    // public function contactFormClose()
     // {
-    //     $this->resetPage();
+    //     $this->openContact = false;
     // }
+
+
 
     /**
      * render
@@ -53,13 +63,12 @@ class Step1 extends Component
     {
         // pass the object to the view in the render() method,
         // along with pagination it does not need to be a public prop
-        // This query will adjust with ->select() for avoid N+1 query problem in the next DEV session.
-        // $tasks = Sending::paginate(10);
-        $tasks = Sending::paginate(10);
-        // $tasks = Sending::paginate(10);
+        // This query will adjust with ->select() for avoid N+1 query problem.
+        $tasks = Sending::latest()->get();
+        $taskCount = $tasks->count();
         return view('livewire.search.step1', [
             'tasks' => $tasks,
-            'taskCount' => Sending::all()->count(),
+            'taskCount' => $taskCount,
         ]);
     }
 
@@ -87,11 +96,4 @@ class Step1 extends Component
         //     'showConfirmButton' =>  false,
         // ]);
     }
-
-
-
-    // public function contactFormClose()
-    // {
-    //     $this->openContact = false;
-    // }
 }

@@ -96,14 +96,14 @@
                 </div>
             </div>
             @endforeach
-            <div class="mt-10">
+            {{-- <div class="mt-10">
                 {{ $tasks->links() }}
-            </div>
-        </div>
+        </div> --}}
     </div>
-    @elseif($pageName == 'detail')
-    @livewire('search.detail-page', ['selectedTask' => $selectedTask])
-    @endif
+</div>
+@elseif($pageName == 'detail')
+@livewire('search.detail-page', ['selectedTask' => $selectedTask])
+@endif
 </div>
 
 
