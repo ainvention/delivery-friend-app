@@ -5,11 +5,9 @@ namespace App\Http\Livewire\Search;
 use App\Models\User;
 use App\Models\Sending;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class Step1 extends Component
 {
-    use WithPagination;
 
     //$page is already used in pagination, so changed to pageName.
     public $pageName = 'home';
