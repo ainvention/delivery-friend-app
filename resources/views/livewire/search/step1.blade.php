@@ -31,7 +31,7 @@
         @livewire('search.searchbox')
         <div class="flex flex-col mt-10">
             <div class="flex border-b-2 border-gray-300 text-xl">
-                Total {{ $count}} deliveries found
+                Total {{ $tasks->count()}} deliveries found
             </div>
             @foreach ($tasks as $task)
             <div wire:click="$emit('moveDetailPage', {{ $task->id}})" wire:key="{{ $loop->index }}"

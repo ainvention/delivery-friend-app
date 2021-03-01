@@ -65,10 +65,8 @@ class Step1 extends Component
         // along with pagination it does not need to be a public prop
         // This query will adjust with ->select() for avoid N+1 query problem.
         $tasks = Sending::orderBy('created_at', 'desc')->paginate(10);
-        $taskCount = $tasks->count();
         return view('livewire.search.step1', [
             'tasks' => $tasks,
-            'count' => $taskCount
         ]);
     }
 
