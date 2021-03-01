@@ -68,7 +68,7 @@ class Step1 extends Component
         // This query will adjust with ->select() for avoid N+1 query problem in the next DEV session.
         // $tasks = Sending::paginate(10);
         // $tasks = Sending::orderBy('created_at', 'desc')->paginate(10);
-        $tasks = Sending::orderBy('created_at', 'desc');
+        $tasks = Sending::orderBy('created_at', 'desc')->get();
         return view('livewire.search.step1', [
             'tasks' => $tasks,
         ]);
