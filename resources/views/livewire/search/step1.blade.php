@@ -1,5 +1,5 @@
 <div>
-    @if($page == 'home')
+    @if($pageName == 'home')
     <div class="flex flex-col justify-center my-10 px-2 bg-white rounded-lg  text-gray-500  sm:tracking-widest">
         @include('livewire.components.sessionMessage')
 
@@ -101,7 +101,7 @@
             </div>
         </div>
     </div>
-    @elseif($page == 'detail')
+    @elseif($pageName == 'detail')
     @livewire('search.detail-page', ['selectedTask' => $selectedTask])
     @endif
 </div>

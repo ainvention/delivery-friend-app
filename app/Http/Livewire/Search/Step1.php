@@ -10,14 +10,9 @@ use Livewire\WithPagination;
 class Step1 extends Component
 {
     use WithPagination;
-    // public $tasks;
 
-    // public function mount()
-    // {
-    //     $this->tasks = Sending::paginate(10);
-    // }
-
-    public $page = 'home';
+    //$page is already used in pagination, so changed to pageName.
+    public $pageName = 'home';
 
     public $often;
     public $size;
@@ -43,7 +38,7 @@ class Step1 extends Component
 
     public function movePage($page)
     {
-        $this->page = $page;
+        $this->pageName = $page;
     }
 
 
