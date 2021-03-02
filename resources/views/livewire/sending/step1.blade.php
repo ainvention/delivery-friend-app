@@ -33,7 +33,7 @@
                                     <x-jet-input wire:model="photo" id="photo" type="file" class="mt-1 block w-full" />
                                     <x-jet-input-error for="photo" class="mt-2" />
                                 </div>
-                                <div wire:loading class="text-green-600 font-semibold mt-2">
+                                <div wire:loading.delay class="text-green-600 font-semibold mt-2">
                                     Now loading, please wait...
                                 </div>
                             </x-slot>
