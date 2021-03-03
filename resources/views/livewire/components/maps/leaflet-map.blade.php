@@ -1,12 +1,12 @@
 <div>
     {{-- used "wire:ignore" to prevent DOM refresh when input value changed --}}
-    <div wire:ignore id="leafletMap" class="flex w-full h-full py-72 mb-10"></div>
+    <div wire:ignore wire:key="leafletMap" id="leafletMap" class="flex w-full h-full py-72 mb-10"></div>
     <script>
         // Take a User's geo location.
         if(!navigator.geolocation) {
             status.textContent = 'Geolocation is not supported by your browser';
         } else {
-            document.getElementById('status').textContent = 'Locating…';
+            // document.getElementById('status').textContent = 'Locating…';
             navigator.geolocation.getCurrentPosition(success, error);
         }
 
@@ -39,7 +39,7 @@
             const latitude  = position.coords.latitude;
             const longitude = position.coords.longitude;
             const status = document.querySelector('#status');
-            status.textContent = '';
+            // status.textContent = 'Finding your location has been successed';
 
             var tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                  { attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -69,7 +69,7 @@
                     var result = data.results[i];
                     // conlosle.log(result);
                     document.getElementById('address').value= result.properties.Place_addr;
-                    console.log('result by search: ' + result);
+                    // console.log('result by search: ' + result);
                 }
             });
 
